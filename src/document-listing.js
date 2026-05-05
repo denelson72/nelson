@@ -6,6 +6,9 @@ const folderOrder = [
   "misc",
 ];
 
+const PETITION_KEY = "petitionSigned";
+const PETITION_URL = "https://c.org/pk9mYfxFL9";
+
 const folderLabels = {
   "judges-order": "Judge's Orders",
   evidence: "Videos",
@@ -139,6 +142,13 @@ function renderDocuments() {
       link.textContent = doc.title;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
+      link.addEventListener("click", (event) => {
+        const petitionSigned = localStorage.getItem(PETITION_KEY) === "true";
+        if (petitionSigned) return;
+        event.preventDefault();
+        alert("Please sign the petition first to access evidence files.");
+        window.open(PETITION_URL, "_blank", "noopener,noreferrer");
+      });
       item.appendChild(link);
       list.appendChild(item);
     }

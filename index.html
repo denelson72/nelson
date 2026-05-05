@@ -1609,6 +1609,13 @@
 </div>
 
 <script>
+  const PETITION_KEY = 'petitionSigned';
+  const PETITION_URL = 'https://c.org/pk9mYfxFL9';
+
+  function markPetitionStarted() {
+    localStorage.setItem(PETITION_KEY, 'true');
+  }
+
   function enterSite() {
     document.getElementById('gateForm').style.display = 'none';
     document.getElementById('gateSuccess').style.display = 'block';
@@ -1678,6 +1685,11 @@
   }, { threshold: 0.1 });
 
   reveals.forEach(el => observer.observe(el));
+
+  // Any petition button click marks petition gate as completed.
+  document.querySelectorAll('a[href="https://c.org/pk9mYfxFL9"]').forEach((link) => {
+    link.addEventListener('click', markPetitionStarted);
+  });
 </script>
 <script type="module" src="/src/document-listing.js"></script>
 
