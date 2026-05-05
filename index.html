@@ -8,12 +8,12 @@
 <style>
   :root {
     --black: #ffffff;
-    --white: #1f1f1f;
+    --white: #111111;
     --red: #c41e1e;
     --gold: #b8952a;
     --gray: #e8e8e8;
     --light-gray: #d9d9d9;
-    --text-muted: #666;
+    --text-muted: #3f3f3f;
     --border: rgba(184,149,42,0.28);
   }
 
@@ -79,7 +79,7 @@
   .gate-inner h1 span { color: var(--gold); }
 
   .gate-inner p {
-    color: #aaa;
+    color: #2f2f2f;
     font-size: 1rem;
     margin-bottom: 2.5rem;
     line-height: 1.8;
@@ -177,7 +177,7 @@
   }
 
   .nav-links a {
-    color: #aaa;
+    color: #222;
     text-decoration: none;
     font-size: 0.8rem;
     letter-spacing: 0.08em;
@@ -256,7 +256,7 @@
 
   .hero-sub {
     font-size: clamp(1rem, 1.8vw, 1.25rem);
-    color: #bbb;
+    color: #222;
     max-width: 600px;
     margin-bottom: 3rem;
     line-height: 1.8;
@@ -289,7 +289,7 @@
   }
 
   .stat {
-    background: #232323;
+    background: #ffffff;
     padding: 1.5rem;
     text-align: center;
   }
@@ -298,7 +298,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     font-weight: 900;
-    color: var(--gold);
+    color: #000000;
     display: block;
     line-height: 1;
     margin-bottom: 0.3rem;
@@ -306,7 +306,7 @@
 
   .stat-label {
     font-size: 0.72rem;
-    color: var(--text-muted);
+    color: #000000;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-family: 'JetBrains Mono', monospace;
@@ -419,7 +419,7 @@
   }
 
   .timeline-body {
-    color: #aaa;
+    color: #232323;
     font-size: 0.95rem;
     line-height: 1.7;
   }
@@ -472,12 +472,12 @@
     font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: 0.8rem;
-    color: var(--white);
+    color: #ffffff;
   }
 
   .evidence-card p {
     font-size: 0.88rem;
-    color: #888;
+    color: #ffffff;
     line-height: 1.7;
     margin-bottom: 1rem;
   }
@@ -488,7 +488,7 @@
     text-align: center;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem;
-    color: var(--text-muted);
+    color: #ffffff;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     cursor: pointer;
@@ -497,7 +497,14 @@
 
   .upload-placeholder:hover {
     border-color: var(--gold);
-    color: var(--gold);
+    color: #ffffff;
+  }
+
+  #evidence .doc-list li,
+  #evidence .doc-list a,
+  #evidence .doc-empty,
+  #evidence code {
+    color: #ffffff;
   }
 
   /* DOCUMENT LISTING */
@@ -610,7 +617,7 @@
     font-weight: 400;
     font-style: italic;
     line-height: 1.5;
-    color: var(--white);
+    color: #ffffff;
   }
 
   .key-question .kq-label {
@@ -644,19 +651,19 @@
     font-size: 1rem;
     font-weight: 700;
     margin-bottom: 0.3rem;
-    color: var(--white);
+    color: #ffffff;
   }
 
   .inst-role {
     font-size: 0.78rem;
-    color: var(--text-muted);
+    color: #ffffff;
     margin-bottom: 0.8rem;
     font-style: italic;
   }
 
   .inst-action {
     font-size: 0.82rem;
-    color: #e05555;
+    color: #ffffff;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
     letter-spacing: 0.05em;
@@ -914,10 +921,10 @@
     <div class="section-inner">
       <div class="section-label reveal">The Case</div>
       <h2 class="reveal">What This Is About</h2>
-      <p class="reveal" style="max-width:700px; color:#bbb; font-size:1.05rem; line-height:1.9; margin-bottom:2rem;">
+      <p class="reveal" style="max-width:700px; color:#1e1e1e; font-size:1.05rem; line-height:1.9; margin-bottom:2rem;">
         Debra Nelson, a former employee of <strong style="color:var(--white)">Curtiss-Wright</strong> — a major U.S. defense contractor involved in shipbuilding — filed a whistleblower complaint in 2023 after experiencing unlawful discrimination. What followed was a two-year coordinated campaign of retaliation involving cyber intrusion, physical surveillance, evidence destruction, and the failure of every federal institution designed to protect whistleblowers.
       </p>
-      <p class="reveal" style="max-width:700px; color:#888; font-size:0.95rem; line-height:1.9;">
+      <p class="reveal" style="max-width:700px; color:#2f2f2f; font-size:0.95rem; line-height:1.9;">
         This site exists because the courts, the FBI, the Department of Defense Inspector General, the NLRB, the EEOC, and a sitting Congressman's office have all failed to act. The public record presented here is the last recourse. <em>Sunlight is the best disinfectant.</em>
       </p>
 
@@ -1256,8 +1263,8 @@
           <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
             <div>
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:0.5rem;">ECF NO. 194</div>
-              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">Order Granting Apple's Protective Order &amp; Denying Motions to Compel</div>
-              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:0.3rem;">Filed October 21, 2025 — Magistrate Judge Mary Gordon Baker</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#ffffff;">Order Granting Apple's Protective Order &amp; Denying Motions to Compel</div>
+              <div style="color:#ffffff; font-size:0.82rem; margin-top:0.3rem;">Filed October 21, 2025 — Magistrate Judge Mary Gordon Baker</div>
             </div>
             <div style="text-align:right;">
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--text-muted);">Case No. 2:25-cv-00405-RMG-MGB</div>
@@ -1270,19 +1277,19 @@
           </div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
             <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08);">
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Motion to Compel (Dkt. 103)</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Motion to Compel (Dkt. 103)</div>
               <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">DENIED — Premature</div>
             </div>
             <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08);">
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Renewed Motion to Compel (Dkt. 173)</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Renewed Motion to Compel (Dkt. 173)</div>
               <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">DENIED</div>
             </div>
             <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08); grid-column:1/-1;">
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Apple's Motion for Protective Order (Dkt. 129)</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Apple's Motion for Protective Order (Dkt. 129)</div>
               <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">GRANTED — All Future Apple Discovery Prohibited</div>
             </div>
           </div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--text-muted);">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#ffffff;">
             Full document available on PACER — Case 2:25-cv-00405, Entry No. 194
           </div>
         </div>
@@ -1293,8 +1300,8 @@
           <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
             <div>
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:0.5rem;">EXHIBIT D — DKT. NO. 192</div>
-              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">Order Denying Motion to Compel &amp; Motion to Strike</div>
-              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:0.3rem;">Filed October 20, 2025 — Magistrate Judge Mary Gordon Baker</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#ffffff;">Order Denying Motion to Compel &amp; Motion to Strike</div>
+              <div style="color:#ffffff; font-size:0.82rem; margin-top:0.3rem;">Filed October 20, 2025 — Magistrate Judge Mary Gordon Baker</div>
             </div>
             <div style="text-align:right;">
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--text-muted);">Case No. 2:25-cv-00405-RMG-MGB</div>
@@ -1307,17 +1314,17 @@
           </div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
             <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08);">
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Motion to Compel</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Motion to Compel</div>
               <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">DENIED</div>
               <div style="color:#888; font-size:0.8rem; margin-top:0.3rem;">Dkt. No. 105</div>
             </div>
             <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08);">
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Motion to Strike</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Motion to Strike</div>
               <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">DENIED IN FULL</div>
               <div style="color:#888; font-size:0.8rem; margin-top:0.3rem;">Dkt. No. 176</div>
             </div>
           </div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--text-muted);">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#ffffff;">
             Full document available on PACER — Case 2:25-cv-00405, Entry No. 192
           </div>
         </div>
