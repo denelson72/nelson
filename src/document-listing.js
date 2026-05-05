@@ -99,6 +99,12 @@ function renderDocuments() {
   const root = document.getElementById("evidenceDocumentsRoot");
   if (!root) return;
 
+  if (typeof import.meta.glob !== "function") {
+    root.innerHTML =
+      '<p class="doc-empty">Document listing is available after Vite/Netlify build.</p>';
+    return;
+  }
+
   // Vite resolves all matching PDFs at build time.
   const allPdfs = import.meta.glob("/src/documents/**/*.pdf", {
     eager: true,
