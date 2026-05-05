@@ -868,7 +868,6 @@
     <ul class="nav-links">
       <li><a href="#timeline">Timeline</a></li>
       <li><a href="#evidence">Evidence</a></li>
-      <li><a href="#documents">Documents</a></li>
       <li><a href="#judicial">Judicial</a></li><li><a href="#discovery">Discovery</a></li><li><a href="#docket">Docket</a></li>
       <li><a href="#petition">Petition</a></li>
       <li><a href="#act">Take Action</a></li>
@@ -1067,7 +1066,7 @@
     <div class="section-inner">
       <div class="section-label reveal">Documentation</div>
       <h2 class="reveal">Evidence Archive</h2>
-      <p class="reveal" style="color:#888; max-width:600px; margin-bottom:1rem;">The following categories of evidence have been collected and preserved. Documents will be uploaded as files are safely transferred.</p>
+      <p class="reveal" style="color:#888; max-width:700px; margin-bottom:1rem;">The following categories are tracked in this archive: Judge's Orders, Defense Filings, Plaintiff Filings, Videos, and Miscellaneous. Files are listed automatically after upload.</p>
 
       <div class="evidence-grid reveal">
         <div class="evidence-card">
@@ -1107,18 +1106,11 @@
           <div class="upload-placeholder">[ Documents — Upload Pending ]</div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- AUTO DOCUMENTS -->
-  <div class="section-full" id="documents">
-    <div class="section-inner">
-      <div class="section-label reveal">Auto Documents</div>
-      <h2 class="reveal">Case Documents</h2>
-      <p class="reveal" style="color:#888; max-width:700px; margin-bottom:1rem;">
-        This section auto-loads PDF files from <code>/src/documents/</code> during Vite build.
-      </p>
-      <div id="documentsRoot" class="doc-sections reveal"></div>
+      <div class="reveal" style="margin-top:2rem;">
+        <div class="section-label" style="margin-bottom:0.8rem;">Uploaded Files by Category</div>
+        <div id="evidenceDocumentsRoot" class="doc-sections"></div>
+      </div>
     </div>
   </div>
 

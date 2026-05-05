@@ -7,11 +7,11 @@ const folderOrder = [
 ];
 
 const folderLabels = {
-  "judges-order": "Judges Order",
-  evidence: "Evidence",
+  "judges-order": "Judge's Orders",
+  evidence: "Videos",
   "defense-filings": "Defense Filings",
-  "nelson-filings": "Nelson Filings",
-  misc: "Misc",
+  "nelson-filings": "Plaintiff Filings",
+  misc: "Miscellaneous",
 };
 
 function toReadableTitle(fileName) {
@@ -96,7 +96,7 @@ function createFolderSection(folderKey, documents) {
 }
 
 function renderDocuments() {
-  const root = document.getElementById("documentsRoot");
+  const root = document.getElementById("evidenceDocumentsRoot");
   if (!root) return;
 
   // Vite resolves all matching PDFs at build time.
