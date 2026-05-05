@@ -105,18 +105,19 @@ function renderDocuments() {
   };
   if (!Object.values(slots).every(Boolean)) return;
 
-  if (typeof import.meta.glob !== "function") {
+  let allPdfs = {};
+  try {
+    // Vite resolves all matching PDFs at build time.
+    allPdfs = import.meta.glob("/src/documents/**/*.pdf", {
+      eager: true,
+      import: "default",
+    });
+  } catch {
     for (const slot of Object.values(slots)) {
       slot.textContent = "Document listing is available after Vite/Netlify build.";
     }
     return;
   }
-
-  // Vite resolves all matching PDFs at build time.
-  const allPdfs = import.meta.glob("/src/documents/**/*.pdf", {
-    eager: true,
-    import: "default",
-  });
 
   const grouped = groupDocuments(allPdfs);
   for (const folderKey of folderOrder) {
