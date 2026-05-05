@@ -7,14 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #0a0a0a;
-    --white: #f5f0e8;
+    --black: #1a1a1a;
+    --white: #fff7ec;
     --red: #c41e1e;
     --gold: #b8952a;
-    --gray: #2a2a2a;
-    --light-gray: #3d3d3d;
-    --text-muted: #888;
-    --border: rgba(184,149,42,0.3);
+    --gray: #353535;
+    --light-gray: #4a4a4a;
+    --text-muted: #b0b0b0;
+    --border: rgba(184,149,42,0.45);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -93,7 +93,7 @@
   }
 
   .gate-form input {
-    background: #141414;
+    background: #222;
     border: 1px solid var(--border);
     color: var(--white);
     padding: 0.9rem 1.2rem;
@@ -152,7 +152,7 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(10,10,10,0.95);
+    background: rgba(28,28,28,0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     padding: 0 2rem;
@@ -289,7 +289,7 @@
   }
 
   .stat {
-    background: var(--black);
+    background: #232323;
     padding: 1.5rem;
     text-align: center;
   }
@@ -454,12 +454,12 @@
   }
 
   .evidence-card {
-    background: #0f0f0f;
+    background: #242424;
     padding: 2rem;
     transition: background 0.3s;
   }
 
-  .evidence-card:hover { background: #141414; }
+  .evidence-card:hover { background: #2d2d2d; }
 
   .evidence-icon {
     font-size: 1.5rem;
@@ -560,7 +560,7 @@
     padding: 1rem 1.2rem;
     text-align: left;
     border-bottom: 1px solid var(--border);
-    background: #0a0a0a;
+    background: #222;
   }
 
   .docket-table td {
@@ -570,7 +570,7 @@
     vertical-align: top;
   }
 
-  .docket-table tr:hover td { background: #0f0f0f; }
+  .docket-table tr:hover td { background: #2b2b2b; }
 
   .docket-table td:first-child {
     font-family: 'JetBrains Mono', monospace;
@@ -598,7 +598,7 @@
 
   /* KEY QUESTION */
   .key-question {
-    background: #0f0f0f;
+    background: #242424;
     border-left: 3px solid var(--red);
     padding: 2.5rem 2.5rem 2.5rem 3rem;
     margin: 3rem 0;
@@ -635,7 +635,7 @@
   }
 
   .institution-card {
-    background: #0f0f0f;
+    background: #242424;
     padding: 1.5rem;
   }
 
@@ -664,7 +664,7 @@
 
   /* PETITION SECTION */
   .petition-section {
-    background: #0f0f0f;
+    background: #242424;
     border: 1px solid var(--border);
     padding: 3rem;
     margin-top: 3rem;
@@ -833,7 +833,7 @@
     display: none;
   }
 </style>
-  <script type="module" crossorigin src="/assets/index-Sg39yg0Z.js"></script>
+  <script type="module" crossorigin src="/assets/index-ttZYKOsv.js"></script>
 </head>
 <body>
 
@@ -1071,7 +1071,7 @@
     <div class="section-inner">
       <div class="section-label reveal">Documentation</div>
       <h2 class="reveal">Evidence Archive</h2>
-      <p class="reveal" style="color:#888; max-width:700px; margin-bottom:1rem;">The following categories are tracked in this archive: Judge's Orders, Defense Filings, Plaintiff Filings, Videos, and Miscellaneous. Files are listed automatically after upload.</p>
+      <p class="reveal" style="color:#888; max-width:700px; margin-bottom:1rem;">The following categories are tracked in this archive: Judge's Orders, Defense Filings, Plaintiff Filings, Congressman Clyburn, Videos, and Miscellaneous. Files are listed automatically after upload.</p>
 
       <div class="evidence-grid reveal">
         <div class="evidence-card">
@@ -1097,6 +1097,12 @@
           <h3>Videos</h3>
           <p>All uploaded PDF/video-supporting files from <code>src/documents/evidence/</code>.</p>
           <div id="doc-slot-evidence" class="upload-placeholder">[ No documents yet ]</div>
+        </div>
+        <div class="evidence-card">
+          <span class="evidence-icon">🏛️</span>
+          <h3>Congressman Clyburn</h3>
+          <p>All uploaded PDF files from <code>src/documents/congressman-clyburn/</code>.</p>
+          <div id="doc-slot-congressman-clyburn" class="upload-placeholder">[ No documents yet ]</div>
         </div>
         <div class="evidence-card">
           <span class="evidence-icon">📦</span>
@@ -1247,7 +1253,7 @@
 
       <div style="margin-top:3rem;" class="reveal">
         <div class="section-label">Court Document On Record — ECF No. 194</div>
-        <div style="background:#0f0f0f; border:1px solid var(--border); padding:2rem; margin-top:1rem; margin-bottom:2rem;">
+        <div style="background:#262626; border:1px solid var(--border); padding:2rem; margin-top:1rem; margin-bottom:2rem;">
           <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
             <div>
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:0.5rem;">ECF NO. 194</div>
@@ -1259,20 +1265,20 @@
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--text-muted);">Entry No. 194 — 5 Pages</div>
             </div>
           </div>
-          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1.5rem; margin-bottom:1.5rem;">
+          <div style="background:#1f1f1f; border-left:3px solid var(--red); padding:1.5rem; margin-bottom:1.5rem;">
             <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.8rem; text-transform:uppercase;">Documented Concern</div>
             <p style="color:#ccc; font-size:0.9rem; line-height:1.8;">This order prohibits Ms. Nelson from ever issuing additional discovery to Apple — without Apple demonstrating specific harm or prejudice under Rule 26(c)(1). The order cites Apple's compliance with the original subpoena, but Ms. Nelson contends that Apple's production stopped before a key September 10, 2025 incident and that the magistrate characterizing her motions as "frivolous" without addressing that incident prejudges the merits. Ms. Nelson's Rule 72(a) objections to this order are pending before District Judge Gergel.</p>
           </div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
-            <div style="background:#0a0a0a; padding:1rem; border:1px solid rgba(255,255,255,0.05);">
+            <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08);">
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Motion to Compel (Dkt. 103)</div>
               <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">DENIED — Premature</div>
             </div>
-            <div style="background:#0a0a0a; padding:1rem; border:1px solid rgba(255,255,255,0.05);">
+            <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08);">
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Renewed Motion to Compel (Dkt. 173)</div>
               <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">DENIED</div>
             </div>
-            <div style="background:#0a0a0a; padding:1rem; border:1px solid rgba(255,255,255,0.05); grid-column:1/-1;">
+            <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08); grid-column:1/-1;">
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Apple's Motion for Protective Order (Dkt. 129)</div>
               <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">GRANTED — All Future Apple Discovery Prohibited</div>
             </div>
@@ -1284,7 +1290,7 @@
       </div>
 
 
-        <div style="background:#0f0f0f; border:1px solid var(--border); padding:2rem; margin-top:1rem;">
+        <div style="background:#262626; border:1px solid var(--border); padding:2rem; margin-top:1rem;">
           <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
             <div>
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:0.5rem;">EXHIBIT D — DKT. NO. 192</div>
@@ -1296,17 +1302,17 @@
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--text-muted);">Entry No. 192 — 7 Pages</div>
             </div>
           </div>
-          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1.5rem; margin-bottom:1.5rem;">
+          <div style="background:#1f1f1f; border-left:3px solid var(--red); padding:1.5rem; margin-bottom:1.5rem;">
             <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.8rem; text-transform:uppercase;">Documented Concern</div>
             <p style="color:#ccc; font-size:0.9rem; line-height:1.8;">This order denies all of Ms. Nelson's discovery motions including her attempt to obtain financial records between her former attorney and Curtiss-Wright — evidence she sought to prove attorney collusion. The court ruled this evidence had no bearing on her claims without allowing her to obtain it to prove otherwise. This order also does not address the Judge Cherry subpoena contradiction that remains on the docket.</p>
           </div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
-            <div style="background:#0a0a0a; padding:1rem; border:1px solid rgba(255,255,255,0.05);">
+            <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08);">
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Motion to Compel</div>
               <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">DENIED</div>
               <div style="color:#888; font-size:0.8rem; margin-top:0.3rem;">Dkt. No. 105</div>
             </div>
-            <div style="background:#0a0a0a; padding:1rem; border:1px solid rgba(255,255,255,0.05);">
+            <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08);">
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Motion to Strike</div>
               <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">DENIED IN FULL</div>
               <div style="color:#888; font-size:0.8rem; margin-top:0.3rem;">Dkt. No. 176</div>

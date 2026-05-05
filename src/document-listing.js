@@ -3,6 +3,7 @@ const folderOrder = [
   "evidence",
   "defense-filings",
   "nelson-filings",
+  "congressman-clyburn",
   "misc",
 ];
 
@@ -15,6 +16,7 @@ const folderLabels = {
   evidence: "Videos",
   "defense-filings": "Defense Filings",
   "nelson-filings": "Plaintiff Filings",
+  "congressman-clyburn": "Congressman Clyburn",
   misc: "Miscellaneous",
 };
 
@@ -26,7 +28,7 @@ function showPetitionPopup() {
     modal.id = "petitionModal";
     modal.style.position = "fixed";
     modal.style.inset = "0";
-    modal.style.background = "#0a0a0a";
+    modal.style.background = "rgba(10,10,10,0.72)";
     modal.style.display = "flex";
     modal.style.alignItems = "center";
     modal.style.justifyContent = "center";
@@ -40,6 +42,10 @@ function showPetitionPopup() {
     card.style.width = "100%";
     card.style.maxHeight = isMobile ? "90vh" : "none";
     card.style.overflowY = isMobile ? "auto" : "visible";
+    card.style.background = "#171717";
+    card.style.border = "1px solid rgba(184,149,42,0.45)";
+    card.style.padding = isMobile ? "1.4rem" : "1.8rem";
+    card.style.borderRadius = "6px";
 
     const seal = document.createElement("div");
     seal.className = "gate-seal";
@@ -51,6 +57,7 @@ function showPetitionPopup() {
     const text = document.createElement("p");
     text.textContent =
       "To access evidence documents, please sign the petition first. If you already signed, confirm below and continue.";
+    text.style.color = "#d0d0d0";
 
     const actions = document.createElement("div");
     actions.className = "gate-form";
@@ -76,7 +83,7 @@ function showPetitionPopup() {
     signedBtn.type = "button";
     signedBtn.textContent = "I Have Already Signed";
     signedBtn.className = "sign-btn";
-    signedBtn.style.background = "#1a1a1a";
+    signedBtn.style.background = "#232323";
     signedBtn.style.border = "1px solid rgba(184,149,42,0.3)";
     signedBtn.style.color = "#aaa";
     signedBtn.style.padding = isMobile ? "0.85rem 1rem" : "1rem 2rem";
@@ -89,7 +96,7 @@ function showPetitionPopup() {
     closeBtn.type = "button";
     closeBtn.textContent = "Close";
     closeBtn.className = "sign-btn";
-    closeBtn.style.background = "transparent";
+    closeBtn.style.background = "#2b2b2b";
     closeBtn.style.border = "1px solid rgba(184,149,42,0.3)";
     closeBtn.style.color = "#aaa";
     closeBtn.style.padding = isMobile ? "0.85rem 1rem" : "1rem 2rem";
@@ -199,6 +206,7 @@ function renderDocuments() {
     "defense-filings": document.getElementById("doc-slot-defense-filings"),
     "nelson-filings": document.getElementById("doc-slot-nelson-filings"),
     evidence: document.getElementById("doc-slot-evidence"),
+    "congressman-clyburn": document.getElementById("doc-slot-congressman-clyburn"),
     misc: document.getElementById("doc-slot-misc"),
   };
   if (!Object.values(slots).every(Boolean)) return;
