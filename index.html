@@ -1612,6 +1612,12 @@
   const PETITION_KEY = 'petitionSigned';
   const PETITION_URL = 'https://c.org/pk9mYfxFL9';
 
+  // Skip the startup gate and show site directly.
+  const gateEl = document.getElementById('gate');
+  const siteEl = document.getElementById('site');
+  if (gateEl) gateEl.style.display = 'none';
+  if (siteEl) siteEl.classList.add('visible');
+
   function markPetitionStarted() {
     localStorage.setItem(PETITION_KEY, 'true');
   }
