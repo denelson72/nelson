@@ -96,12 +96,19 @@ function createFolderSection(folderKey, documents) {
 }
 
 function renderDocuments() {
-  const root = document.getElementById("evidenceDocumentsRoot");
-  if (!root) return;
+  const slots = {
+    "judges-order": document.getElementById("doc-slot-judges-order"),
+    "defense-filings": document.getElementById("doc-slot-defense-filings"),
+    "nelson-filings": document.getElementById("doc-slot-nelson-filings"),
+    evidence: document.getElementById("doc-slot-evidence"),
+    misc: document.getElementById("doc-slot-misc"),
+  };
+  if (!Object.values(slots).every(Boolean)) return;
 
   if (typeof import.meta.glob !== "function") {
-    root.innerHTML =
-      '<p class="doc-empty">Document listing is available after Vite/Netlify build.</p>';
+    for (const slot of Object.values(slots)) {
+      slot.textContent = "Document listing is available after Vite/Netlify build.";
+    }
     return;
   }
 
@@ -112,14 +119,29 @@ function renderDocuments() {
   });
 
   const grouped = groupDocuments(allPdfs);
-  const renderOrder = [
-    ...folderOrder,
-    ...Object.keys(grouped).filter((key) => !folderOrder.includes(key)),
-  ];
+  for (const folderKey of folderOrder) {
+    const slot = slots[folderKey];
+    const docs = grouped[folderKey] || [];
+    slot.innerHTML = "";
 
-  root.innerHTML = "";
-  for (const folderKey of renderOrder) {
-    root.appendChild(createFolderSection(folderKey, grouped[folderKey] || []));
+    if (!docs.length) {
+      slot.textContent = "No documents yet";
+      continue;
+    }
+
+    const list = document.createElement("ul");
+    list.className = "doc-list";
+    for (const doc of docs) {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = doc.url;
+      link.textContent = doc.title;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      item.appendChild(link);
+      list.appendChild(item);
+    }
+    slot.appendChild(list);
   }
 }
 
