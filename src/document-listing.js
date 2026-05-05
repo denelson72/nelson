@@ -7,6 +7,7 @@ const folderOrder = [
 ];
 
 const PETITION_KEY = "petitionSigned";
+const PETITION_SESSION_KEY = "petitionSignedSession";
 const PETITION_URL = "https://c.org/pk9mYfxFL9";
 
 const folderLabels = {
@@ -16,6 +17,100 @@ const folderLabels = {
   "nelson-filings": "Plaintiff Filings",
   misc: "Miscellaneous",
 };
+
+function showPetitionPopup() {
+  let modal = document.getElementById("petitionModal");
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.id = "petitionModal";
+    modal.style.position = "fixed";
+    modal.style.inset = "0";
+    modal.style.background = "rgba(10,10,10,0.86)";
+    modal.style.display = "flex";
+    modal.style.alignItems = "center";
+    modal.style.justifyContent = "center";
+    modal.style.zIndex = "2000";
+    modal.style.padding = "1rem";
+
+    const card = document.createElement("div");
+    card.style.maxWidth = "520px";
+    card.style.width = "100%";
+    card.style.background = "#0f0f0f";
+    card.style.border = "1px solid rgba(184,149,42,0.3)";
+    card.style.padding = "1.4rem";
+
+    const title = document.createElement("h3");
+    title.textContent = "Sign the Petition to Access Files";
+    title.style.margin = "0 0 0.6rem 0";
+    title.style.fontFamily = "'Playfair Display', serif";
+    title.style.color = "#f5f0e8";
+
+    const text = document.createElement("p");
+    text.textContent =
+      "Please sign the petition first. After signing, come back and click the file again.";
+    text.style.margin = "0 0 1rem 0";
+    text.style.color = "#bbb";
+    text.style.lineHeight = "1.6";
+
+    const actions = document.createElement("div");
+    actions.style.display = "flex";
+    actions.style.gap = "0.7rem";
+    actions.style.flexWrap = "wrap";
+
+    const signBtn = document.createElement("a");
+    signBtn.href = PETITION_URL;
+    signBtn.target = "_blank";
+    signBtn.rel = "noopener noreferrer";
+    signBtn.textContent = "Sign Petition";
+    signBtn.style.background = "#c41e1e";
+    signBtn.style.color = "#f5f0e8";
+    signBtn.style.padding = "0.7rem 1rem";
+    signBtn.style.textDecoration = "none";
+    signBtn.style.fontWeight = "700";
+    signBtn.style.fontFamily = "'Playfair Display', serif";
+    signBtn.addEventListener("click", () => {
+      localStorage.setItem(PETITION_KEY, "true");
+      sessionStorage.setItem(PETITION_SESSION_KEY, "true");
+      modal.style.display = "none";
+    });
+
+    const signedBtn = document.createElement("button");
+    signedBtn.type = "button";
+    signedBtn.textContent = "I Have Already Signed";
+    signedBtn.style.background = "#1a1a1a";
+    signedBtn.style.color = "#f5f0e8";
+    signedBtn.style.border = "1px solid rgba(184,149,42,0.3)";
+    signedBtn.style.padding = "0.7rem 1rem";
+    signedBtn.style.cursor = "pointer";
+    signedBtn.addEventListener("click", () => {
+      sessionStorage.setItem(PETITION_SESSION_KEY, "true");
+      modal.style.display = "none";
+    });
+
+    const closeBtn = document.createElement("button");
+    closeBtn.type = "button";
+    closeBtn.textContent = "Close";
+    closeBtn.style.background = "transparent";
+    closeBtn.style.color = "#aaa";
+    closeBtn.style.border = "1px solid rgba(184,149,42,0.3)";
+    closeBtn.style.padding = "0.7rem 1rem";
+    closeBtn.style.cursor = "pointer";
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    actions.appendChild(signBtn);
+    actions.appendChild(signedBtn);
+    actions.appendChild(closeBtn);
+    card.appendChild(title);
+    card.appendChild(text);
+    card.appendChild(actions);
+    modal.appendChild(card);
+    document.body.appendChild(modal);
+  } else {
+    modal.style.display = "flex";
+  }
+}
 
 function toReadableTitle(fileName) {
   return fileName
@@ -143,11 +238,12 @@ function renderDocuments() {
       link.target = "_blank";
       link.rel = "noopener noreferrer";
       link.addEventListener("click", (event) => {
-        const petitionSigned = localStorage.getItem(PETITION_KEY) === "true";
+        const petitionSigned =
+          localStorage.getItem(PETITION_KEY) === "true" ||
+          sessionStorage.getItem(PETITION_SESSION_KEY) === "true";
         if (petitionSigned) return;
         event.preventDefault();
-        alert("Please sign the petition first to access evidence files.");
-        window.open(PETITION_URL, "_blank", "noopener,noreferrer");
+        showPetitionPopup();
       });
       item.appendChild(link);
       list.appendChild(item);
