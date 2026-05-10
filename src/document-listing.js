@@ -20,6 +20,51 @@ const folderLabels = {
   misc: "Miscellaneous",
 };
 
+function normalizePdfPath(path) {
+  return path.replace(/\\/g, "/");
+}
+
+function findPdfUrl(pdfMap, needle) {
+  const trimmed = (needle || "").trim();
+  if (!trimmed) return null;
+  const n = trimmed.toLowerCase();
+  for (const [path, url] of Object.entries(pdfMap)) {
+    if (normalizePdfPath(path).toLowerCase().includes(n)) return url;
+  }
+  return null;
+}
+
+function attachPetitionGateToPdfLink(link) {
+  link.addEventListener("click", (event) => {
+    const petitionSigned =
+      localStorage.getItem(PETITION_KEY) === "true" ||
+      sessionStorage.getItem(PETITION_SESSION_KEY) === "true";
+    if (petitionSigned) return;
+    event.preventDefault();
+    showPetitionPopup();
+  });
+}
+
+function renderDocketLinks(pdfMap) {
+  document.querySelectorAll(".docket-link-cell").forEach((td) => {
+    const needle = td.dataset.docketNeedle || "";
+    const url = findPdfUrl(pdfMap, needle);
+    td.innerHTML = "";
+    if (!url) {
+      td.innerHTML = '<span class="docket-placeholder">[ Link Pending ]</span>';
+      return;
+    }
+    const a = document.createElement("a");
+    a.href = url;
+    a.className = "docket-link";
+    a.textContent = "View PDF";
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    attachPetitionGateToPdfLink(a);
+    td.appendChild(a);
+  });
+}
+
 function showPetitionPopup() {
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
   let modal = document.getElementById("petitionModal");
@@ -53,6 +98,7 @@ function showPetitionPopup() {
 
     const title = document.createElement("h1");
     title.innerHTML = "Before You Access Files,<br><span>Sign the Petition</span>";
+    title.style.color = "#ffffff";
 
     const text = document.createElement("p");
     text.textContent =
@@ -222,10 +268,16 @@ function renderDocuments() {
     for (const slot of Object.values(slots)) {
       slot.textContent = "Document listing is available after Vite/Netlify build.";
     }
+    document.querySelectorAll(".docket-link-cell").forEach((td) => {
+      td.innerHTML =
+        '<span class="docket-placeholder">[ Link Pending ]</span>';
+    });
     return;
   }
 
   const grouped = groupDocuments(allPdfs);
+  renderDocketLinks(allPdfs);
+
   for (const folderKey of folderOrder) {
     const slot = slots[folderKey];
     const docs = grouped[folderKey] || [];
@@ -245,14 +297,7 @@ function renderDocuments() {
       link.textContent = doc.title;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
-      link.addEventListener("click", (event) => {
-        const petitionSigned =
-          localStorage.getItem(PETITION_KEY) === "true" ||
-          sessionStorage.getItem(PETITION_SESSION_KEY) === "true";
-        if (petitionSigned) return;
-        event.preventDefault();
-        showPetitionPopup();
-      });
+      attachPetitionGateToPdfLink(link);
       item.appendChild(link);
       list.appendChild(item);
     }
