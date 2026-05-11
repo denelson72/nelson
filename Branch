@@ -67,9 +67,9 @@
     font-size: 2rem;
   }
 
-  .gate-inner h1 {
+ .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 900;
     line-height: 1.2;
     margin-bottom: 1rem;
@@ -888,7 +888,7 @@
   <!-- HERO -->
   <div class="hero">
     <div class="hero-inner">
-      <div class="hero-tag"><span class="live-dot"></span> Active Federal Case — Public Accountability Archive</div>
+     <div class="hero-tag" style="font-size:1rem;"><span class="live-dot"></span> Active Federal Case — Public Accountability Archive</div>
       <h1>When the System<br><span class="line2">Becomes the Threat</span></h1>
       <p class="hero-sub">A documented record of whistleblower retaliation, judicial misconduct, evidence destruction, and institutional cover-up spanning two years — in the case of one South Carolina woman against a major defense contractor.</p>
       <div class="case-badge">
