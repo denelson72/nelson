@@ -7,14 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #ffffff;
-    --white: #111111;
+    --black: #0a0a0a;
+    --white: #f5f0e8;
     --red: #c41e1e;
     --gold: #b8952a;
-    --gray: #e8e8e8;
-    --light-gray: #d9d9d9;
-    --text-muted: #3f3f3f;
-    --border: rgba(184,149,42,0.28);
+    --gray: #2a2a2a;
+    --light-gray: #3d3d3d;
+    --text-muted: #888;
+    --border: rgba(184,149,42,0.3);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -67,12 +67,19 @@
     font-size: 2rem;
   }
 
+  .gate-inner h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--white);
   }
 
   .gate-inner h1 span { color: var(--gold); }
 
   .gate-inner p {
-    color: #2f2f2f;
+    color: #aaa;
     font-size: 1rem;
     margin-bottom: 2.5rem;
     line-height: 1.8;
@@ -86,7 +93,7 @@
   }
 
   .gate-form input {
-    background: #222;
+    background: #141414;
     border: 1px solid var(--border);
     color: var(--white);
     padding: 0.9rem 1.2rem;
@@ -145,7 +152,7 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(255,255,255,0.95);
+    background: rgba(10,10,10,0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     padding: 0 2rem;
@@ -170,7 +177,7 @@
   }
 
   .nav-links a {
-    color: #222;
+    color: #aaa;
     text-decoration: none;
     font-size: 0.8rem;
     letter-spacing: 0.08em;
@@ -190,8 +197,8 @@
     position: relative;
     overflow: hidden;
     background: 
-      radial-gradient(ellipse at 20% 50%, rgba(196,30,30,0.04) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 20%, rgba(184,149,42,0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 50%, rgba(196,30,30,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(184,149,42,0.05) 0%, transparent 50%),
       var(--black);
   }
 
@@ -236,9 +243,9 @@
     background: var(--red);
   }
 
-   .hero h1 {
+  .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-size: clamp(2.8rem, 6vw, 6rem);
     font-weight: 900;
     line-height: 1.05;
     margin-bottom: 1.5rem;
@@ -249,7 +256,7 @@
 
   .hero-sub {
     font-size: clamp(1rem, 1.8vw, 1.25rem);
-    color: #222;
+    color: #bbb;
     max-width: 600px;
     margin-bottom: 3rem;
     line-height: 1.8;
@@ -282,7 +289,7 @@
   }
 
   .stat {
-    background: #ffffff;
+    background: var(--black);
     padding: 1.5rem;
     text-align: center;
   }
@@ -291,7 +298,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     font-weight: 900;
-    color: #000000;
+    color: var(--gold);
     display: block;
     line-height: 1;
     margin-bottom: 0.3rem;
@@ -299,7 +306,7 @@
 
   .stat-label {
     font-size: 0.72rem;
-    color: #000000;
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-family: 'JetBrains Mono', monospace;
@@ -412,7 +419,7 @@
   }
 
   .timeline-body {
-    color: #232323;
+    color: #aaa;
     font-size: 0.95rem;
     line-height: 1.7;
   }
@@ -428,7 +435,6 @@
     padding: 0.2rem 0.6rem;
     margin-top: 0.5rem;
     text-transform: uppercase;
-    font-weight: 700;
   }
 
   .evidence-tag.red {
@@ -448,12 +454,12 @@
   }
 
   .evidence-card {
-    background: #242424;
+    background: #0f0f0f;
     padding: 2rem;
     transition: background 0.3s;
   }
 
-  .evidence-card:hover { background: #2d2d2d; }
+  .evidence-card:hover { background: #141414; }
 
   .evidence-icon {
     font-size: 1.5rem;
@@ -466,12 +472,12 @@
     font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: 0.8rem;
-    color: #ffffff;
+    color: var(--white);
   }
 
   .evidence-card p {
     font-size: 0.88rem;
-    color: #ffffff;
+    color: #888;
     line-height: 1.7;
     margin-bottom: 1rem;
   }
@@ -482,7 +488,7 @@
     text-align: center;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem;
-    color: #ffffff;
+    color: var(--text-muted);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     cursor: pointer;
@@ -491,57 +497,7 @@
 
   .upload-placeholder:hover {
     border-color: var(--gold);
-    color: #ffffff;
-  }
-
-  #evidence .doc-list li,
-  #evidence .doc-list a,
-  #evidence .doc-empty,
-  #evidence code {
-    color: #ffffff;
-  }
-
-  /* DOCUMENT LISTING */
-  .doc-sections {
-    display: grid;
-    gap: 1.2rem;
-    margin-top: 2rem;
-  }
-
-  .doc-section {
-    border: 1px solid var(--border);
-    background: #0f0f0f;
-    padding: 1.3rem;
-  }
-
-  .doc-section h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .doc-list {
-    margin: 0;
-    padding-left: 1.1rem;
-  }
-
-  .doc-list li {
-    margin-bottom: 0.45rem;
-    color: #bbb;
-    word-break: break-word;
-  }
-
-  .doc-list a {
     color: var(--gold);
-    text-decoration: none;
-  }
-
-  .doc-list a:hover { color: var(--white); }
-
-  .doc-empty {
-    color: var(--text-muted);
-    font-style: italic;
-    font-size: 0.88rem;
   }
 
   /* DOCKET */
@@ -561,7 +517,7 @@
     padding: 1rem 1.2rem;
     text-align: left;
     border-bottom: 1px solid var(--border);
-    background: #222;
+    background: #0a0a0a;
   }
 
   .docket-table td {
@@ -571,7 +527,7 @@
     vertical-align: top;
   }
 
-  .docket-table tr:hover td { background: #2b2b2b; }
+  .docket-table tr:hover td { background: #0f0f0f; }
 
   .docket-table td:first-child {
     font-family: 'JetBrains Mono', monospace;
@@ -599,7 +555,7 @@
 
   /* KEY QUESTION */
   .key-question {
-    background: #242424;
+    background: #0f0f0f;
     border-left: 3px solid var(--red);
     padding: 2.5rem 2.5rem 2.5rem 3rem;
     margin: 3rem 0;
@@ -607,17 +563,17 @@
 
   .key-question p {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
     font-weight: 400;
     font-style: italic;
     line-height: 1.5;
-    color: #ffffff;
+    color: var(--white);
   }
 
   .key-question .kq-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem;
-    color: #b8952a;
+    color: var(--red);
     letter-spacing: 0.15em;
     text-transform: uppercase;
     margin-bottom: 1rem;
@@ -636,7 +592,7 @@
   }
 
   .institution-card {
-    background: #242424;
+    background: #0f0f0f;
     padding: 1.5rem;
   }
 
@@ -645,19 +601,19 @@
     font-size: 1rem;
     font-weight: 700;
     margin-bottom: 0.3rem;
-    color: #ffffff;
+    color: var(--white);
   }
 
   .inst-role {
     font-size: 0.78rem;
-    color: #ffffff;
+    color: var(--text-muted);
     margin-bottom: 0.8rem;
     font-style: italic;
   }
 
   .inst-action {
     font-size: 0.82rem;
-    color: #ffffff;
+    color: #e05555;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
     letter-spacing: 0.05em;
@@ -665,7 +621,7 @@
 
   /* PETITION SECTION */
   .petition-section {
-    background: #242424;
+    background: #0f0f0f;
     border: 1px solid var(--border);
     padding: 3rem;
     margin-top: 3rem;
@@ -805,9 +761,6 @@
     .docket-table { font-size: 0.78rem; }
     .docket-table th, .docket-table td { padding: 0.7rem 0.8rem; }
     .petition-section { padding: 2rem 1.5rem; }
-    .doc-section { padding: 1rem; }
-    .doc-section h3 { font-size: 1rem; }
-    .doc-list { padding-left: 1rem; }
   }
 
   /* SUCCESS MESSAGE */
@@ -873,7 +826,7 @@
     <ul class="nav-links">
       <li><a href="#timeline">Timeline</a></li>
       <li><a href="#evidence">Evidence</a></li>
-      <li><a href="#judicial">Judicial</a></li><li><a href="#discovery">Discovery</a></li><li><a href="#docket">Docket</a></li>
+      <li><a href="#judicial">Judicial</a></li><li><a href="#tech">Big Tech</a></li><li><a href="#orders">Orders</a></li><li><a href="#amentum">Pattern</a></li><li><a href="#act">Act</a></li><li><a href="#docket">Docket</a></li>
       <li><a href="#petition">Petition</a></li>
       <li><a href="#act">Take Action</a></li>
     </ul>
@@ -882,18 +835,16 @@
   <!-- HERO -->
   <div class="hero">
     <div class="hero-inner">
-     <div class="hero-tag" style="font-size:1rem;"><span class="live-dot"></span> Active Federal Case — Public Accountability Archive</div>
+      <div class="hero-tag"><span class="live-dot"></span> Active Federal Case — Public Accountability Archive</div>
       <h1>When the System<br><span class="line2">Becomes the Threat</span></h1>
       <p class="hero-sub">A documented record of whistleblower retaliation, judicial misconduct, evidence destruction, and institutional cover-up spanning two years — in the case of one South Carolina woman against a major defense contractor.</p>
-      <div class="case-badge" style="flex-direction:column; align-items:center; text-align:center; gap:0.5rem; font-size:0.72rem;">
-        <div><span style="color:var(--text-muted);">Case No.</span> 2:25-CV-00405-RMG-MGB</div>
-        <div>US District Court</div>
-        <div>District of South Carolina</div>
-        <div>Charleston Division</div>
+      <div class="case-badge">
+        <span>Case No.</span> 2:25-CV-00405-RMG-MGB
+        <span>|</span> US District Court, District of South Carolina — Charleston Division
       </div>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-num">3+</span>
+          <span class="stat-num">2+</span>
           <span class="stat-label">Years of Retaliation</span>
         </div>
         <div class="stat">
@@ -901,12 +852,12 @@
           <span class="stat-label">FBI Reports Filed</span>
         </div>
         <div class="stat">
-          <span class="stat-num">8+</span>
+          <span class="stat-num">10+</span>
           <span class="stat-label">Institutions Failed</span>
         </div>
         <div class="stat">
-          <span class="stat-num">0</span>
-          <span class="stat-label">Investigations Opened</span>
+          <span class="stat-num">2</span>
+          <span class="stat-label">Federal Circuits</span>
         </div>
       </div>
     </div>
@@ -917,10 +868,10 @@
     <div class="section-inner">
       <div class="section-label reveal">The Case</div>
       <h2 class="reveal">What This Is About</h2>
-      <p class="reveal" style="max-width:700px; color:#1e1e1e; font-size:1.05rem; line-height:1.9; margin-bottom:2rem;">
+      <p class="reveal" style="max-width:700px; color:#bbb; font-size:1.05rem; line-height:1.9; margin-bottom:2rem;">
         Debra Nelson, a former employee of <strong style="color:var(--white)">Curtiss-Wright</strong> — a major U.S. defense contractor involved in shipbuilding — filed a whistleblower complaint in 2023 after experiencing unlawful discrimination. What followed was a two-year coordinated campaign of retaliation involving cyber intrusion, physical surveillance, evidence destruction, and the failure of every federal institution designed to protect whistleblowers.
       </p>
-      <p class="reveal" style="max-width:700px; color:#2f2f2f; font-size:0.95rem; line-height:1.9;">
+      <p class="reveal" style="max-width:700px; color:#888; font-size:0.95rem; line-height:1.9;">
         This site exists because the courts, the FBI, the Department of Defense Inspector General, the NLRB, the EEOC, and a sitting Congressman's office have all failed to act. The public record presented here is the last recourse. <em>Sunlight is the best disinfectant.</em>
       </p>
 
@@ -954,10 +905,10 @@
         </div>
 
         <div class="timeline-item red reveal">
-          <div class="timeline-date">March 2, 2025</div>
+          <div class="timeline-date">Date TBD</div>
           <div class="timeline-title">Cell Phone Found Outside Bedroom Window</div>
           <div class="timeline-body">A cell phone — believed to be a surveillance device — is discovered outside Ms. Nelson's bedroom window. Police are called and take the phone into custody. Ms. Nelson states on video to the responding officer that the phone is evidence in a federal lawsuit.</div>
-          <span class="evidence-tag red" style="font-weight:700;font-size:0.75rem;">Video Evidence — On Record</span>
+          <span class="evidence-tag red">Video Evidence — On Record</span>
         </div>
 
         <div class="timeline-item red reveal">
@@ -968,66 +919,10 @@
         </div>
 
         <div class="timeline-item red reveal">
-          <div class="timeline-date">March 2, 2025</div>
+          <div class="timeline-date">Date TBD</div>
           <div class="timeline-title">Strange Man Outside Home at 1AM — 911 Call</div>
           <div class="timeline-body">Ms. Nelson calls 911 to report an unknown man standing outside her home at 1AM. The call is recorded.</div>
           <span class="evidence-tag red">911 Recording</span>
-        </div>
-
-        <div class="timeline-item red reveal">
-          <div class="timeline-date">October 21, 2025</div>
-          <div class="timeline-title">Judge Baker Grants Apple Protective Order — Blocks All Further Discovery to Apple</div>
-          <div class="timeline-body">Magistrate Judge Baker grants Apple Inc.'s Motion for Protective Order, prohibiting Ms. Nelson from issuing any additional discovery requests to Apple. This blocks access to device logs, remote access records, and technical data relevant to her cyber intrusion claims — the very evidence needed to prove her case. Apple claimed it fully complied with the original subpoena, but Ms. Nelson's critical data from a September 10, 2025 incident was never produced.</div>
-          <span class="evidence-tag red">ECF No. 194 — On Record</span>
-        </div>
-
-        <div class="timeline-item red reveal">
-          <div class="timeline-date">October 31, 2025</div>
-          <div class="timeline-title">Ms. Nelson Obtains Subpoena to Google in Person — Withdrawn Without Notice 6 Days Later</div>
-          <div class="timeline-body">Ms. Nelson travels in person to the Northern District of California Clerk's Office and obtains a properly signed, enforceable subpoena directed to Google LLC. Six days later, on November 6, 2025, the subpoena is withdrawn and invalidated by the Clerk's Office — with no email, no mailing, and no docket entry to notify Ms. Nelson. She does not learn of this until December 2, 2025, when she calls the Clerk's Office. The docket entry was modified retroactively, and the subpoena was reclassified as a "motion" without her knowledge.</div>
-          <span class="evidence-tag red">Exhibit G & H — Confirmed by Clerk's Office Email</span>
-        </div>
-
-        <div class="timeline-item red reveal">
-          <div class="timeline-date">November 6, 2025</div>
-          <div class="timeline-title">Rule 45 Witness Brian Fogarty Refuses Deposition — Claims Ms. Nelson Lacks Court Authority</div>
-          <div class="timeline-body">Subpoenaed witness Brian Fogarty — who was previously disciplined by Curtiss-Wright for bullying and intimidating Ms. Nelson — misses his scheduled deposition. Defense counsel informs Ms. Nelson only after the fact that Fogarty had back surgery. Fogarty provides no documentation and takes no legal steps to quash the subpoena.</div>
-          <span class="evidence-tag red">Rule 45 Noncompliance — Exhibit B</span>
-        </div>
-
-        <div class="timeline-item red reveal">
-          <div class="timeline-date">November 6, 2025</div>
-          <div class="timeline-title">Fact Witness Jeff Womack Misses Second Deposition — No Explanation Provided</div>
-          <div class="timeline-body">Fact witness Jeff Womack misses his second scheduled deposition. He provides no documentation for his absence, files no written objection, and is not produced by Defense counsel despite his direct relevance to the claims. No alternate date is ever proposed by Defense.</div>
-          <span class="evidence-tag red">Continued Noncompliance — On Record</span>
-        </div>
-
-        <div class="timeline-item red reveal">
-          <div class="timeline-date">November 6, 2025</div>
-          <div class="timeline-title">Plaintiff's Objections to Magistrate Judge Orders Filed — ECF Nos. 192 & 194</div>
-          <div class="timeline-body">Ms. Nelson files formal objections to Magistrate Judge Baker's orders (ECF Nos. 192 & 194) under Fed. R. Civ. P. 72(a), addressed to the Honorable Richard M. Gergel. She argues both rulings are clearly erroneous: the Hunt Law subpoena was reviewed and approved by Judge Cherry prior to issuance — directly contradicting Judge Baker's claim that the court never approved it — and the Apple Protective Order was granted without any evidentiary hearing or showing of good cause required under Rule 26(c).</div>
-          <span class="evidence-tag red">ECF Nos. 192 & 194 Objections — Filed</span>
-        </div>
-
-        <div class="timeline-item red reveal">
-          <div class="timeline-date">December 1, 2025</div>
-          <div class="timeline-title">Fogarty Sends "Cease and Desist" Letter — Cites Defense Counsel as Source of Authority</div>
-          <div class="timeline-body">Brian Fogarty sends a written letter to Ms. Nelson asserting that she "does not have the power of the court" and demanding she cease all contact. The letter states he was "informed by the defendant's legal counsel" that Ms. Nelson had reached the ten-deposition limit and therefore cannot subpoena him. A nonparty witness would have no basis for this claim unless told by defense counsel — strongly indicating defense counsel coached Fogarty to defy a valid federal subpoena.</div>
-          <span class="evidence-tag red">Exhibit A — Fogarty Letter — Evidence of Witness Tampering</span>
-        </div>
-
-        <div class="timeline-item red reveal">
-          <div class="timeline-date">December 8, 2025</div>
-          <div class="timeline-title">Supplement to Motion Filed — Witness Interference, Google Subpoena Withdrawal, Systemic Irregularities</div>
-          <div class="timeline-body">Ms. Nelson files a Supplement to her November 24, 2025 Motion documenting Fogarty's letter as evidence of witness tampering, Womack's continued noncompliance, the unauthorized withdrawal of the Google subpoena without notice, and the pattern of procedural irregularities across multiple federal districts. She requests an immediate hearing and orders compelling both witnesses to appear.</div>
-          <span class="evidence-tag red">ECF Supplement — December 8, 2025</span>
-        </div>
-
-        <div class="timeline-item red reveal">
-          <div class="timeline-date">December 8, 2025</div>
-          <div class="timeline-title">Clerk's Office Refuses to Allow Ms. Nelson to Speak with Her Case Manager</div>
-          <div class="timeline-body">Ms. Nelson visits the Charleston Clerk's Office to file her Supplement and request to speak with Judge Cherry's case manager, who was visibly present. Instead, Magistrate Judge Baker's case manager is sent out. When Ms. Nelson asks for that person's name, she refuses to answer and walks away. A deputy clerk also refuses to provide her name. Ms. Nelson files a formal letter to the Clerk of Court in Columbia documenting the incident and requesting review.</div>
-          <span class="evidence-tag red">ECF No. 249 — Letter to Clerk of Court</span>
         </div>
 
         <div class="timeline-item red reveal">
@@ -1073,48 +968,44 @@
     <div class="section-inner">
       <div class="section-label reveal">Documentation</div>
       <h2 class="reveal">Evidence Archive</h2>
-      <p class="reveal" style="color:#888; max-width:700px; margin-bottom:1rem;">The following categories are tracked in this archive: Judge's Orders, Defense Filings, Plaintiff Filings, Congressman Clyburn, Videos, and Miscellaneous. Files are listed automatically after upload.</p>
+      <p class="reveal" style="color:#888; max-width:600px; margin-bottom:1rem;">The following categories of evidence have been collected and preserved. Documents will be uploaded as files are safely transferred.</p>
 
       <div class="evidence-grid reveal">
         <div class="evidence-card">
-          <span class="evidence-icon">⚖️</span>
-          <h3>Judge's Orders</h3>
-          <p>All uploaded PDF court orders from <code>src/documents/judges-order/</code>.</p>
-          <div id="doc-slot-judges-order" class="upload-placeholder">[ No documents yet ]</div>
+          <span class="evidence-icon">📱</span>
+          <h3>Cyber Intrusion Videos</h3>
+          <p>Video documentation of cyber intrusion on Ms. Nelson's personal cell phone and vehicle.</p>
+          <div class="upload-placeholder">[ Videos — Upload Pending ]</div>
         </div>
         <div class="evidence-card">
-          <span class="evidence-icon">🛡️</span>
-          <h3>Defense Filings</h3>
-          <p>All uploaded PDF defense filings from <code>src/documents/defense-filings/</code>.</p>
-          <div id="doc-slot-defense-filings" class="upload-placeholder">[ No documents yet ]</div>
+          <span class="evidence-icon">🏠</span>
+          <h3>Physical Surveillance & Vandalism</h3>
+          <p>Video of two individuals on side of property. Video of cell phone found outside bedroom window. Video of police taking phone into custody.</p>
+          <div class="upload-placeholder">[ Videos — Upload Pending ]</div>
         </div>
         <div class="evidence-card">
-          <span class="evidence-icon">🧾</span>
-          <h3>Plaintiff Filings</h3>
-          <p>All uploaded PDF plaintiff filings from <code>src/documents/nelson-filings/</code>.</p>
-         <div id="doc-slot-nelson-filings">
-  <ul class="doc-list">
-    <li><a href="/src/documents/nelson-filings/ECF-56.pdf" target="_blank">ECF 56 — Motion to Compel for Issuance of Subpoenas</a></li>
-    <li><a href="/src/documents/nelson-filings/ECF-311.pdf" target="_blank">ECF 311 — Objection to Report and Recommendation</a></li>
-  </ul>
-</div>
+          <span class="evidence-icon">📞</span>
+          <h3>Audio Evidence — 911 Recordings</h3>
+          <p>Recording of 911 call reporting man outside home at 1AM. Recording of call in which duty officer confirms phone was destroyed and Ms. Nelson states officer never called back.</p>
+          <div class="upload-placeholder">[ Audio — Upload Pending ]</div>
+        </div>
         <div class="evidence-card">
-          <span class="evidence-icon">🎥</span>
-          <h3>Videos</h3>
-          <p>All uploaded PDF/video-supporting files from <code>src/documents/evidence/</code>.</p>
-          <div id="doc-slot-evidence" class="upload-placeholder">[ No documents yet ]</div>
+          <span class="evidence-icon">📋</span>
+          <h3>Police Report — March 25, 2026</h3>
+          <p>Official police report documenting vandalism incident. Window broken. Two individuals captured on video.</p>
+          <div class="upload-placeholder">[ Document — Upload Pending ]</div>
+        </div>
+        <div class="evidence-card">
+          <span class="evidence-icon">📧</span>
+          <h3>Congressional Correspondence</h3>
+          <p>Complete email chain with Congressman Clyburn's office documenting the unauthorized document transmission and cover-up attempt. April 2–21, 2026.</p>
+          <div class="upload-placeholder">[ PDFs Available — Upload Pending ]</div>
         </div>
         <div class="evidence-card">
           <span class="evidence-icon">🏛️</span>
-          <h3>Congressman Clyburn</h3>
-          <p>All uploaded PDF files from <code>src/documents/congressman-clyburn/</code>.</p>
-          <div id="doc-slot-congressman-clyburn" class="upload-placeholder">[ No documents yet ]</div>
-        </div>
-        <div class="evidence-card">
-          <span class="evidence-icon">📦</span>
-          <h3>Miscellaneous</h3>
-          <p>All uploaded PDF files from <code>src/documents/misc/</code> and subfolders.</p>
-          <div id="doc-slot-misc" class="upload-placeholder">[ No documents yet ]</div>
+          <h3>DOD IG & Agency Correspondence</h3>
+          <p>DOD Inspector General letter confirming case closure. Agency responses showing coordinated bureaucratic runaround.</p>
+          <div class="upload-placeholder">[ Documents — Upload Pending ]</div>
         </div>
       </div>
     </div>
@@ -1166,6 +1057,21 @@
           <div class="inst-name">Federal Judiciary</div>
           <div class="inst-role">Judicial oversight of active lawsuit</div>
           <div class="inst-action">✗ Subpoenas issued then erased — discovery blocked</div>
+        </div>
+        <div class="institution-card">
+          <div class="inst-name">Google</div>
+          <div class="inst-role">Private data custodian</div>
+          <div class="inst-action">✗ Private Drive files produced by defense — subpoena blocked</div>
+        </div>
+        <div class="institution-card">
+          <div class="inst-name">Microsoft</div>
+          <div class="inst-role">Email &amp; account services</div>
+          <div class="inst-action">✗ Account deliberately restricted — subpoena blocked</div>
+        </div>
+        <div class="institution-card">
+          <div class="inst-name">Apple &amp; Motorola</div>
+          <div class="inst-role">Device manufacturers</div>
+          <div class="inst-action">✗ Devices powering on after shutdown — surveillance documented</div>
         </div>
       </div>
     </div>
@@ -1227,104 +1133,37 @@
         </div>
       </div>
 
-        <div class="timeline-item red reveal">
-          <div class="timeline-date">October 21, 2025</div>
-          <div class="timeline-title">Judge Baker Grants Apple Protective Order — No Evidentiary Hearing, No Good Cause Shown</div>
-          <div class="timeline-body">Without conducting an evidentiary hearing or requiring Apple to make a specific showing of "good cause" under Rule 26(c), Judge Baker grants Apple's Motion for Protective Order and prohibits Ms. Nelson from issuing any additional discovery to Apple. Apple submitted no affidavit or specific evidence of undue burden beyond general inconvenience. The order describes Ms. Nelson's motions as "premature and/or frivolous" — a characterization Ms. Nelson disputes given that the September 10, 2025 incident post-dated the subpoena and involved directly relevant device logs Apple never produced.</div>
-          <span class="evidence-tag red">ECF No. 194 — Protective Order Order</span>
-        </div>
-
-        <div class="timeline-item red reveal">
-          <div class="timeline-date">November 6, 2025</div>
-          <div class="timeline-title">Ms. Nelson Files Rule 72(a) Objections — Both Orders Clearly Erroneous</div>
-          <div class="timeline-body">Ms. Nelson files formal objections to both Judge Baker orders under Fed. R. Civ. P. 72(a), addressed to District Judge Richard M. Gergel. On the Hunt Law order: the subpoena was reviewed and issued by Judge Cherry's office after a nine-day judicial review period — the Clerk cannot issue a Rule 45 subpoena for a pro se party without judicial review, making Judge Baker's finding that "this Court did not expressly approve the subpoena" demonstrably false. On the Apple order: Rule 26(c)(1) requires "good cause" and Apple showed none. The blanket prohibition on all future Apple discovery exceeds what Rule 45(d)(3)(A) permits.</div>
-          <span class="evidence-tag red">Fed. R. Civ. P. 72(a) Objections — Filed</span>
-        </div>
-
-        <div class="timeline-item red reveal">
-          <div class="timeline-date">December 1, 2025</div>
-          <div class="timeline-title">Judge Gergel Promptly Grants Apple's Extension — Ms. Nelson's Motions Remain Unaddressed</div>
-          <div class="timeline-body">On December 1, 2025, Judge Gergel promptly grants Apple's Motion for Extension of Time (ECF No. 226) to file a reply to Ms. Nelson's objections. Meanwhile, Ms. Nelson's own pending motions — including her November 24 request to depose additional witnesses — remain unruled upon. The disparity in judicial responsiveness to Apple versus the pro se plaintiff is documented on the docket.</div>
-          <span class="evidence-tag red">ECF No. 232 — Text Order — Exhibit F</span>
-        </div>
-
-        <div class="timeline-item red reveal">
-          <div class="timeline-date">December 8–9, 2025</div>
-          <div class="timeline-title">Fogarty Sends Letter Directly to the Court — Contents Hidden from Ms. Nelson</div>
-          <div class="timeline-body">Brian Fogarty sends a letter directly to the US District Court concerning Ms. Nelson's subpoenas and conduct in this litigation. The letter appears as a generic "correspondence" entry on the docket — but its contents are not made available to Ms. Nelson. The pro se plaintiff — the person the correspondence is about — cannot see or respond to what has been submitted to the Court regarding her case. Ms. Nelson files a letter to the Clerk of Court in Columbia requesting a copy and written clarification of the Court's policy.</div>
-          <span class="evidence-tag red">ECF No. 249 — Access Denied</span>
-        </div>
-
-      </div>
-
       <div style="margin-top:3rem;" class="reveal">
-        <div class="section-label">Court Document On Record — ECF No. 194</div>
-        <div style="background:#262626; border:1px solid var(--border); padding:2rem; margin-top:1rem; margin-bottom:2rem;">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
-            <div>
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:0.5rem;">ECF NO. 194</div>
-              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#ffffff;">Order Granting Apple's Protective Order &amp; Denying Motions to Compel</div>
-              <div style="color:#ffffff; font-size:0.82rem; margin-top:0.3rem;">Filed October 21, 2025 — Magistrate Judge Mary Gordon Baker</div>
-            </div>
-            <div style="text-align:right;">
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#ffffff;">Case No. 2:25-cv-00405-RMG-MGB</div>
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#ffffff;">Entry No. 194 — 5 Pages</div>
-            </div>
-          </div>
-          <div style="background:#1f1f1f; border-left:3px solid var(--red); padding:1.5rem; margin-bottom:1.5rem;">
-            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.8rem; text-transform:uppercase;">Documented Concern</div>
-            <p style="color:#ccc; font-size:0.9rem; line-height:1.8;">This order prohibits Ms. Nelson from ever issuing additional discovery to Apple — without Apple demonstrating specific harm or prejudice under Rule 26(c)(1). The order cites Apple's compliance with the original subpoena, but Ms. Nelson contends that Apple's production stopped before a key September 10, 2025 incident and that the magistrate characterizing her motions as "frivolous" without addressing that incident prejudges the merits. Ms. Nelson's Rule 72(a) objections to this order are pending before District Judge Gergel.</p>
-          </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
-            <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08);">
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Motion to Compel (Dkt. 103)</div>
-              <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">DENIED — Premature</div>
-            </div>
-            <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08);">
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Renewed Motion to Compel (Dkt. 173)</div>
-              <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">DENIED</div>
-            </div>
-            <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08); grid-column:1/-1;">
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Apple's Motion for Protective Order (Dkt. 129)</div>
-              <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">GRANTED — All Future Apple Discovery Prohibited</div>
-            </div>
-          </div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#ffffff;">
-            Full document available on PACER — Case 2:25-cv-00405, Entry No. 194
-          </div>
-        </div>
-      </div>
-
-
-        <div style="background:#262626; border:1px solid var(--border); padding:2rem; margin-top:1rem;">
+        <div class="section-label">Court Document On Record</div>
+        <div style="background:#0f0f0f; border:1px solid var(--border); padding:2rem; margin-top:1rem;">
           <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
             <div>
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:0.5rem;">EXHIBIT D — DKT. NO. 192</div>
-              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#ffffff;">Order Denying Motion to Compel &amp; Motion to Strike</div>
-              <div style="color:#ffffff; font-size:0.82rem; margin-top:0.3rem;">Filed October 20, 2025 — Magistrate Judge Mary Gordon Baker</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">Order Denying Motion to Compel &amp; Motion to Strike</div>
+              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:0.3rem;">Filed October 20, 2025 — Magistrate Judge Mary Gordon Baker</div>
             </div>
             <div style="text-align:right;">
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#ffffff;">Case No. 2:25-cv-00405-RMG-MGB</div>
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#ffffff;">Entry No. 192 — 7 Pages</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--text-muted);">Case No. 2:25-cv-00405-RMG-MGB</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--text-muted);">Entry No. 192 — 7 Pages</div>
             </div>
           </div>
-          <div style="background:#1f1f1f; border-left:3px solid var(--red); padding:1.5rem; margin-bottom:1.5rem;">
+          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1.5rem; margin-bottom:1.5rem;">
             <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.8rem; text-transform:uppercase;">Documented Concern</div>
             <p style="color:#ccc; font-size:0.9rem; line-height:1.8;">This order denies all of Ms. Nelson's discovery motions including her attempt to obtain financial records between her former attorney and Curtiss-Wright — evidence she sought to prove attorney collusion. The court ruled this evidence had no bearing on her claims without allowing her to obtain it to prove otherwise. This order also does not address the Judge Cherry subpoena contradiction that remains on the docket.</p>
           </div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
-            <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08);">
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Motion to Compel</div>
+            <div style="background:#0a0a0a; padding:1rem; border:1px solid rgba(255,255,255,0.05);">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Motion to Compel</div>
               <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">DENIED</div>
               <div style="color:#888; font-size:0.8rem; margin-top:0.3rem;">Dkt. No. 105</div>
             </div>
-            <div style="background:#1f1f1f; padding:1rem; border:1px solid rgba(255,255,255,0.08);">
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Motion to Strike</div>
+            <div style="background:#0a0a0a; padding:1rem; border:1px solid rgba(255,255,255,0.05);">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Motion to Strike</div>
               <div style="color:#e05555; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">DENIED IN FULL</div>
               <div style="color:#888; font-size:0.8rem; margin-top:0.3rem;">Dkt. No. 176</div>
             </div>
           </div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#ffffff;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--text-muted);">
             Full document available on PACER — Case 2:25-cv-00405, Entry No. 192
           </div>
         </div>
@@ -1333,76 +1172,16 @@
     </div>
   </div>
 
-  <!-- DISCOVERY OBSTRUCTION -->
-  <div class="section-full" id="discovery">
-    <div class="section-inner">
-      <div class="section-label reveal">Discovery Obstruction</div>
-      <h2 class="reveal">How Evidence Is Being Blocked</h2>
-      <p class="reveal" style="color:#888; max-width:700px; margin-bottom:3rem;">Beyond the courtroom rulings, Ms. Nelson has documented a pattern of witness interference, subpoena manipulation, and procedural irregularities that have systematically prevented her from obtaining evidence — despite diligent efforts across multiple federal districts.</p>
-
-      <div class="evidence-grid reveal" style="margin-top:0;">
-
-        <div class="evidence-card">
-          <span class="evidence-icon">🚫</span>
-          <h3>Witness Brian Fogarty — Coached to Defy Subpoena</h3>
-          <p>Fogarty was disciplined for bullying Ms. Nelson during her employment and is a key comparator witness. After missing his deposition and receiving a Rule 45 notice from Ms. Nelson, he sent a written "cease and desist" letter stating she "does not have the power of the court" — a claim he could only have received from defense counsel. The letter expressly states he was "informed by the defendant's legal counsel" about deposition limits.</p>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#e05555; letter-spacing:0.08em; margin-top:0.8rem; text-transform:uppercase;">Exhibit A — Fogarty Letter (Dec 1, 2025)</div>
-        </div>
-
-        <div class="evidence-card">
-          <span class="evidence-icon">🚫</span>
-          <h3>Witness Jeff Womack — Two Missed Depositions, Zero Accountability</h3>
-          <p>Fact witness Jeff Womack missed two scheduled depositions. He provided no medical documentation, filed no written objection, and sought no relief from the Court. Defense counsel has never produced Womack or proposed an alternate date. As of the December 8, 2025 Supplement, no ruling on Womack's noncompliance has been issued by the Court.</p>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#e05555; letter-spacing:0.08em; margin-top:0.8rem; text-transform:uppercase;">Ongoing — No Court Order Issued</div>
-        </div>
-
-        <div class="evidence-card">
-          <span class="evidence-icon">📄</span>
-          <h3>Google Subpoena Withdrawn Without Notice</h3>
-          <p>Ms. Nelson obtained a properly signed, court-issued subpoena to Google in person at the Northern District of California on October 31, 2025. It was withdrawn and invalidated on November 6 — with no email, mailing, or docket notification to Ms. Nelson. She learned of this only on December 2 when she called the Clerk's Office. She had already filed a Motion to Compel on November 21 — not knowing the subpoena had been pulled.</p>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#e05555; letter-spacing:0.08em; margin-top:0.8rem; text-transform:uppercase;">Exhibits G & H — Confirmed by Clerk Email</div>
-        </div>
-
-        <div class="evidence-card">
-          <span class="evidence-icon">🍎</span>
-          <h3>Apple Device Logs — Permanently Blocked</h3>
-          <p>Ms. Nelson's subpoena to Apple sought device-level logs, remote access records, and PIN unlock attempts relevant to her cyber intrusion claims. Apple's production stopped before a September 10, 2025 incident Ms. Nelson reported directly to Apple. Judge Baker then issued a blanket protective order prohibiting all future discovery to Apple — without an evidentiary hearing or specific showing of harm from Apple under Rule 26(c)(1).</p>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#e05555; letter-spacing:0.08em; margin-top:0.8rem; text-transform:uppercase;">ECF No. 194 — Rule 72(a) Objection Pending</div>
-        </div>
-
-        <div class="evidence-card">
-          <span class="evidence-icon">📬</span>
-          <h3>Fogarty's Letter to the Court — Hidden from Ms. Nelson</h3>
-          <p>Brian Fogarty sent a letter directly to the US District Court concerning Ms. Nelson's subpoenas and conduct. It appears on the docket only as a generic "correspondence" entry — with no contents available to Ms. Nelson. The pro se plaintiff cannot see or respond to what a subpoenaed witness submitted to the Court about her own case. Ms. Nelson's December 9, 2025 letter to the Clerk requests a copy and written policy clarification.</p>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#e05555; letter-spacing:0.08em; margin-top:0.8rem; text-transform:uppercase;">ECF No. 249 — Access Denied</div>
-        </div>
-
-        <div class="evidence-card">
-          <span class="evidence-icon">⚖️</span>
-          <h3>Hunt Law Subpoena — Court Contradicts Its Own Docket</h3>
-          <p>Judge Cherry's case manager confirmed the Hunt Law subpoena was held nine days for judicial review before issuance. Judge Baker later ruled "this Court did not expressly approve the subpoena" — a statement directly contradicted by the docket, the timeline, and the Clerk's own issuance process. Judge Baker's order constitutes a de facto reversal of a prior judicial act without notice or findings. Ms. Nelson's Rule 72(a) objection to this ruling is pending before Judge Gergel.</p>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#e05555; letter-spacing:0.08em; margin-top:0.8rem; text-transform:uppercase;">ECF No. 192 — Rule 72(a) Objection Pending</div>
-        </div>
-
-      </div>
-
-      <div class="key-question reveal" style="margin-top:3rem;">
-        <span class="kq-label">The Pattern</span>
-        <p>"Every avenue for obtaining electronic evidence has been closed — Apple is protected by court order, Google's subpoena was quietly withdrawn, and witnesses are being coached by defense counsel to claim Ms. Nelson lacks judicial authority. These are not coincidences."</p>
-      </div>
-    </div>
-  </div>
-
   <!-- DOCKET -->
   <div class="section-full" id="docket">
     <div class="section-inner">
       <div class="section-label reveal">Court Record</div>
       <h2 class="reveal">Case Docket</h2>
-      <p class="reveal" style="color:#888; margin-bottom:0.5rem; font-size:1.02rem; line-height:1.8;">
+      <p class="reveal" style="color:#888; margin-bottom:0.5rem;">
         <strong style="color:var(--white)">Debra Nelson v. Curtiss-Wright</strong><br>
         Case No. 2:25-CV-00405-RMG-MGB | US District Court, District of South Carolina — Charleston Division
       </p>
-      <p class="reveal" style="color:var(--text-muted); font-size:0.82rem; margin-bottom:2rem; font-family:'JetBrains Mono',monospace;">Docket PDF links below point to files in <code>src/documents/</code> (updated on each deploy).</p>
+      <p class="reveal" style="color:var(--text-muted); font-size:0.82rem; margin-bottom:2rem; font-family:'JetBrains Mono',monospace;">Links will be added as documents are uploaded to a public hosting service.</p>
 
       <div class="reveal" style="overflow-x:auto;">
         <table class="docket-table">
@@ -1417,121 +1196,223 @@
           </thead>
           <tbody id="docketBody">
             <tr>
-              <td>Jan 21, 2025</td>
+              <td>TBD</td>
               <td>001</td>
-              <td>Complaint — Removed from State Court</td>
-              <td>Defendants</td>
-              <td class="docket-link-cell" data-docket-needle=""></td>
-            </tr>
-            <tr>
-              <td>Early 2025</td>
-              <td>010–019</td>
-              <td>Plaintiff's Counsel Withdraws (Hunt Law LLC)</td>
-              <td>Plaintiff's Counsel</td>
-              <td class="docket-link-cell" data-docket-needle="judges-order/ECF 19"></td>
-            </tr>
-            <tr>
-              <td>Sep 12, 2025</td>
-              <td>103</td>
-              <td>Motion to Compel — Apple Inc. (Premature)</td>
+              <td>Complaint</td>
               <td>Plaintiff</td>
-              <td class="docket-link-cell" data-docket-needle="nelson-filings/ECF 56"></td>
+              <td><span class="docket-placeholder">[ Link Pending ]</span></td>
             </tr>
             <tr>
-              <td>Sep 16, 2025</td>
-              <td>105</td>
-              <td>Motion to Compel — Timekeeping Audit Trail</td>
-              <td>Plaintiff</td>
-              <td class="docket-link-cell" data-docket-needle=""></td>
-            </tr>
-            <tr>
-              <td>Oct 8–9, 2025</td>
-              <td>164, 171</td>
-              <td>Notices of Service — Subpoena to Hunt Law LLC</td>
-              <td>Plaintiff</td>
-              <td class="docket-link-cell" data-docket-needle="nelson-filings/ECF 56"></td>
-            </tr>
-            <tr>
-              <td>Oct 9, 2025</td>
-              <td>172</td>
-              <td>Objection to Hunt Law Subpoena</td>
-              <td>Hunt Law LLC (Nonparty)</td>
-              <td class="docket-link-cell" data-docket-needle="defense-filings/ECF 215"></td>
-            </tr>
-            <tr>
-              <td>Oct 10, 2025</td>
-              <td>173</td>
-              <td>Renewed Motion to Compel — Apple Inc.</td>
-              <td>Plaintiff</td>
-              <td class="docket-link-cell" data-docket-needle="defense-filings/ECF 207"></td>
-            </tr>
-            <tr>
-              <td>Oct 20, 2025</td>
-              <td>192</td>
-              <td>Order DENYING Motion to Compel & Motion to Strike (Hunt Law)</td>
-              <td>Judge Baker</td>
-              <td class="docket-link-cell" data-docket-needle="judges-order/ECF 192"></td>
-            </tr>
-            <tr>
-              <td>Oct 21, 2025</td>
-              <td>194</td>
-              <td>Order DENYING Motions to Compel Apple & GRANTING Apple Protective Order</td>
-              <td>Judge Baker</td>
-              <td class="docket-link-cell" data-docket-needle="judges-order/ECF 194"></td>
-            </tr>
-            <tr>
-              <td>Oct 31, 2025</td>
+              <td>TBD</td>
+              <td>002</td>
+              <td>[ Add Filing ]</td>
               <td>—</td>
-              <td>Google Subpoena Obtained In Person (N.D. Cal.) — Withdrawn Nov 6 Without Notice</td>
-              <td>Plaintiff / N.D. Cal. Clerk</td>
-              <td class="docket-link-cell" data-docket-needle=""></td>
+              <td><span class="docket-placeholder">[ Link Pending ]</span></td>
             </tr>
             <tr>
-              <td>Nov 6, 2025</td>
+              <td>TBD</td>
+              <td>003</td>
+              <td>[ Add Filing ]</td>
               <td>—</td>
-              <td>Plaintiff's Objections to ECF Nos. 192 & 194 — Filed Under Rule 72(a)</td>
-              <td>Plaintiff</td>
-              <td class="docket-link-cell" data-docket-needle="nelson-filings/ECF 311"></td>
-            </tr>
-            <tr>
-              <td>Nov 21, 2025</td>
-              <td>—</td>
-              <td>Motion to Compel Packet Filed — N.D. California (Google Subpoena)</td>
-              <td>Plaintiff</td>
-              <td class="docket-link-cell" data-docket-needle="defense-filings/ECF 207"></td>
-            </tr>
-            <tr>
-              <td>Nov 24, 2025</td>
-              <td>—</td>
-              <td>Motion for Hearing — Witness Noncompliance & Interference (Fogarty, Womack)</td>
-              <td>Plaintiff</td>
-              <td class="docket-link-cell" data-docket-needle=""></td>
-            </tr>
-            <tr>
-              <td>Dec 1, 2025</td>
-              <td>232</td>
-              <td>TEXT ORDER — Apple's Extension Granted Until 12/8/25</td>
-              <td>Judge Gergel</td>
-              <td class="docket-link-cell" data-docket-needle="judges-order/ECF 316"></td>
-            </tr>
-            <tr>
-              <td>Dec 8, 2025</td>
-              <td>—</td>
-              <td>Supplement to Plaintiff's Nov 24 Motion — Witness Interference, Google Subpoena, Fogarty Letter</td>
-              <td>Plaintiff</td>
-              <td class="docket-link-cell" data-docket-needle=""></td>
-            </tr>
-            <tr>
-              <td>Dec 9, 2025</td>
-              <td>249</td>
-              <td>Letter to Clerk of Court — Access to Filings, Clerk Conduct, Fogarty Correspondence</td>
-              <td>Plaintiff</td>
-              <td class="docket-link-cell" data-docket-needle=""></td>
+              <td><span class="docket-placeholder">[ Link Pending ]</span></td>
             </tr>
           </tbody>
         </table>
       </div>
       <p style="color:var(--text-muted); font-size:0.78rem; margin-top:1rem; font-family:'JetBrains Mono',monospace;">* Full docket available on PACER: pacer.gov — Case 2:25-cv-00405</p>
+    </div>
+  </div>
+
+  <!-- TECH COMPANIES -->
+  <div class="section-full" id="tech">
+    <div class="section-inner">
+      <div class="section-label reveal">Big Tech Complicity</div>
+      <h2 class="reveal">Google &amp; Microsoft — Active Litigation</h2>
+      <p class="reveal" style="color:#888; max-width:700px; margin-bottom:2rem;">Ms. Nelson's legal battle extends beyond South Carolina. She has filed appeals in the Ninth Circuit Court of Appeals against Google and Microsoft after multiple district courts blocked her subpoenas seeking evidence of unauthorized access to her private accounts and files.</p>
+
+      <div class="key-question reveal">
+        <span class="kq-label">The Central Question</span>
+        <p>"On October 16, 2025, defense counsel produced a flash drive containing videos found in Ms. Nelson's private Google Drive — files she never authorized anyone to access or share. How did Curtiss-Wright's defense team obtain private files from Ms. Nelson's personal Google account?"</p>
+      </div>
+
+      <div style="margin-top:3rem;" class="reveal">
+        <div class="section-label">Documented Incidents</div>
+      </div>
+
+      <div class="timeline" style="margin-top:1.5rem;">
+        <div class="timeline-item red reveal">
+          <div class="timeline-date">Ongoing — 2023 to Present</div>
+          <div class="timeline-title">Google — Unauthorized Access to Private Drive</div>
+          <div class="timeline-body">Ms. Nelson's personal Google Drive contains private videos and photographs. Defense counsel produced these files in litigation without Ms. Nelson's authorization. Google is alleged to have provided access to Ms. Nelson's private account to parties adverse to her in active federal litigation — without a valid court order served on her.</div>
+          <span class="evidence-tag red">Flash Drive — October 16, 2025 — Court Record</span>
+        </div>
+
+        <div class="timeline-item red reveal">
+          <div class="timeline-date">Ongoing</div>
+          <div class="timeline-title">Microsoft — Account Interference</div>
+          <div class="timeline-body">Ms. Nelson experienced repeated restrictions on her Microsoft Hotmail account. Microsoft denied any issues on their end. The restrictions ceased only after Ms. Nelson threatened to cancel her Microsoft Word subscription and demand a refund — demonstrating the restrictions were deliberate and controllable, not technical glitches.</div>
+          <span class="evidence-tag red">Documented — Account Interference</span>
+        </div>
+
+        <div class="timeline-item red reveal">
+          <div class="timeline-date">Ongoing</div>
+          <div class="timeline-title">Apple &amp; Motorola — Device Intrusion</div>
+          <div class="timeline-body">Across multiple devices — both Apple and Motorola phones — Ms. Nelson documented phones powering back on after being shut off. This behavior, documented across different manufacturers, indicates firmware-level or carrier-level surveillance capability being actively deployed against her.</div>
+          <span class="evidence-tag red">Video Documentation</span>
+        </div>
+
+        <div class="timeline-item red reveal">
+          <div class="timeline-date">2025–2026</div>
+          <div class="timeline-title">Subpoenas Served — Blocked by Multiple District Courts</div>
+          <div class="timeline-body">Ms. Nelson served subpoenas on both Google and Microsoft seeking records of unauthorized access to her accounts and the source of the files produced by defense counsel. Multiple district court judges blocked these subpoenas — preventing Ms. Nelson from obtaining evidence that would prove unauthorized corporate surveillance in active federal litigation.</div>
+          <span class="evidence-tag red">Multistate Judicial Blocking — On Record</span>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-title">Ninth Circuit Appeal Filed — Active</div>
+          <div class="timeline-body">Ms. Nelson has filed an appeal with the United States Court of Appeals for the Ninth Circuit challenging the district court decisions blocking her subpoenas against Google and Microsoft. This appeal is currently active and pending decision.</div>
+          <span class="evidence-tag">Ninth Circuit — Active Appeal</span>
+        </div>
+      </div>
+
+      <!-- Legal Battle Overview -->
+      <div style="margin-top:3rem;" class="reveal">
+        <div class="section-label">Complete Legal Record</div>
+        <p style="color:#888; font-size:0.88rem; margin-bottom:1.5rem; margin-top:1rem;">Ms. Nelson is simultaneously managing pro se litigation across two federal circuits against a defense contractor and two of the world's largest technology companies.</p>
+        <div style="overflow-x:auto;">
+          <table class="docket-table">
+            <thead>
+              <tr>
+                <th>Court</th>
+                <th>Matter</th>
+                <th>Filed</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>US District Court, D. South Carolina</td>
+                <td>Nelson v. Curtiss-Wright — Employment Discrimination, Retaliation, Cyber Intrusion</td>
+                <td>2025</td>
+                <td><span style="color:#e05555; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">ACTIVE</span></td>
+              </tr>
+              <tr>
+                <td>Fourth Circuit Court of Appeals</td>
+                <td>Writ of Prohibition — Judicial Misconduct / Discovery Obstruction</td>
+                <td>Jan 22, 2026</td>
+                <td><span style="color:#e05555; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">DENIED</span></td>
+              </tr>
+              <tr>
+                <td>Fourth Circuit Court of Appeals</td>
+                <td>Appeal — Nelson v. Curtiss-Wright</td>
+                <td>Pending</td>
+                <td><span style="color:var(--gold); font-family:'JetBrains Mono',monospace; font-size:0.75rem;">PENDING</span></td>
+              </tr>
+              <tr>
+                <td>Multiple US District Courts</td>
+                <td>Subpoenas — Google &amp; Microsoft Unauthorized Data Access</td>
+                <td>2025</td>
+                <td><span style="color:#e05555; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">BLOCKED</span></td>
+              </tr>
+              <tr>
+                <td>Ninth Circuit Court of Appeals</td>
+                <td>Appeal — Google &amp; Microsoft Subpoenas / Unauthorized Data Access</td>
+                <td>2026</td>
+                <td><span style="color:#4caf82; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">ACTIVE APPEAL</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <!-- Complete Subpoena Record -->
+      <div style="margin-top:3rem;" class="reveal">
+        <div class="section-label">Complete Subpoena Record</div>
+        <p style="color:#888; font-size:0.88rem; margin-bottom:1.5rem; margin-top:1rem;">Ms. Nelson served subpoenas on every company holding evidence of unauthorized surveillance of her devices, accounts, and vehicle. Every subpoena was blocked by the courts — except Motorola, who ignored federal court process entirely. The court ruled against Motorola. A sanctions motion has been pending for months with no ruling.</p>
+        <div style="overflow-x:auto;">
+          <table class="docket-table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Evidence Sought</th>
+                <th>Subpoena Status</th>
+                <th>Court Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Google</td>
+                <td>Private Drive access logs — files produced by defense without authorization</td>
+                <td><span style="color:#e05555; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">BLOCKED</span></td>
+                <td>District court blocked — Ninth Circuit appeal active</td>
+              </tr>
+              <tr>
+                <td>Microsoft</td>
+                <td>Account access logs — deliberate Hotmail restriction records</td>
+                <td><span style="color:#e05555; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">BLOCKED</span></td>
+                <td>District court blocked — Ninth Circuit appeal active</td>
+              </tr>
+              <tr>
+                <td>Verizon</td>
+                <td>Carrier records — device access logs, remote connections, tower pings</td>
+                <td><span style="color:#e05555; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">BLOCKED</span></td>
+                <td>District court blocked</td>
+              </tr>
+              <tr>
+                <td>Apple</td>
+                <td>Device logs — unauthorized remote access records</td>
+                <td><span style="color:#e05555; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">BLOCKED</span></td>
+                <td>District court blocked</td>
+              </tr>
+              <tr>
+                <td>American Honda</td>
+                <td>Vehicle telematics — remote intrusion logs from connected vehicle systems</td>
+                <td><span style="color:#e05555; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">BLOCKED</span></td>
+                <td>District court blocked</td>
+              </tr>
+              <tr>
+                <td style="color:#e05555;">Motorola</td>
+                <td>Device firmware access logs — surveillance capability records</td>
+                <td><span style="color:#e05555; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">NO RESPONSE</span></td>
+                <td><span style="color:#e05555;">Court ruled against Motorola — Sanctions motion pending for months — No ruling</span></td>
+              </tr>
+              <tr>
+                <td>Bonnie Hunt / Hunt Law LLC</td>
+                <td>Financial records — communications with Curtiss-Wright and defense counsel</td>
+                <td><span style="color:#e05555; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">BLOCKED</span></td>
+                <td>Blocked by Magistrate Judge Baker — Dkt. No. 192</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="key-question" style="margin-top:2rem;">
+          <span class="kq-label">The Question This Record Raises</span>
+          <p>"Seven subpoenas. Seven companies holding evidence of surveillance. Every subpoena blocked across multiple courts and multiple jurisdictions — except one company that ignored federal court process entirely and has faced no consequences for months. How does this happen in seven separate proceedings?"</p>
+        </div>
+
+        <div style="background:#0f0f0f; border:1px solid var(--border); padding:2rem; margin-top:2rem;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:1rem; text-transform:uppercase;">Motorola — Pending Sanctions — No Ruling</div>
+          <p style="color:#ccc; font-size:0.9rem; line-height:1.8; margin-bottom:1rem;">Motorola Corporation did not respond to a valid federal subpoena. The court ruled against Motorola. Ms. Nelson filed a motion for sanctions. That motion has been pending for months with no ruling from the court.</p>
+          <p style="color:#888; font-size:0.85rem; line-height:1.8;">A federal court is required to rule on pending motions in a timely manner. An unexplained multi-month delay on a sanctions motion against a major corporation — in a case where every other ruling has protected corporate defendants — raises serious questions about judicial impartiality.</p>
+        </div>
+
+        <div style="background:#0f0f0f; border:1px solid var(--border); padding:2rem; margin-top:1.5rem;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:1rem; text-transform:uppercase;">FBI — Three Reports Filed Since November 2025 — No Investigation</div>
+          <p style="color:#ccc; font-size:0.9rem; line-height:1.8;">Ms. Nelson has visited the FBI three times since November 2025 to report cyber intrusion, physical surveillance, evidence destruction, and coordinated retaliation in connection with her active federal lawsuit against a major defense contractor. No investigation has been opened. The FBI's inaction in the face of documented evidence of federal crimes — including destruction of evidence explicitly identified as relevant to a federal lawsuit — raises serious questions about institutional accountability.</p>
+        </div>
+      </div>
+
+      <!-- Flash Drive Corruption -->
+      <div style="margin-top:3rem;" class="reveal">
+        <div class="key-question">
+          <span class="kq-label">Most Recent Act of Retaliation</span>
+          <p>"Approximately two weeks ago, Ms. Nelson's flash drive containing her case files was corrupted. The only files affected were her Curtiss-Wright case documents — files she needs to file her appeal. Selective corruption of specific folders on a flash drive does not occur randomly."</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -1560,6 +1441,369 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- DEFENSE CONTRACTOR PATTERN -->
+  <div class="section-full" id="amentum">
+    <div class="section-inner">
+      <div class="section-label reveal">Broader Pattern</div>
+      <h2 class="reveal">Defense Contractor Accountability</h2>
+      <p class="reveal" style="color:#888; max-width:700px; margin-bottom:2rem;">The misconduct documented in this case is not an isolated incident. It reflects a pattern of behavior by defense contractors who operate under the assumption that their government contracts make them immune from accountability — immune from discrimination laws, immune from whistleblower protections, and immune from judicial scrutiny.</p>
+
+      <div class="key-question reveal">
+        <span class="kq-label">The Core Problem</span>
+        <p>"If a defense contractor's shipbuilding contracts are critical to national security — then the integrity of the people executing those contracts matters. Discrimination, retaliation, and cover-up inside a defense contractor is not just a labor issue. It is a national security concern."</p>
+      </div>
+
+      <div style="margin-top:3rem;" class="reveal">
+        <div class="section-label">Curtiss-Wright — Primary Case</div>
+        <div style="background:#0f0f0f; border:1px solid var(--border); padding:2rem; margin-top:1rem;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:1rem; text-transform:uppercase;">Nelson v. Curtiss-Wright — Case No. 2:25-CV-00405-RMG-MGB</div>
+          <p style="color:#ccc; font-size:0.9rem; line-height:1.8; margin-bottom:1rem;">Curtiss-Wright Electro Mechanical Corporation — a major U.S. defense contractor involved in shipbuilding — discriminated against Ms. Nelson, retaliated against her whistleblower complaint, and has since engaged in a two-year coordinated campaign of obstruction documented throughout this site.</p>
+          <p style="color:#888; font-size:0.88rem; line-height:1.8;">Deposition testimony obtained during discovery confirms that discrimination at Curtiss-Wright is not historical — it is ongoing. Other employees have experienced the same conduct. Ms. Nelson is the one who fought back.</p>
+          <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.8rem; text-transform:uppercase;">Pending — Awaiting Ruling</div>
+            <p style="color:#ccc; font-size:0.88rem; line-height:1.8;">Multiple motions remain pending before the court. The public record documented on this site raises serious questions about whether those rulings will be made impartially. Congressional oversight of both the defense contractor conduct and the judicial proceedings is warranted and urgently needed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem;" class="reveal">
+        <div class="section-label">Amentum — A Second Defense Contractor</div>
+        <div style="background:#0f0f0f; border:1px solid var(--border); padding:2rem; margin-top:1rem;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:1rem; text-transform:uppercase;">Florida Federal District Court — Gender-Based Discrimination & Retaliation</div>
+
+          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1.5rem; margin-bottom:1.5rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.8rem; text-transform:uppercase;">Critical Timeline — One Day Gap</div>
+            <p style="color:#ccc; font-size:0.9rem; line-height:1.8;">October 28, 2025 — Ms. Nelson gives deposition testimony in Nelson v. Curtiss-Wright.<br><br>October 29, 2025 — Ms. Nelson is terminated from Amentum.<br><br>The only thing that changed between October 27 and October 29 was her deposition testimony against Curtiss-Wright. Both companies are defended by the same law firm — Jackson Lewis P.C.</p>
+          </div>
+
+          <p style="color:#ccc; font-size:0.9rem; line-height:1.8; margin-bottom:1rem;">Amentum is a second major defense contractor against whom Ms. Nelson has filed a federal lawsuit alleging gender-based discrimination and retaliation. Unlike the Curtiss-Wright case — where judicial misconduct has systematically blocked Ms. Nelson's claims — the Florida case has proceeded more fairly, with Ms. Nelson's 7th Amended Complaint surviving without dismissal.</p>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem;">
+            <div style="background:#0a0a0a; padding:1rem; border:1px solid rgba(255,255,255,0.05);">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Defense Counsel — Both Cases</div>
+              <div style="color:var(--white); font-family:'Playfair Display',serif; font-size:1rem; font-weight:700;">Jackson Lewis P.C.</div>
+              <div style="color:#888; font-size:0.8rem; margin-top:0.3rem;">15 South Main Street, Suite 700<br>Greenville, SC 29601</div>
+            </div>
+            <div style="background:#0a0a0a; padding:1rem; border:1px solid rgba(255,255,255,0.05);">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Significance</div>
+              <div style="color:#e05555; font-size:0.85rem; line-height:1.6;">One law firm defending two separate defense contractors against the same whistleblower — with full knowledge of her legal strategy in both cases simultaneously</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem;" class="reveal">
+        <div class="section-label">The Pattern</div>
+        <div style="background:#0f0f0f; border:1px solid var(--border); padding:2rem; margin-top:1rem;">
+          <p style="color:#ccc; font-size:0.9rem; line-height:1.8; margin-bottom:1.5rem;">Defense contractors with critical government contracts have historically operated with reduced accountability. The assumption — often correct — is that no institution will hold them accountable because the political and financial cost of doing so is too high.</p>
+          <p style="color:#ccc; font-size:0.9rem; line-height:1.8; margin-bottom:1.5rem;">Ms. Nelson's case documents what happens when that assumption drives institutional behavior — when a defense contractor can discriminate, retaliate, destroy evidence, intercept private communications, and coordinate with government agencies and a Congressional office to silence a whistleblower — and face no consequences.</p>
+          <p style="color:#ccc; font-size:0.9rem; line-height:1.8;">The House Judiciary Committee has both the authority and the obligation to investigate. Congressional oversight of defense contractor conduct — and of the judicial proceedings that are supposed to hold them accountable — is not optional. It is essential.</p>
+
+          <div style="margin-top:2rem; text-align:center;">
+            <a href="https://c.org/pk9mYfxFL9" target="_blank" style="display:inline-block; background:var(--red); color:var(--white); padding:1rem 2.5rem; font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; text-decoration:none; transition:background 0.3s;">Sign the Petition — Demand Congressional Oversight →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JUDGES ORDERS -->
+  <div class="section-full" id="orders">
+    <div class="section-inner">
+      <div class="section-label reveal">Court Orders</div>
+      <h2 class="reveal">The Judicial Record</h2>
+      <p class="reveal" style="color:#888; max-width:700px; margin-bottom:2rem;">Every order issued in this case is public record. Read them together and a pattern emerges — one that tells a story no single order can hide. Note especially the contrast between orders issued under Judge Cherry and those issued under Judge Baker.</p>
+
+      <div class="key-question reveal">
+        <span class="kq-label">Critical Contradiction</span>
+        <p>"Judge Baker's own Report and Recommendation (ECF 250, December 15, 2025) states that Ms. Nelson's whistleblower retaliation, invasion of privacy, illegal interception of communications, and civil conspiracy claims should all SURVIVE. If Judge Baker later dismisses those same claims as sanctions — she is contradicting her own recommendation."</p>
+      </div>
+
+      <div style="margin-top:3rem; display:flex; flex-direction:column; gap:1.5rem;" class="reveal">
+
+        <!-- ECF 19 -->
+        <div style="background:#0f0f0f; border:1px solid var(--border); padding:2rem;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:0.4rem;">ECF NO. 19 — DATE FILED 02/20/25</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">Order Granting Counsel Withdrawal</div>
+              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:0.3rem;">Magistrate Judge Molly H. Cherry</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#4caf82;">JUDGE CHERRY</div>
+          </div>
+          <p style="color:#bbb; font-size:0.88rem; line-height:1.8; margin-bottom:1rem;">Grants Bonnie Hunt's motion to withdraw as counsel. The order notes a "fundamental disagreement regarding the substance of the case." Ms. Nelson is left to proceed pro se against a major defense contractor represented by Jackson Lewis. This is the same Judge Cherry who would later issue subpoenas that Judge Baker subsequently denied ever existed.</p>
+          <div style="background:#0a0a0a; border-left:3px solid var(--gold); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); margin-bottom:0.5rem; text-transform:uppercase;">Filing Summary</div>
+            <p style="color:#ccc; font-size:0.85rem; line-height:1.8;">Magistrate Judge Molly H. Cherry granted former counsel Bonnie Hunt's motion to withdraw from the case based on a "fundamental disagreement" regarding the handling of the litigation. The Court also granted Debra Nelson additional time to respond to Defendants' Motion to Dismiss while seeking new counsel, but denied the request for a hearing. Plaintiff was thereafter required to proceed pro se unless new counsel appeared.</p>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted);">PACER — Entry No. 19 | Result: Counsel Withdrawn — Ms. Nelson proceeds pro se</div>
+        </div>
+
+        <!-- ECF 194 -->
+        <div style="background:#0f0f0f; border:1px solid rgba(196,30,30,0.3); padding:2rem;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.4rem;">ECF NO. 194 — DATE FILED 10/21/25</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">Order Denying Motions to Compel Apple — Granting Apple Protective Order</div>
+              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:0.3rem;">Magistrate Judge Mary Gordon Baker</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#e05555;">JUDGE BAKER</div>
+          </div>
+          <p style="color:#bbb; font-size:0.88rem; line-height:1.8; margin-bottom:1rem;">Ms. Nelson subpoenaed Apple for device logs showing unauthorized remote access, system-wake events without user interaction, PIN override attempts, and records of any government agreements permitting firmware access — precisely the evidence needed to prove the documented cyber intrusion. Judge Baker denied both motions and granted Apple a protective order, permanently shielding Apple from further discovery in this case. The order characterized Ms. Nelson's motions as "premature and/or frivolous" — language that appears nowhere in the controlling legal standard for cyber intrusion evidence.</p>
+          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); margin-bottom:0.5rem; text-transform:uppercase;">What Apple Was Asked to Produce</div>
+            <p style="color:#888; font-size:0.82rem; line-height:1.8;">Logs of unauthorized remote access to Ms. Nelson's Apple devices • PIN unlock override attempts • System-wake events without user interaction • Government agreements permitting firmware access • Find My location tracking accessed remotely</p>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div style="background:#0a0a0a; padding:1rem; text-align:center;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.3rem;">Motion to Compel</div>
+              <div style="color:#e05555; font-family:'Playfair Display',serif; font-weight:700;">DENIED</div>
+            </div>
+            <div style="background:#0a0a0a; padding:1rem; text-align:center;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.3rem;">Apple Protective Order</div>
+              <div style="color:#e05555; font-family:'Playfair Display',serif; font-weight:700;">GRANTED</div>
+            </div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-top:1rem;">PACER — Entry No. 194 | Apple permanently shielded from cyber intrusion discovery</div>
+        </div>
+
+        <!-- ECF 250 -->
+        <div style="background:#0f0f0f; border:1px solid var(--border); padding:2rem;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:0.4rem;">ECF NO. 250 — DATE FILED 12/15/25</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">Report & Recommendation — Partial Motion to Dismiss</div>
+              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:0.3rem;">Magistrate Judge Mary Gordon Baker</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#e05555;">JUDGE BAKER</div>
+          </div>
+          <p style="color:#bbb; font-size:0.88rem; line-height:1.8; margin-bottom:1rem;">In this 28-page Report and Recommendation, Judge Baker recommends that the vast majority of Ms. Nelson's claims survive defendants' Partial Motion to Dismiss. This document is significant because it contains Judge Baker's own written acknowledgment that Ms. Nelson's core claims are legally viable — creating a direct contradiction with any subsequent order dismissing those same claims as sanctions.</p>
+          <div style="background:#0a0a0a; border-left:3px solid var(--gold); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); margin-bottom:0.5rem; text-transform:uppercase;">Claims Recommended to SURVIVE — Baker's Own Words</div>
+            <p style="color:#ccc; font-size:0.82rem; line-height:1.8;">Race discrimination (Title VII & § 1981) • Sex discrimination • Age discrimination (ADEA) • Hostile work environment • Retaliation • Slander • Tortious interference • <strong style="color:var(--white);">Whistleblower retaliation (41 U.S.C. § 4712)</strong> • Title VI • <strong style="color:var(--white);">Invasion of privacy</strong> • <strong style="color:var(--white);">Illegal interception of communications (Federal Wiretap Act)</strong> • Intentional infliction of emotional distress • <strong style="color:var(--white);">Civil conspiracy</strong></p>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); margin-bottom:0.5rem; text-transform:uppercase;">The Critical Contradiction</div>
+            <p style="color:#888; font-size:0.82rem; line-height:1.8;">Judge Baker's own December 15, 2025 recommendation states these claims should survive. If she subsequently dismisses them as sanctions for failure to produce psychotherapy records — she is contradicting her own written recommendation. This contradiction is a primary basis for Ms. Nelson's Fourth Circuit appeal.</p>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--gold); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); margin-bottom:0.5rem; text-transform:uppercase;">Filing Summary</div>
+            <p style="color:#ccc; font-size:0.85rem; line-height:1.8;">Magistrate Judge Mary Gordon Baker recommended that Defendants' Partial Motion to Dismiss be granted only as to Plaintiff's breach of contract claim and denied as to all other challenged claims. The Report allowed Plaintiff's claims for Title VI discrimination, slander, tortious interference, retaliation, and other federal and state law claims to proceed, finding that many issues required factual development through discovery.</p>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted);">PACER — Entry No. 250 — 28 Pages | Only breach of contract recommended for dismissal</div>
+        </div>
+
+        <!-- ECF 251 -->
+        <div style="background:#0f0f0f; border:1px solid rgba(196,30,30,0.3); padding:2rem;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.4rem;">ECF NO. 251 — DATE FILED 12/15/25</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">Order on Discovery Motions — Psychotherapy Records</div>
+              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:0.3rem;">Magistrate Judge Mary Gordon Baker</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#e05555;">JUDGE BAKER</div>
+          </div>
+          <p style="color:#bbb; font-size:0.88rem; line-height:1.8; margin-bottom:1rem;">This order compels Ms. Nelson to produce psychotherapy records or abandon her emotional distress claims. The order contains an internal contradiction — it cites cases supporting the "narrow approach" to psychotherapist-patient privilege waiver, while simultaneously ordering broad disclosure. The order also states that Ms. Nelson is the "master and commander of the release of her medical information" — yet uses failure to produce those records as the basis for dismissing her whistleblower retaliation claim as sanctions.</p>
+          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); margin-bottom:0.5rem; text-transform:uppercase;">The Internal Contradiction — ECF 251 at Page 15</div>
+            <p style="color:#888; font-size:0.82rem; line-height:1.8;">The order simultaneously states: (1) Defendants are entitled to "full and fair discovery" of therapy records if Ms. Nelson pursues emotional distress claims AND (2) Plaintiff is the "master and commander of the release of her medical information" and may abandon those claims to protect her privacy. The cases cited in the order — Cappetta, Richardson, Brooks — all support the narrow approach to waiver and do not authorize the broad disclosure demanded.</p>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); margin-bottom:0.5rem; text-transform:uppercase;">Defective Defense Subpoena — Three Procedural Violations</div>
+            <p style="color:#888; font-size:0.82rem; line-height:1.8;">Jackson Lewis served a subpoena on Ms. Nelson's therapist that: (1) listed a compliance date of October 31, 2025 but was mailed November 3, 2025 — after its own deadline; (2) was issued without a Court signature in violation of Rule 45; (3) sent Page 1 twice while omitting Page 3 — the page containing the therapist's statutory rights under Rule 45. A facially invalid subpoena was used as the basis for compelling production of Ms. Nelson's most private medical records.</p>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--gold); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); margin-bottom:0.5rem; text-transform:uppercase;">Six-Month Harassment Pattern</div>
+            <p style="color:#888; font-size:0.82rem; line-height:1.8;">Ms. Nelson documented in her May 4, 2026 objections that defendants pursued her private psychotherapy records for over six months — demanding all records without limitation, including irrelevant personal and family sessions. The court did not address this pattern of harassing discovery conduct.</p>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--gold); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); margin-bottom:0.5rem; text-transform:uppercase;">Filing Summary</div>
+            <p style="color:#ccc; font-size:0.85rem; line-height:1.8;">This order compels Ms. Nelson to produce psychotherapy records or face sanctions. The order contains an internal contradiction — citing cases supporting the narrow approach to psychotherapist-patient privilege waiver while simultaneously ordering broad disclosure. The order also states that Ms. Nelson is the "master and commander of the release of her medical information" — yet uses failure to produce those records as the basis for dismissing her whistleblower retaliation claim as sanctions.</p>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted);">PACER — Entry No. 251 — 24 Pages | Controlling authority: Jaffee v. Redmond, 518 U.S. 1 (1996)</div>
+        </div>
+
+        <!-- ECF 192 -->
+        <div style="background:#0f0f0f; border:1px solid rgba(196,30,30,0.3); padding:2rem;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.4rem;">ECF NO. 192 — DATE FILED 10/20/25</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">Order Denying Motion to Compel & Motion to Strike</div>
+              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:0.3rem;">Magistrate Judge Mary Gordon Baker</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#e05555;">JUDGE BAKER</div>
+          </div>
+          <p style="color:#bbb; font-size:0.88rem; line-height:1.8; margin-bottom:1rem;">This order denies Ms. Nelson's Motion to Compel — including her request for a timekeeping audit trail showing who altered her hours, when, and why — and her Motion to Strike a filing by non-party counsel for Bonnie Hunt. Critically, this order addresses the subpoena Ms. Nelson served on her former attorney Bonnie Hunt seeking financial records and communications with Curtiss-Wright to prove collusion. The court ruled this evidence had "absolutely no bearing" on her claims — without allowing Ms. Nelson to obtain it to prove otherwise.</p>
+          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); margin-bottom:0.5rem; text-transform:uppercase;">The Court-Stamped Subpoena — The Irrefutable Evidence</div>
+            <p style="color:#888; font-size:0.82rem; line-height:1.8;">This order states the court did not "expressly approve" the subpoena to Bonnie Hunt. Ms. Nelson has the actual subpoena bearing the official CLERK OF COURT stamp and federal court seal, dated October 2, 2025, signed by the Deputy Clerk. A court-stamped document cannot be denied. This contradiction between Judge Baker's written ruling and the physical court record is a centerpiece of Ms. Nelson's Fourth Circuit appeal.</p>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); margin-bottom:0.5rem; text-transform:uppercase;">What Was Blocked</div>
+            <p style="color:#888; font-size:0.82rem; line-height:1.8;">Timekeeping audit trail showing who altered Ms. Nelson's hours • Financial records between Bonnie Hunt and Curtiss-Wright • Communications between Hunt Law LLC and defense counsel • Physical inspection of Curtiss-Wright premises • All denied in a single order</p>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+            <div style="background:#0a0a0a; padding:1rem; text-align:center;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.3rem;">Motion to Compel</div>
+              <div style="color:#e05555; font-family:'Playfair Display',serif; font-weight:700;">DENIED</div>
+            </div>
+            <div style="background:#0a0a0a; padding:1rem; text-align:center;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.3rem;">Motion to Strike</div>
+              <div style="color:#e05555; font-family:'Playfair Display',serif; font-weight:700;">DENIED IN FULL</div>
+            </div>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--gold); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); margin-bottom:0.5rem; text-transform:uppercase;">Filing Summary</div>
+            <p style="color:#ccc; font-size:0.85rem; line-height:1.8;">Magistrate Judge Mary Gordon Baker denied Plaintiff's motions to compel discovery, inspect Curtiss-Wright's premises, and enforce a subpoena directed to former counsel Bonnie Hunt. The Court ruled that the subpoena seeking communications and financial records between Hunt and Defendants was irrelevant to the claims in the Fourth Amended Complaint and found no basis to compel production or issue sanctions.</p>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted);">PACER — Entry No. 192 — 7 Pages | Court-stamped subpoena to Bonnie Hunt on file contradicts this ruling</div>
+        </div>
+
+        <!-- ECF 266 -->
+        <div style="background:#0f0f0f; border:1px solid rgba(196,30,30,0.3); padding:2rem;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.4rem;">ECF NO. 266 — DATE FILED 12/23/25</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">Order Denying Motion to Recuse</div>
+              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:0.3rem;">District Judge Richard Mark Gergel</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#e05555;">JUDGE GERGEL</div>
+          </div>
+          <p style="color:#bbb; font-size:0.88rem; line-height:1.8; margin-bottom:1rem;">Ms. Nelson filed a motion to recuse Judge Gergel based on what she described as an "unmistakable appearance of bias and partiality" — including irregular rulings, missing filings, contradictory orders, and clear judicial acceptance of defense counsel's false statements. Judge Gergel denied the motion, characterizing Ms. Nelson's documented observations as the result of being "unfamiliar with the Court's administrative processes."</p>
+          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); margin-bottom:0.5rem; text-transform:uppercase;">Footnote 1 — What the Court Said About Ms. Nelson</div>
+            <p style="color:#888; font-size:0.82rem; line-height:1.8;">The order's footnote notes that Ms. Nelson has filed 38 motions with a docket running to 263 entries — framing this volume as evidence of the problem rather than evidence of the extraordinary obstruction a pro se plaintiff faced in obtaining basic discovery against a well-resourced defense contractor. A plaintiff filing 38 motions is not a sign of frivolous litigation. It is a sign of a system that required 38 motions to function.</p>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--gold); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); margin-bottom:0.5rem; text-transform:uppercase;">Filing Summary</div>
+            <p style="color:#ccc; font-size:0.85rem; line-height:1.8;">District Judge Richard Mark Gergel denied Plaintiff's motion seeking his recusal based on alleged bias, docket irregularities, and missing filings. The Order stated that the reassignment of the case was administrative, that the Court was unaware of Plaintiff's undocketed objections until contacted by the Fourth Circuit Clerk, and that no reasonable observer would question the Court's impartiality.</p>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted);">PACER — Entry No. 266 — 4 Pages | Recusal denied — Motion to recuse preserved for appeal</div>
+        </div>
+
+      </div>
+
+
+        <!-- ECF 303-304 -->
+        <div style="background:#0f0f0f; border:1px solid rgba(196,30,30,0.3); padding:2rem;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.4rem;">ECF NOS. 303–304</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">Orders Denying Fifth Amended Complaint & Motion to Stay</div>
+              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:0.3rem;">Magistrate Judge Mary Gordon Baker</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#e05555;">JUDGE BAKER</div>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--gold); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); margin-bottom:0.5rem; text-transform:uppercase;">Filing Summary</div>
+            <p style="color:#ccc; font-size:0.85rem; line-height:1.8;">Magistrate Judge Mary Gordon Baker denied Plaintiff's Motion for Leave to File a Fifth Amended Complaint, finding the proposed amendments were unnecessary, prejudicial, and failed to satisfy the "good cause" standard after the amendment deadline had passed. The Court also denied Plaintiff's Motion to Stay proceedings pending Fourth Circuit review, ruling that the pending petition did not divest the district court of jurisdiction or justify halting the case.</p>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+            <div style="background:#0a0a0a; padding:1rem; text-align:center;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.3rem;">Fifth Amended Complaint</div>
+              <div style="color:#e05555; font-family:'Playfair Display',serif; font-weight:700;">DENIED</div>
+            </div>
+            <div style="background:#0a0a0a; padding:1rem; text-align:center;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:0.3rem;">Motion to Stay</div>
+              <div style="color:#e05555; font-family:'Playfair Display',serif; font-weight:700;">DENIED</div>
+            </div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted);">PACER — Entry Nos. 303–304</div>
+        </div>
+
+        <!-- ECF 307 -->
+        <div style="background:#0f0f0f; border:1px solid var(--border); padding:2rem;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:0.4rem;">ECF NO. 307</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">Order Staying Dispositive Motion Deadline</div>
+              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:0.3rem;">Magistrate Judge Mary Gordon Baker</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#e05555;">JUDGE BAKER</div>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--gold); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); margin-bottom:0.5rem; text-transform:uppercase;">Filing Summary</div>
+            <p style="color:#ccc; font-size:0.85rem; line-height:1.8;">Magistrate Judge Mary Gordon Baker stayed the dispositive motions deadline pending resolution of Defendants' Motion for Sanctions. The Order temporarily paused summary judgment deadlines until the sanctions motion was resolved — placing the entire case in a holding pattern while the sanctions motion that would eliminate Ms. Nelson's strongest claims was pending.</p>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted);">PACER — Entry No. 307 | Dispositive deadline stayed pending sanctions ruling</div>
+        </div>
+
+        <!-- ECF 309 -->
+        <div style="background:#0f0f0f; border:1px solid rgba(196,30,30,0.5); padding:2rem;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.4rem;">ECF NO. 309 — REPORT & RECOMMENDATION</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;">Recommendation — Full Case Dismissal as Sanctions</div>
+              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:0.3rem;">Magistrate Judge Mary Gordon Baker</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#e05555;">JUDGE BAKER</div>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); margin-bottom:0.5rem; text-transform:uppercase;">The Critical Contradiction With ECF 250</div>
+            <p style="color:#ccc; font-size:0.85rem; line-height:1.8;">In ECF 250 (December 15, 2025), Judge Baker recommended that Ms. Nelson's whistleblower retaliation, invasion of privacy, illegal interception of communications, and civil conspiracy claims should all SURVIVE dismissal. In ECF 309, she recommends dismissing those exact same claims as sanctions — based on failure to produce psychotherapy records protected by Supreme Court precedent in Jaffee v. Redmond. This direct contradiction between her own written recommendations is a centerpiece of Ms. Nelson's Fourth Circuit appeal.</p>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--gold); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); margin-bottom:0.5rem; text-transform:uppercase;">Filing Summary</div>
+            <p style="color:#ccc; font-size:0.85rem; line-height:1.8;">Magistrate Judge Mary Gordon Baker recommended that Defendants' Motion for Sanctions be granted and that Plaintiff's case be dismissed in full based on alleged noncompliance with discovery orders. The Report concluded that Plaintiff acted in bad faith by refusing to produce requested discovery materials, found Defendants were prejudiced by the lack of production, and determined that lesser sanctions would be ineffective. Alternatively, the Court recommended dismissal of several claims and exclusion of evidence not previously produced in discovery.</p>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted);">PACER — Entry No. 309 | Full dismissal recommended — adopted in part by Judge Gergel in ECF 316</div>
+        </div>
+
+        <!-- ECF 316 -->
+        <div style="background:#0f0f0f; border:2px solid var(--red); padding:2rem;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.4rem;">ECF NO. 316 — MOST RECENT ORDER</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700;">Order Adopting Sanctions — Four Claims Dismissed With Prejudice</div>
+              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:0.3rem;">District Judge Richard Mark Gergel</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#e05555;">JUDGE GERGEL</div>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1.5rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); margin-bottom:0.8rem; text-transform:uppercase;">Claims Dismissed With Prejudice as Sanctions</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
+              <div style="background:#1a0a0a; padding:0.8rem; border:1px solid rgba(196,30,30,0.3);">
+                <div style="color:#e05555; font-size:0.82rem; font-weight:700;">Whistleblower Retaliation</div>
+                <div style="color:var(--text-muted); font-size:0.72rem; font-family:'JetBrains Mono',monospace;">41 U.S.C. § 4712</div>
+              </div>
+              <div style="background:#1a0a0a; padding:0.8rem; border:1px solid rgba(196,30,30,0.3);">
+                <div style="color:#e05555; font-size:0.82rem; font-weight:700;">Invasion of Privacy</div>
+                <div style="color:var(--text-muted); font-size:0.72rem; font-family:'JetBrains Mono',monospace;">State law claim</div>
+              </div>
+              <div style="background:#1a0a0a; padding:0.8rem; border:1px solid rgba(196,30,30,0.3);">
+                <div style="color:#e05555; font-size:0.82rem; font-weight:700;">Illegal Interception of Communications</div>
+                <div style="color:var(--text-muted); font-size:0.72rem; font-family:'JetBrains Mono',monospace;">Federal Wiretap Act — 18 U.S.C. § 2511</div>
+              </div>
+              <div style="background:#1a0a0a; padding:0.8rem; border:1px solid rgba(196,30,30,0.3);">
+                <div style="color:#e05555; font-size:0.82rem; font-weight:700;">Intentional Infliction of Emotional Distress</div>
+                <div style="color:var(--text-muted); font-size:0.72rem; font-family:'JetBrains Mono',monospace;">State law claim</div>
+              </div>
+            </div>
+            <div style="margin-top:1rem; padding:0.8rem; background:#1a0a0a; border:1px solid rgba(196,30,30,0.3);">
+              <div style="color:#e05555; font-size:0.82rem; font-weight:700; margin-bottom:0.3rem;">Also Ordered</div>
+              <div style="color:#888; font-size:0.82rem; line-height:1.7;">Emotional distress damages struck • Compensatory damages struck • Plaintiff prohibited from using withheld evidence to support remaining claims</div>
+            </div>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--gold); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); margin-bottom:0.5rem; text-transform:uppercase;">Filing Summary</div>
+            <p style="color:#ccc; font-size:0.85rem; line-height:1.8;">District Judge Richard Mark Gergel adopted Magistrate Judge Baker's sanctions recommendation in part after finding Plaintiff willfully failed to comply with discovery orders. Rather than dismissing the entire case, the Court imposed lesser sanctions by dismissing Plaintiff's claims for intentional infliction of emotional distress, whistleblower retaliation, invasion of privacy, and illegal interception of communications with prejudice, striking emotional distress and compensatory damages claims, and prohibiting Plaintiff from using withheld evidence to support remaining claims.</p>
+          </div>
+          <div style="background:#0a0a0a; border-left:3px solid var(--red); padding:1rem; margin-bottom:1rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--red); margin-bottom:0.5rem; text-transform:uppercase;">Why This Order Will Be Reversed on Appeal</div>
+            <p style="color:#888; font-size:0.85rem; line-height:1.8;">The claims dismissed here are the exact claims Judge Baker's own ECF 250 Report and Recommendation stated should survive. The basis for dismissal — failure to produce psychotherapy records — relies on a defective Jackson Lewis subpoena with three documented procedural violations. The controlling Supreme Court precedent (Jaffee v. Redmond, 518 U.S. 1, 1996) protects psychotherapist-patient communications. These are the primary grounds for Ms. Nelson's Fourth Circuit appeal.</p>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-muted);">PACER — Entry No. 316 | Four claims dismissed with prejudice — Fourth Circuit appeal pending</div>
+        </div>
+
+      <div style="margin-top:2rem; background:#0a0a0a; border:1px solid var(--border); padding:1.5rem;" class="reveal">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:0.8rem; text-transform:uppercase;">Note on Judge Assignment</div>
+        <p style="color:#888; font-size:0.85rem; line-height:1.8;">This case was initially assigned to District Judge David Norton and referred to Magistrate Judge Molly H. Cherry for pretrial proceedings. On October 7, 2025 — after Judge Cherry had issued subpoenas supporting Ms. Nelson's discovery — the case was administratively reassigned to District Judge Richard Mark Gergel and Magistrate Judge Mary Gordon Baker. Every adverse ruling documented on this site was issued after that October 7, 2025 reassignment.</p>
+      </div>
+
     </div>
   </div>
 
@@ -1626,19 +1870,6 @@
 </div>
 
 <script>
-  const PETITION_KEY = 'petitionSigned';
-  const PETITION_URL = 'https://c.org/pk9mYfxFL9';
-
-  // Skip the startup gate and show site directly.
-  const gateEl = document.getElementById('gate');
-  const siteEl = document.getElementById('site');
-  if (gateEl) gateEl.style.display = 'none';
-  if (siteEl) siteEl.classList.add('visible');
-
-  function markPetitionStarted() {
-    localStorage.setItem(PETITION_KEY, 'true');
-  }
-
   function enterSite() {
     document.getElementById('gateForm').style.display = 'none';
     document.getElementById('gateSuccess').style.display = 'block';
@@ -1708,13 +1939,7 @@
   }, { threshold: 0.1 });
 
   reveals.forEach(el => observer.observe(el));
-
-  // Any petition button click marks petition gate as completed.
-  document.querySelectorAll('a[href="https://c.org/pk9mYfxFL9"]').forEach((link) => {
-    link.addEventListener('click', markPetitionStarted);
-  });
 </script>
-<script type="module" src="/src/document-listing.js"></script>
 
 </body>
 </html>
