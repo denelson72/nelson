@@ -1,28 +1,40 @@
 # Documents Folder
 
-Place PDF files inside these folders:
+**All site documents must live here** under `src/documents/`. Only `.pdf` files are listed on the website (via Vite build).
 
-- `judges-order`
-- `evidence`
-- `defense-filings`
-- `nelson-filings`
-- `misc` (can contain nested subfolders)
+## Curtiss-Wright case (South Carolina)
 
-Example:
+| Folder | Shown on site as |
+|--------|------------------|
+| `judges-order/` | Judge's Orders |
+| `defense-filings/` | Defense Filings |
+| `nelson-filings/` | Plaintiff Filings |
+| `evidence/` | Supporting Evidence |
+| `congressman-clyburn/` | Congressman Clyburn |
+| `misc/` | Miscellaneous (subfolders OK) |
+
+## Amentum case (Florida)
+
+| Folder | Shown on site as |
+|--------|------------------|
+| `amentum-judges-order/` | Judge's Orders (Amentum) |
+| `amentum-defense-filings/` | Defense Filings (Amentum) |
+| `amentum-plaintiff-filings/` | Plaintiff Filings (Amentum) |
+
+## Example
 
 ```text
 src/documents/
   judges-order/
-    order-2026-05-01.pdf
-  evidence/
-    phone-records.pdf
+    ECF 19 Judge Cherry Order to Relieve Counsel.pdf
   defense-filings/
     motion-to-dismiss.pdf
   nelson-filings/
     plaintiff-objection.pdf
-  misc/
-    timeline/
-      supporting-doc.pdf
+  evidence/
+    police-report.pdf
+  amentum-plaintiff-filings/
+    ECF 1 Complaint.pdf
 ```
 
-Only `.pdf` files are listed automatically on the website.
+Do **not** keep PDFs in the project root — move them into the matching folder above, then run `npm run build`.

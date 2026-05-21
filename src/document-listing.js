@@ -1,10 +1,13 @@
 const folderOrder = [
   "judges-order",
-  "evidence",
   "defense-filings",
   "nelson-filings",
+  "evidence",
   "congressman-clyburn",
   "misc",
+  "amentum-judges-order",
+  "amentum-defense-filings",
+  "amentum-plaintiff-filings",
 ];
 
 const PETITION_KEY = "petitionSigned";
@@ -12,12 +15,15 @@ const PETITION_SESSION_KEY = "petitionSignedSession";
 const PETITION_URL = "https://c.org/pk9mYfxFL9";
 
 const folderLabels = {
-  "judges-order": "Judge's Orders",
-  evidence: "Videos",
-  "defense-filings": "Defense Filings",
-  "nelson-filings": "Plaintiff Filings",
+  "judges-order": "Judge's Orders (Curtiss-Wright)",
+  "defense-filings": "Defense Filings (Curtiss-Wright)",
+  "nelson-filings": "Plaintiff Filings (Curtiss-Wright)",
+  evidence: "Supporting Evidence",
   "congressman-clyburn": "Congressman Clyburn",
   misc: "Miscellaneous",
+  "amentum-judges-order": "Judge's Orders (Amentum)",
+  "amentum-defense-filings": "Defense Filings (Amentum)",
+  "amentum-plaintiff-filings": "Plaintiff Filings (Amentum)",
 };
 
 function normalizePdfPath(path) {
@@ -254,8 +260,14 @@ function renderDocuments() {
     evidence: document.getElementById("doc-slot-evidence"),
     "congressman-clyburn": document.getElementById("doc-slot-congressman-clyburn"),
     misc: document.getElementById("doc-slot-misc"),
+    "amentum-judges-order": document.getElementById("doc-slot-amentum-judges-order"),
+    "amentum-defense-filings": document.getElementById("doc-slot-amentum-defense-filings"),
+    "amentum-plaintiff-filings": document.getElementById("doc-slot-amentum-plaintiff-filings"),
   };
-  if (!Object.values(slots).every(Boolean)) return;
+  const activeSlots = Object.fromEntries(
+    Object.entries(slots).filter(([, el]) => Boolean(el))
+  );
+  if (!Object.keys(activeSlots).length) return;
 
   let allPdfs = {};
   try {
@@ -265,7 +277,7 @@ function renderDocuments() {
       import: "default",
     });
   } catch {
-    for (const slot of Object.values(slots)) {
+    for (const slot of Object.values(activeSlots)) {
       slot.textContent = "Document listing is available after Vite/Netlify build.";
     }
     document.querySelectorAll(".docket-link-cell").forEach((td) => {
@@ -279,12 +291,16 @@ function renderDocuments() {
   renderDocketLinks(allPdfs);
 
   for (const folderKey of folderOrder) {
-    const slot = slots[folderKey];
+    const slot = activeSlots[folderKey];
+    if (!slot) continue;
+
     const docs = grouped[folderKey] || [];
     slot.innerHTML = "";
+    slot.className = "";
 
     if (!docs.length) {
       slot.textContent = "No documents yet";
+      slot.className = "doc-slot-empty";
       continue;
     }
 
@@ -306,3 +322,4 @@ function renderDocuments() {
 }
 
 renderDocuments();
+window.dispatchEvent(new Event("documents-rendered"));
