@@ -18,8 +18,94 @@ const folderOrder = [
 ];
 
 const PETITION_KEY = "petitionSigned";
-const PETITION_SESSION_KEY = "petitionSignedSession";
+const PETITION_SESSION_UNTIL_KEY = "petitionSignedUntil";
+const PETITION_LEGACY_SESSION_KEY = "petitionSignedSession";
+const PETITION_BYPASS_MS = 30 * 60 * 1000;
 const PETITION_URL = "https://c.org/pk9mYfxFL9";
+
+let pendingDocumentUrl = null;
+let petitionModalWired = false;
+
+function isPetitionBypassActive() {
+  if (localStorage.getItem(PETITION_KEY) === "true") return true;
+  const until = Number(sessionStorage.getItem(PETITION_SESSION_UNTIL_KEY) || 0);
+  return until > Date.now();
+}
+
+function grantPetitionBypass(durationMs = PETITION_BYPASS_MS) {
+  sessionStorage.setItem(
+    PETITION_SESSION_UNTIL_KEY,
+    String(Date.now() + durationMs)
+  );
+}
+
+function grantPetitionSignedPermanent() {
+  localStorage.setItem(PETITION_KEY, "true");
+  grantPetitionBypass();
+}
+
+function migrateLegacyPetitionSession() {
+  if (sessionStorage.getItem(PETITION_LEGACY_SESSION_KEY) === "true") {
+    grantPetitionBypass();
+    sessionStorage.removeItem(PETITION_LEGACY_SESSION_KEY);
+  }
+}
+
+function hidePetitionModal() {
+  const modal = document.getElementById("petitionModal");
+  if (modal) modal.style.display = "none";
+}
+
+function resumePendingDocument() {
+  if (!pendingDocumentUrl) return;
+  const url = pendingDocumentUrl;
+  pendingDocumentUrl = null;
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
+function initPetitionModal() {
+  if (petitionModalWired) return;
+
+  const modal = document.getElementById("petitionModal");
+  if (!modal) return;
+
+  const signLink = document.getElementById("petition-sign-link");
+  const signedBtn = document.getElementById("petition-already-signed-btn");
+  const closeBtn = document.getElementById("petition-close-btn");
+
+  signLink?.addEventListener("click", () => {
+    grantPetitionSignedPermanent();
+    pendingDocumentUrl = null;
+    hidePetitionModal();
+  });
+
+  signedBtn?.addEventListener("click", () => {
+    grantPetitionBypass();
+    hidePetitionModal();
+    resumePendingDocument();
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    pendingDocumentUrl = null;
+    hidePetitionModal();
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      pendingDocumentUrl = null;
+      hidePetitionModal();
+    }
+  });
+
+  petitionModalWired = true;
+}
+
+function showPetitionPopup() {
+  initPetitionModal();
+  const modal = document.getElementById("petitionModal");
+  if (!modal) return;
+  modal.style.display = "flex";
+}
 
 const folderLabels = {
   "judges-order": "Judge's Orders (Curtiss-Wright)",
@@ -50,11 +136,9 @@ function findMediaUrl(mediaMap, needle) {
 
 function attachPetitionGateToPdfLink(link) {
   link.addEventListener("click", (event) => {
-    const petitionSigned =
-      localStorage.getItem(PETITION_KEY) === "true" ||
-      sessionStorage.getItem(PETITION_SESSION_KEY) === "true";
-    if (petitionSigned) return;
+    if (isPetitionBypassActive()) return;
     event.preventDefault();
+    pendingDocumentUrl = link.href || null;
     showPetitionPopup();
   });
 }
@@ -139,106 +223,6 @@ function excludeMiscFromArchive(fileName) {
   if (name.includes("senator") || name.includes("tim scott")) return true;
   if (name.includes("graham response") || name.includes("follow-up")) return true;
   return false;
-}
-
-function showPetitionPopup() {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  let modal = document.getElementById("petitionModal");
-  if (!modal) {
-    modal = document.createElement("div");
-    modal.id = "petitionModal";
-    modal.style.position = "fixed";
-    modal.style.inset = "0";
-    modal.style.background = "rgba(10,10,10,0.72)";
-    modal.style.display = "flex";
-    modal.style.alignItems = "center";
-    modal.style.justifyContent = "center";
-    modal.style.zIndex = "2000";
-    modal.style.padding = isMobile ? "1rem" : "2rem";
-    modal.style.overflowY = "auto";
-
-    const card = document.createElement("div");
-    card.className = "gate-inner";
-    card.style.maxWidth = "560px";
-    card.style.width = "100%";
-    card.style.maxHeight = isMobile ? "90vh" : "none";
-    card.style.overflowY = isMobile ? "auto" : "visible";
-    card.style.background = "#171717";
-    card.style.border = "1px solid rgba(184,149,42,0.45)";
-    card.style.padding = isMobile ? "1.4rem" : "1.8rem";
-    card.style.borderRadius = "6px";
-
-    const seal = document.createElement("div");
-    seal.className = "gate-seal";
-    seal.textContent = "⚖";
-
-    const title = document.createElement("h1");
-    title.innerHTML = "Before You Access Files,<br><span>Sign the Petition</span>";
-    title.style.color = "#ffffff";
-
-    const text = document.createElement("p");
-    text.textContent =
-      "To access evidence documents, please sign the petition first. If you already signed, confirm below and continue.";
-    text.style.color = "#d0d0d0";
-
-    const actions = document.createElement("div");
-    actions.className = "gate-form";
-    actions.style.gap = isMobile ? "0.7rem" : "1rem";
-
-    const signBtn = document.createElement("a");
-    signBtn.href = PETITION_URL;
-    signBtn.target = "_blank";
-    signBtn.rel = "noopener noreferrer";
-    signBtn.textContent = "Sign Petition on Change.org";
-    signBtn.className = "sign-btn";
-    signBtn.style.display = "block";
-    signBtn.style.textDecoration = "none";
-    signBtn.style.textAlign = "center";
-    signBtn.style.padding = isMobile ? "0.85rem 1rem" : "1rem 2rem";
-    signBtn.addEventListener("click", () => {
-      localStorage.setItem(PETITION_KEY, "true");
-      sessionStorage.setItem(PETITION_SESSION_KEY, "true");
-      modal.style.display = "none";
-    });
-
-    const signedBtn = document.createElement("button");
-    signedBtn.type = "button";
-    signedBtn.textContent = "I Have Already Signed";
-    signedBtn.className = "sign-btn";
-    signedBtn.style.background = "#232323";
-    signedBtn.style.border = "1px solid rgba(184,149,42,0.3)";
-    signedBtn.style.color = "#aaa";
-    signedBtn.style.padding = isMobile ? "0.85rem 1rem" : "1rem 2rem";
-    signedBtn.addEventListener("click", () => {
-      sessionStorage.setItem(PETITION_SESSION_KEY, "true");
-      modal.style.display = "none";
-    });
-
-    const closeBtn = document.createElement("button");
-    closeBtn.type = "button";
-    closeBtn.textContent = "Close";
-    closeBtn.className = "sign-btn";
-    closeBtn.style.background = "#2b2b2b";
-    closeBtn.style.border = "1px solid rgba(184,149,42,0.3)";
-    closeBtn.style.color = "#aaa";
-    closeBtn.style.padding = isMobile ? "0.85rem 1rem" : "1rem 2rem";
-    closeBtn.addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-
-    actions.appendChild(signBtn);
-    actions.appendChild(signedBtn);
-    actions.appendChild(closeBtn);
-    card.appendChild(seal);
-    card.appendChild(title);
-    card.appendChild(text);
-    card.appendChild(actions);
-    modal.appendChild(card);
-    document.body.appendChild(modal);
-  } else {
-    modal.style.padding = isMobile ? "1rem" : "2rem";
-    modal.style.display = "flex";
-  }
 }
 
 function toReadableTitle(fileName) {
@@ -622,5 +606,7 @@ function renderDocuments() {
   }
 }
 
+migrateLegacyPetitionSession();
+initPetitionModal();
 renderDocuments();
 window.dispatchEvent(new Event("documents-rendered"));
