@@ -256,7 +256,7 @@
   /* HERO */
   .hero {
     min-height: 100vh;
-    padding: 7rem 2rem 60px;
+    padding: 7rem 2rem 2.5rem;
     display: flex;
     align-items: center;
     position: relative;
@@ -324,7 +324,7 @@
     font-size: clamp(1.15rem, 2vw, 1.45rem);
     color: #ffffff;
     max-width: 600px;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     line-height: 1.8;
     font-weight: 300;
     font-style: italic;
@@ -394,16 +394,16 @@
 
   /* SECTIONS */
   section {
-    padding: 6rem 2rem;
+    padding: 3.5rem 2rem;
     max-width: 1100px;
     margin: 0 auto;
   }
 
   .section-full {
     max-width: 100%;
-    padding: 6rem 0;
+    padding: 3.5rem 0;
     border-top: 1px solid var(--border);
-    scroll-margin-top: 7.5rem;
+    scroll-margin-top: 5.5rem;
   }
 
   .section-inner {
@@ -437,8 +437,12 @@
     font-size: clamp(1.45rem, 2.8vw, 2.1rem);
     font-weight: 900;
     line-height: 1.15;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.85rem;
     color: #ffffff;
+  }
+
+  .section-inner > p.reveal {
+    margin-bottom: 1.25rem;
   }
 
   h3 {
@@ -550,8 +554,8 @@
 
   .sanctions-block {
     max-width: 900px;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 0.75rem;
     border-bottom: 1px solid var(--border);
   }
 
@@ -616,9 +620,19 @@
     font-size: clamp(0.95rem, 1.6vw, 1.15rem);
   }
 
+  #amentum-court-record {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  #amentum-court-record .court-record-header {
+    margin-top: 1.5rem;
+  }
+
   .court-record-header {
-    margin: 2rem 0 2.5rem;
-    padding-bottom: 1.5rem;
+    margin: 1.25rem 0 1.75rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid var(--border);
     text-align: left;
   }
@@ -641,7 +655,7 @@
   }
 
   .filing-group {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.75rem;
   }
 
   .filing-group-title {
@@ -705,16 +719,19 @@
 
   .filing-entry-link {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
     color: var(--gold);
-    text-decoration: none;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    line-height: 1.5;
+    word-break: break-word;
   }
 
   .filing-entry-link:hover {
     color: #ffffff;
-    text-decoration: underline;
+    text-decoration-thickness: 2px;
   }
 
   .filing-entry-pending,
@@ -744,7 +761,7 @@
   .timeline-item {
     position: relative;
     padding-left: 2rem;
-    padding-bottom: 3rem;
+    padding-bottom: 2rem;
   }
 
   .timeline-item::before {
@@ -836,6 +853,62 @@
     margin-top: 0.75rem;
   }
 
+  .timeline-evidence-links a.evidence-tag {
+    display: inline;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-top: 0;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    color: var(--gold);
+  }
+
+  .timeline-evidence-links a.evidence-tag.red {
+    background: transparent;
+    border: none;
+    color: #f87171;
+  }
+
+  .timeline-evidence-links a.evidence-tag:hover {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    text-decoration-thickness: 2px;
+  }
+
+  .timeline-evidence-links a.evidence-tag.red:hover {
+    background: transparent;
+    color: #fecaca;
+  }
+
+  .timeline-evidence-links a.evidence-tag::after {
+    content: " →";
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0.9;
+  }
+
+  .timeline-evidence-links a.evidence-tag.is-pending {
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.35);
+    cursor: default;
+    opacity: 1;
+  }
+
+  .timeline-evidence-links a.evidence-tag.is-pending::after {
+    content: " (file pending)";
+    font-weight: 400;
+    font-size: 0.78rem;
+    opacity: 0.85;
+  }
+
   /* EVIDENCE GRID */
   .evidence-grid {
     display: grid;
@@ -843,7 +916,7 @@
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
-    margin-top: 3rem;
+    margin-top: 1.75rem;
   }
 
   .evidence-card {
@@ -983,8 +1056,8 @@
   .key-question {
     background: var(--bg-card);
     border-left: 3px solid var(--red);
-    padding: 2.5rem 2.5rem 2.5rem 3rem;
-    margin: 3rem 0;
+    padding: 2rem 2rem 2rem 2.5rem;
+    margin: 2rem 0;
   }
 
   .key-question p {
@@ -1014,7 +1087,7 @@
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
-    margin-top: 2rem;
+    margin-top: 1.25rem;
   }
 
   .institution-card {
@@ -1049,8 +1122,8 @@
   .petition-section {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    padding: 3rem;
-    margin-top: 3rem;
+    padding: 2rem;
+    margin-top: 1.75rem;
   }
 
   .petition-text {
@@ -1128,7 +1201,7 @@
   /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
-    padding: 3rem 2rem;
+    padding: 2.5rem 2rem;
     text-align: center;
   }
 
@@ -1145,6 +1218,20 @@
     letter-spacing: 0.08em;
     margin-bottom: 1rem;
     display: block;
+  }
+
+  .footer-active-cases {
+    max-width: 1100px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    text-align: center;
+  }
+
+  .footer-active-cases .nav-case-label {
+    margin-bottom: 0.35rem;
   }
 
   #site code {
@@ -1261,10 +1348,6 @@
         <li><a href="#judicial">Judicial</a></li>
         <li><a href="#tech">Big Tech</a></li>
       </ul>
-      <div class="nav-case-info">
-        <div class="nav-case-label">Active Federal Cases</div>
-        <div class="active-case-line">Debra Nelson v. Curtiss-Wright — Case No. 2:25-CV-00405-RMG-MGB</div>
-      </div>
     </div>
   </nav>
 
@@ -1274,11 +1357,6 @@
       <div class="hero-tag"><span class="live-dot"></span> Active Federal Case — Public Accountability Archive</div>
       <h1>When the System<br><span class="line2">Becomes the Threat</span></h1>
       <p class="hero-sub">A documented record of whistleblower retaliation, judicial misconduct, evidence destruction, and institutional cover-up spanning two years — in the case of one South Carolina woman against a major defense contractor.</p>
-      <div class="case-badge">
-        <span class="case-badge-label">Active Federal Cases</span>
-        <span class="case-badge-number">Debra Nelson v. Curtiss-Wright — Case No. 2:25-CV-00405-RMG-MGB</span>
-        <span class="case-badge-number">Debra Nelson v. Amentum Government Services Parent Holdings LLC — Case No. 3:25-cv-01447-MCR-ZCB</span>
-      </div>
       <div class="hero-stats">
         <div class="stat">
           <span class="stat-num">2+</span>
@@ -1324,7 +1402,7 @@
     <div class="section-inner">
       <div class="section-label reveal">Documented Events</div>
       <h2 class="reveal">The Retaliation Timeline</h2>
-      <p class="reveal" style="color:#ffffff; margin-bottom:3rem; max-width:600px;">Every entry below is supported by documentary evidence, official records, or recorded communications.</p>
+      <p class="reveal" style="color:#ffffff; margin-bottom:1.5rem; max-width:600px;">Every entry below is supported by documentary evidence, official records, or recorded communications.</p>
 
       <div class="timeline">
         <div class="timeline-item reveal">
@@ -1428,7 +1506,7 @@
     <div class="section-inner">
       <div class="section-label reveal">Documentation</div>
       <h2 class="reveal">Evidence Archive</h2>
-      <p class="reveal" style="color:#ffffff; max-width:700px; margin-bottom:1.5rem; font-size:0.9rem; line-height:1.65;">Court filings with summaries are in <a href="#court-record" style="color:var(--gold);">What Happened Inside the Courtroom</a> (Plaintiff Filings, Defense Filings, and Judge's Orders). Supporting records, congressional correspondence, and senator responses are organized below.</p>
+      <p class="reveal" style="color:#ffffff; max-width:700px; margin-bottom:1.5rem; font-size:0.9rem; line-height:1.65;">Court filings with summaries are in <a href="#judicial" style="color:var(--gold);">What Happened Inside the Courtroom</a> — <a href="#court-record" style="color:var(--gold);">Curtiss-Wright</a> first, then <a href="#amentum-court-record" style="color:var(--gold);">Amentum</a>. Supporting records, congressional correspondence, and senator responses are organized below.</p>
 
       <div class="section-label reveal">Nelson v. Curtiss-Wright</div>
       <div class="evidence-grid">
@@ -1517,7 +1595,9 @@
     <div class="section-inner">
       <div class="section-label reveal">Judicial Misconduct</div>
       <h2 class="reveal">What Happened Inside the Courtroom</h2>
-      <p class="reveal" style="color:#ffffff; max-width:700px; margin-bottom:2rem;">The misconduct in this case is not limited to events outside the courtroom. The judicial record itself documents a pattern of rulings that systematically blocked Ms. Nelson's ability to obtain evidence — and a direct contradiction between two judges regarding a court-issued subpoena.</p>
+      <p class="reveal" style="color:#ffffff; max-width:700px; margin-bottom:2rem;">The sections below are organized in two parts: first, the full court record and judicial misconduct timeline for <strong style="color:var(--white)">Nelson v. Curtiss-Wright</strong> (South Carolina); second, the separate <strong style="color:var(--white)">Amentum</strong> lawsuit (Florida).</p>
+
+      <div class="section-label reveal">Nelson v. Curtiss-Wright</div>
 
       <div id="court-record" class="court-record reveal">
         <div class="court-record-header">
@@ -1565,38 +1645,14 @@
         </div>
 
         <p class="court-record-note reveal">This case was initially assigned to District Judge David Norton and Magistrate Judge Molly H. Cherry. On October 7, 2025 — after Judge Cherry had issued subpoenas supporting Ms. Nelson's discovery — the case was reassigned to District Judge Richard Mark Gergel and Magistrate Judge Mary Gordon Baker.</p>
-
-        <div id="amentum-court-record" class="court-record reveal" style="margin-top:2.5rem;">
-          <div class="court-record-header">
-            <div class="court-name">Amentum Lawsuit</div>
-            <div class="court-division">U.S. District Court for the Northern District of Florida</div>
-            <div class="court-case-no">Debra Nelson v. Amentum Government Services Parent Holdings LLC — Case No. 3:25-cv-01447-MCR-ZCB</div>
-          </div>
-
-          <p class="amentum-case-summary"><strong style="color:var(--gold); font-weight:600;">Amentum Lawsuit Summary.</strong> Amentum is a federal defense contractor at Naval Air Station Whiting Field in Milton, Florida, performing aviation maintenance on T-6 training aircraft. Plaintiff Debra Nelson, an NDI Technician, alleges she reported safety, quality control, and compliance concerns related to aircraft maintenance and inspection procedures — and was subsequently retaliated against, subjected to hostile treatment, fabricated disciplinary actions, and termination.</p>
-          <p class="amentum-case-summary">Plaintiff also alleges cross-case interference with her separate federal lawsuit against Curtiss-Wright Electro-Mechanical Corporation. Both companies share legal representation through Jackson Lewis P.C., and Plaintiff's termination occurred less than 24 hours after she provided deposition testimony in the Curtiss-Wright matter.</p>
-          <p class="amentum-case-summary">Claims include retaliation, hostile work environment, whistleblower activity, and workplace safety reporting in connection with federal defense contract operations.</p>
-
-          <div class="filing-group">
-            <h3 class="filing-group-title">Plaintiff Filings</h3>
-            <div id="filing-list-amentum-plaintiff" class="filing-list-empty">Loading filings…</div>
-          </div>
-          <div class="filing-group">
-            <h3 class="filing-group-title">Defense Filings</h3>
-            <div id="filing-list-amentum-defense" class="filing-list-empty">Loading filings…</div>
-          </div>
-          <div class="filing-group">
-            <h3 class="filing-group-title">Judge's Orders</h3>
-            <div id="filing-list-amentum-judges-order" class="filing-list-empty">Loading filings…</div>
-          </div>
-        </div>
       </div>
 
       <div class="key-question reveal">
         <span class="kq-label">The Central Judicial Misconduct Question</span>
         <p style="font-size:0.5rem;">"Magistrate Judge Cherry reviewed the evidence and issued the subpoenas. Magistrate Judge Baker — her replacement — then withdrew the Bonnie Hunt subpoena and told Ms. Nelson the court had never issued them. The prior signed order ECF 80 remains on the docket."</p>
+      </div>
 
-      <div class="timeline" style="margin-top:3rem;">
+      <div class="timeline" style="margin-top:1.75rem;">
         <div class="timeline-item reveal">
           <div class="timeline-date">January 21, 2025</div>
           <div class="timeline-title">Case Removed to Federal Court — Counsel Immediately Withdraws</div>
@@ -1637,6 +1693,33 @@
           <div class="timeline-title">Judge Baker Denies All Motions — Blocks Evidence of Attorney Collusion</div>
           <div class="timeline-body">In a 7-page order (Dkt. No. 192), Judge Baker denies Ms. Nelson's Motion to Compel and Motion to Strike in full. The court rules that communications between Bonnie Hunt and Curtiss-Wright have "absolutely no bearing" on the case — without allowing Ms. Nelson to obtain those records to prove otherwise. The court also denies inspection of Curtiss-Wright's premises, shielding the defendant from physical evidence discovery.</div>
           <span class="evidence-tag red">Dkt. No. 192 — Full Order Below</span>
+        </div>
+      </div>
+
+      <div class="section-label reveal" style="margin-top:2.5rem;">Amentum Lawsuit</div>
+
+      <div id="amentum-court-record" class="court-record reveal">
+        <div class="court-record-header">
+          <div class="court-name">U.S. District Court for the Northern District of Florida</div>
+          <div class="court-division">Pensacola Division</div>
+          <div class="court-case-no">Debra Nelson v. Amentum Government Services Parent Holdings LLC — Case No. 3:25-cv-01447-MCR-ZCB</div>
+        </div>
+
+        <p class="amentum-case-summary"><strong style="color:var(--gold); font-weight:600;">Amentum Lawsuit Summary.</strong> Amentum is a federal defense contractor at Naval Air Station Whiting Field in Milton, Florida, performing aviation maintenance on T-6 training aircraft. Plaintiff Debra Nelson, an NDI Technician, alleges she reported safety, quality control, and compliance concerns related to aircraft maintenance and inspection procedures — and was subsequently retaliated against, subjected to hostile treatment, fabricated disciplinary actions, and termination.</p>
+        <p class="amentum-case-summary">Plaintiff also alleges cross-case interference with her separate federal lawsuit against Curtiss-Wright Electro-Mechanical Corporation. Both companies share legal representation through Jackson Lewis P.C., and Plaintiff's termination occurred less than 24 hours after she provided deposition testimony in the Curtiss-Wright matter.</p>
+        <p class="amentum-case-summary">Claims include retaliation, hostile work environment, whistleblower activity, and workplace safety reporting in connection with federal defense contract operations.</p>
+
+        <div class="filing-group">
+          <h3 class="filing-group-title">Plaintiff Filings</h3>
+          <div id="filing-list-amentum-plaintiff" class="filing-list-empty">Loading filings…</div>
+        </div>
+        <div class="filing-group">
+          <h3 class="filing-group-title">Defense Filings</h3>
+          <div id="filing-list-amentum-defense" class="filing-list-empty">Loading filings…</div>
+        </div>
+        <div class="filing-group">
+          <h3 class="filing-group-title">Judge's Orders</h3>
+          <div id="filing-list-amentum-judges-order" class="filing-list-empty">Loading filings…</div>
         </div>
       </div>
 
@@ -1834,7 +1917,7 @@
         <p>"If a defense contractor's shipbuilding contracts are critical to national security — then the integrity of the people executing those contracts matters. Discrimination, retaliation, and cover-up inside a defense contractor is not just a labor issue. It is a national security concern."</p>
       </div>
 
-      <div style="margin-top:3rem;" class="reveal">
+      <div style="margin-top:1.75rem;" class="reveal">
         <div class="section-label">Curtiss-Wright — Primary Case</div>
         <div style="background:var(--bg-card); border:1px solid var(--border); padding:2rem; margin-top:1rem;">
           <div style="font-family:'JetBrains Mono',monospace; font-size:0.9rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:1rem; text-transform:uppercase;">Nelson v. Curtiss-Wright — Case No. 2:25-CV-00405-RMG-MGB</div>
@@ -1906,7 +1989,11 @@
   </div>
 
   <footer>
-   <span class="footer-case" style="display:block; font-size:0.95rem; margin-bottom:1rem;">Debra Nelson v. Amentum Government Services Parent Holdings LLC — Case No. 3:25-cv-01447-MCR-ZCB</span>
+    <div class="footer-active-cases">
+      <div class="nav-case-label">Active Federal Cases</div>
+      <div class="active-case-line">Debra Nelson v. Curtiss-Wright — Case No. 2:25-CV-00405-RMG-MGB</div>
+      <div class="active-case-line">Debra Nelson v. Amentum Government Services Parent Holdings LLC — Case No. 3:25-cv-01447-MCR-ZCB</div>
+    </div>
     <p>This site is a public accountability archive maintained by Debra Nelson.<br>
     All documents presented are either public court records, official government correspondence, or personal documentation of witnessed events.<br><br>
     <em>"When those entrusted with justice become the source of injustice, the public record becomes the only recourse."</em></p>

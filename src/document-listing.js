@@ -134,6 +134,18 @@ function findMediaUrl(mediaMap, needle) {
   return null;
 }
 
+function findMediaFileName(mediaMap, needle) {
+  const trimmed = (needle || "").trim();
+  if (!trimmed) return null;
+  const n = trimmed.toLowerCase();
+  for (const path of Object.keys(mediaMap)) {
+    if (normalizePdfPath(path).toLowerCase().includes(n)) {
+      return extractFileName(path);
+    }
+  }
+  return null;
+}
+
 function attachPetitionGateToPdfLink(link) {
   link.addEventListener("click", (event) => {
     if (isPetitionBypassActive()) return;
@@ -186,7 +198,13 @@ function renderSanctionsOrderLink(mediaMap) {
   const link = document.createElement("a");
   link.href = url;
   link.className = "filing-entry-link";
-  link.textContent = "Link to PDF — ECF 316";
+  const ecf316Name =
+    Object.keys(mediaMap).find((path) =>
+      normalizePdfPath(path).toLowerCase().includes("ecf 316")
+    ) || "";
+  link.textContent = ecf316Name
+    ? extractFileName(ecf316Name)
+    : "ECF 316 Judge Gergel Ruling on Report and Recommendation.pdf";
   link.target = "_blank";
   link.rel = "noopener noreferrer";
   attachPetitionGateToPdfLink(link);
@@ -339,7 +357,8 @@ function createFilingEntry(ecfLabel, title, summary, url, options = {}) {
     const link = document.createElement("a");
     link.href = url;
     link.className = "filing-entry-link";
-    link.textContent = options.linkText || "Link to PDF";
+    link.textContent =
+      options.linkText || options.fileName || title || "View PDF";
     link.target = "_blank";
     link.rel = "noopener noreferrer";
     attachPetitionGateToPdfLink(link);
@@ -367,6 +386,26 @@ function sortDocsByEcf(docs) {
   });
 }
 
+function filingNameMatchScore(fileName, metaTitle) {
+  const name = fileName.toLowerCase();
+  const words = (metaTitle || "")
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((word) => word.length > 4);
+  if (!words.length) return 0;
+  return words.filter((word) => name.includes(word)).length;
+}
+
+function pickPreferredEcfDoc(docA, docB) {
+  const nameA = docA.fileName || docA.title || "";
+  const nameB = docB.fileName || docB.title || "";
+  const meta = lookupFilingMeta(nameA);
+  const scoreA = filingNameMatchScore(nameA, meta.title);
+  const scoreB = filingNameMatchScore(nameB, meta.title);
+  if (scoreA !== scoreB) return scoreA > scoreB ? docA : docB;
+  return nameA.length >= nameB.length ? docA : docB;
+}
+
 function dedupeDocsByEcf(docs) {
   const seen = new Map();
   const result = [];
@@ -382,10 +421,11 @@ function dedupeDocsByEcf(docs) {
       continue;
     }
 
-    if (name.length > (prev.fileName || prev.title || "").length) {
+    const preferred = pickPreferredEcfDoc(prev, doc);
+    if (preferred !== prev) {
       const index = result.indexOf(prev);
-      result[index] = doc;
-      seen.set(key, doc);
+      result[index] = preferred;
+      seen.set(key, preferred);
     }
   }
 
@@ -396,9 +436,15 @@ function appendJudgeTextOrdersLink(container, mediaMap) {
   const url = findMediaUrl(mediaMap, "Judge Text Orders");
   if (!url) return;
 
+  const judgeTextName = extractFileName(
+    Object.keys(mediaMap).find((path) =>
+      normalizePdfPath(path).toLowerCase().includes("judge text orders")
+    ) || "Judge Text Orders.pdf"
+  );
   container.appendChild(
-    createFilingEntry(null, "Judge Text Orders.pdf", null, url, {
-      linkText: "Judge Text Orders.pdf",
+    createFilingEntry(null, "Judge Text Orders", null, url, {
+      linkText: judgeTextName,
+      fileName: judgeTextName,
     })
   );
 }
@@ -427,7 +473,10 @@ function renderCourtFilingList(container, folderKey, grouped, mediaMap) {
     const url = doc.url || findMediaUrl(mediaMap, baseName);
     const meta = lookupFilingMeta(baseName);
     container.appendChild(
-      createFilingEntry(meta.ecf, meta.title, meta.summary, url)
+      createFilingEntry(meta.ecf, meta.title, meta.summary, url, {
+        linkText: baseName,
+        fileName: baseName,
+      })
     );
   }
 
@@ -449,8 +498,12 @@ function renderScLegislatorsList(container, mediaMap) {
 
   for (const entry of entries) {
     const url = findMediaUrl(mediaMap, entry.needle);
+    const fileName = findMediaFileName(mediaMap, entry.needle);
     container.appendChild(
-      createFilingEntry(null, entry.title, entry.summary, url)
+      createFilingEntry(null, entry.title, entry.summary, url, {
+        linkText: fileName || entry.title,
+        fileName,
+      })
     );
   }
 }
