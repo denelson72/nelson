@@ -709,9 +709,9 @@
     border-bottom: none;
   }
 
-  .filing-entry-title {
+ .filing-entry-title {
     font-family: 'Source Serif 4', serif;
-    font-size: 0.88rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: #ffffff;
     margin-bottom: 0.35rem;
@@ -801,9 +801,9 @@
 
   .timeline-item.red .timeline-date { color: var(--red); }
 
-  .timeline-title {
+.timeline-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.35rem;
+    font-size: 1.05rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: #ffffff;
@@ -1662,7 +1662,7 @@
           <div class="timeline-date">January 21, 2025</div>
           <div class="timeline-title">Case Removed to Federal Court — Counsel Immediately Withdraws</div>
           <div class="timeline-body">Defendants remove the case from state court to US District Court. Shortly thereafter, Plaintiff's counsel Bonnie Hunt of Hunt Law LLC withdraws. Ms. Nelson has alleged that defense counsel and/or Curtiss-Wright compensated her former attorney to withdraw, leaving her to proceed pro se against a major defense contractor with full corporate legal resources.</div>
-          <span class="evidence-tag red">Dkt. Nos. 10, 11, 12, 13, 19</span>
+          <span class="evidence-tag red">Docket Nos. 10, 11, 12, 13, 19</span>
         </div>
 
         <div class="timeline-item reveal">
@@ -1701,7 +1701,7 @@
         </div>
       </div>
 
-      <div class="section-label reveal" style="margin-top:2.5rem;">Amentum Lawsuit</div>
+     <div class="section-label reveal" style="margin-top:2.5rem; color:var(--red);">⚠ Second Defense Contractor — Amentum Lawsuit</div>
 
       <div id="amentum-court-record" class="court-record reveal">
         <div class="court-record-header">
@@ -1740,10 +1740,21 @@
         <span class="active-case-line" style="display:block; margin-bottom:0.35rem;">Debra Nelson v. Curtiss-Wright — Case No. 2:25-CV-00405-RMG-MGB</span>
       </p>
       <p class="reveal tech-intro" style="color:#ffffff; max-width:700px; margin-bottom:1.25rem;">Individual filings with summaries are listed under <a href="#court-record" style="color:var(--gold);">Judge's Orders</a>, <a href="#court-record" style="color:var(--gold);">Plaintiff Filings</a>, and <a href="#court-record" style="color:var(--gold);">Defense Filings</a> in the Judicial section, and on the <a href="#timeline" style="color:var(--gold);">Timeline</a>.</p>
-      <div id="docket-sheet-slot" class="doc-slot-empty reveal">Loading docket sheet…</div>
-      <p class="tech-table-note" style="color:#ffffff; margin-top:1rem; font-family:'JetBrains Mono',monospace;">Full docket also available on PACER — Case 2:25-cv-00405</p>
-    </div>
-  </div>
+     <div class="reveal" style="margin-top:1.25rem; display:flex; flex-direction:column; gap:0.85rem;">
+        <div style="border-bottom:1px solid var(--border); padding-bottom:0.85rem;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Nelson v. Curtiss-Wright — D.S.C.</div>
+          <a href="https://nelson-v-curtiss-wright.netlify.app/assets/Docket%20Sheet-BaaM3Wuz.pdf" target="_blank" rel="noopener noreferrer" class="docket-link">
+            📄 Docket Sheet — Case No. 2:25-CV-00405-RMG-MGB →
+          </a>
+        </div>
+        <div style="padding-top:0.25rem;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Nelson v. Amentum — N.D. Fla.</div>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="docket-link">
+            📄 Docket Sheet — Case No. 3:25-cv-01447-MCR-ZCB →
+          </a>
+        </div>
+      </div>
+      <p class="tech-table-note" style="color:#ffffff; margin-top:1.25rem; font-family:'JetBrains Mono',monospace;">Full dockets also available on PACER</p>
 
   <!-- TECH COMPANIES -->
   <div class="section-full" id="tech">
