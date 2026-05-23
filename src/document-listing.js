@@ -243,6 +243,14 @@ function excludeMiscFromArchive(fileName) {
   return false;
 }
 
+function isDeptOfWarPrivacyRelease(fileName) {
+  const name = (fileName || "").toLowerCase();
+  return (
+    name.includes("privacy release") &&
+    (name.includes("secretary of war") || name.includes("office of the secretary"))
+  );
+}
+
 function toReadableTitle(fileName) {
   return fileName
     .replace(/\.pdf$/i, "")
@@ -546,6 +554,11 @@ function renderDocuments() {
       folder: "sc-legislators",
       match: (name) => name.includes("tim scott"),
     },
+    "dept-of-war": {
+      el: document.getElementById("doc-slot-dept-of-war"),
+      folder: "evidence",
+      match: (name) => isDeptOfWarPrivacyRelease(name),
+    },
   };
   const courtLists = {
     "nelson-filings": document.getElementById("filing-list-plaintiff"),
@@ -646,6 +659,11 @@ function renderDocuments() {
     let docs = grouped[folderKey] || [];
     if (folderKey === "misc") {
       docs = docs.filter((doc) => !excludeMiscFromArchive(doc.fileName || ""));
+    }
+    if (folderKey === "evidence") {
+      docs = docs.filter(
+        (doc) => !isDeptOfWarPrivacyRelease(doc.fileName || "")
+      );
     }
     renderDocList(slot, docs);
   }
