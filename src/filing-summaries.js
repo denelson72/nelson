@@ -348,6 +348,37 @@ export const SC_LEGISLATOR_SUMMARIES = {
   },
 };
 
+/** Amentum case (N.D. Fla. 3:25-cv-01447) — key March 2026 filings. */
+export const AMENTUM_KEY_ECF = ["53", "54", "55", "56", "57"];
+
+export const AMENTUM_SUMMARY_BY_ECF = {
+  "53": {
+    title: "Response in Opposition to Motion to Dismiss Sixth Amended Complaint",
+    summary:
+      "Plaintiff opposed Defendants' motion to dismiss the Sixth Amended Complaint, arguing the case should proceed while Plaintiff sought leave to file the Seventh Amended Complaint adding claims tied to post-deposition retaliation and cross-case interference.",
+  },
+  "54": {
+    title: "Motion for Leave to File Seventh Amended Complaint",
+    summary:
+      "Plaintiff moved for leave to file a Seventh Amended Complaint after being terminated from Amentum less than 24 hours following her deposition testimony in Nelson v. Curtiss-Wright — both cases defended by Jackson Lewis P.C.",
+  },
+  "55": {
+    title: "Seventh Amended Complaint",
+    summary:
+      "The operative complaint alleging gender-based discrimination, whistleblower retaliation, hostile work environment, and workplace safety reporting at Naval Air Station Whiting Field — and alleging coordinated retaliation tied to Plaintiff's parallel federal case against Curtiss-Wright.",
+  },
+  "56": {
+    title: "Defendants' Response in Opposition to Motion for Leave (Seventh Amended Complaint)",
+    summary:
+      "Defendants opposed Plaintiff's motion for leave to file the Seventh Amended Complaint, arguing the proposed amendments were untimely, prejudicial, or unnecessary.",
+  },
+  "57": {
+    title: "Reply in Support of Motion for Leave to File Seventh Amended Complaint",
+    summary:
+      "Plaintiff replied to Defendants' opposition, addressing why the Seventh Amended Complaint should be allowed and documenting procedural delay — including that the Reply was filed March 28, 2026 but not entered on the docket until May 19, 2026.",
+  },
+};
+
 export function extractEcfNumber(fileName) {
   const compound = fileName.match(/ECF\s*(\d+)\s*[-–]\s*(\d+)/i);
   if (compound) return `${compound[1]}-${compound[2]}`;
@@ -375,8 +406,14 @@ function normalizeFileKey(fileName) {
     .trim();
 }
 
-export function lookupFilingMeta(fileName) {
+export function lookupFilingMeta(fileName, folderKey = "") {
   const ecf = extractEcfNumber(fileName);
+  const isAmentum = folderKey.startsWith("amentum-");
+
+  if (isAmentum && ecf && AMENTUM_SUMMARY_BY_ECF[ecf]) {
+    return { ecf, ...AMENTUM_SUMMARY_BY_ECF[ecf] };
+  }
+
   if (ecf && SUMMARY_BY_ECF[ecf]) {
     return { ecf, ...SUMMARY_BY_ECF[ecf] };
   }
@@ -391,7 +428,8 @@ export function lookupFilingMeta(fileName) {
   return {
     ecf,
     title: titleFromFileName(fileName),
-    summary:
-      "Filing on the public docket in Case No. 2:25-cv-00405-RMG-MGB. Open the PDF for the full text.",
+    summary: isAmentum
+      ? "Filing on the public docket in Case No. 3:25-cv-01447-MCR-ZCB (Amentum). Open the PDF for the full text."
+      : "Filing on the public docket in Case No. 2:25-cv-00405-RMG-MGB. Open the PDF for the full text.",
   };
 }

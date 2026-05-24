@@ -1,4 +1,5 @@
 import {
+  AMENTUM_KEY_ECF,
   SC_LEGISLATOR_SUMMARIES,
   extractEcfNumber,
   lookupFilingMeta,
@@ -372,6 +373,30 @@ function isJudgeTextOrdersFile(fileName) {
   return (fileName || "").toLowerCase().includes("judge text orders");
 }
 
+function isAmentumKeyEcf(fileName) {
+  const ecf = extractEcfNumber(fileName || "");
+  return ecf && AMENTUM_KEY_ECF.includes(String(ecf).split("-")[0]);
+}
+
+function collectAmentumDocs(grouped, mediaMap) {
+  const docs = [];
+  for (const folderKey of [
+    "amentum-plaintiff-filings",
+    "amentum-defense-filings",
+    "amentum-judges-order",
+  ]) {
+    for (const doc of grouped[folderKey] || []) {
+      const baseName = doc.fileName || doc.title || "";
+      docs.push({
+        ...doc,
+        url: doc.url || findMediaUrl(mediaMap, baseName),
+        folderKey,
+      });
+    }
+  }
+  return docs;
+}
+
 function createFilingEntry(ecfLabel, title, summary, url, options = {}) {
   const card = document.createElement("article");
   card.className = "filing-entry";
@@ -485,9 +510,12 @@ function renderCourtFilingList(container, folderKey, grouped, mediaMap) {
   if (!container) return;
 
   const docs = dedupeDocsByEcf(
-    sortDocsByEcf(grouped[folderKey] || []).filter(
-      (doc) => !isJudgeTextOrdersFile(doc.fileName || doc.title || "")
-    )
+    sortDocsByEcf(grouped[folderKey] || []).filter((doc) => {
+      const name = doc.fileName || doc.title || "";
+      if (isJudgeTextOrdersFile(name)) return false;
+      if (folderKey.startsWith("amentum-") && isAmentumKeyEcf(name)) return false;
+      return true;
+    })
   );
 
   container.innerHTML = "";
@@ -503,7 +531,7 @@ function renderCourtFilingList(container, folderKey, grouped, mediaMap) {
   for (const doc of docs) {
     const baseName = doc.fileName || doc.title;
     const url = doc.url || findMediaUrl(mediaMap, baseName);
-    const meta = lookupFilingMeta(baseName);
+    const meta = lookupFilingMeta(baseName, folderKey);
     container.appendChild(
       createFilingEntry(meta.ecf, meta.title, meta.summary, url, {
         linkText: baseName,
@@ -514,6 +542,42 @@ function renderCourtFilingList(container, folderKey, grouped, mediaMap) {
 
   if (folderKey === "judges-order") {
     appendJudgeTextOrdersLink(container, mediaMap);
+  }
+}
+
+function renderAmentumKeyFilings(container, grouped, mediaMap) {
+  if (!container) return;
+
+  const keyDocs = collectAmentumDocs(grouped, mediaMap).filter((doc) =>
+    isAmentumKeyEcf(doc.fileName || doc.title || "")
+  );
+
+  const ordered = AMENTUM_KEY_ECF.flatMap((ecfNum) =>
+    keyDocs.filter(
+      (doc) => String(extractEcfNumber(doc.fileName || "") || "").split("-")[0] === ecfNum
+    )
+  );
+
+  container.innerHTML = "";
+
+  if (!ordered.length) {
+    container.textContent =
+      "ECF 53, 54, 55, and 57 PDFs — add to src/documents/amentum-plaintiff-filings/ and amentum-defense-filings/";
+    container.className = "filing-list-empty";
+    return;
+  }
+
+  container.className = "filing-list";
+
+  for (const doc of ordered) {
+    const baseName = doc.fileName || doc.title;
+    const meta = lookupFilingMeta(baseName, doc.folderKey);
+    container.appendChild(
+      createFilingEntry(meta.ecf, meta.title, meta.summary, doc.url, {
+        linkText: baseName,
+        fileName: baseName,
+      })
+    );
   }
 }
 
@@ -577,6 +641,7 @@ function renderDocuments() {
     "amentum-plaintiff-filings": document.getElementById("filing-list-amentum-plaintiff"),
     "amentum-defense-filings": document.getElementById("filing-list-amentum-defense"),
     "amentum-judges-order": document.getElementById("filing-list-amentum-judges-order"),
+    "amentum-key-filings": document.getElementById("amentum-key-filings-list"),
   };
   const activeSlots = Object.fromEntries(
     Object.entries(slots).filter(([, el]) => Boolean(el))
@@ -642,6 +707,11 @@ function renderDocuments() {
     allMedia
   );
   renderScLegislatorsList(courtLists["sc-legislators"], allMedia);
+  renderAmentumKeyFilings(
+    courtLists["amentum-key-filings"],
+    grouped,
+    allMedia
+  );
   renderCourtFilingList(
     courtLists["amentum-plaintiff-filings"],
     "amentum-plaintiff-filings",
