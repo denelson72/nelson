@@ -124,13 +124,31 @@ function normalizePdfPath(path) {
   return path.replace(/\\/g, "/");
 }
 
+const TIMELINE_MEDIA_NEEDLES = {
+  "Hacked Car iPhone_3823.mp4": ["hacked car iphone_3823"],
+  "NCPD_911_call_strange_man.mp3": ["ncpd_911_call_strange_man"],
+  "NCPD_911_call_cell_phone": ["ncpd_911_call_cell_phone"],
+  "NCPD_202500522350_Officer_Winn_08142025_911_tb_": [
+    "ncpd_202500522350_officer_winn",
+    "officer_winn_08142025",
+  ],
+};
+
 function findMediaUrl(mediaMap, needle) {
   const trimmed = (needle || "").trim();
   if (!trimmed) return null;
-  const n = trimmed.toLowerCase();
-  for (const [path, url] of Object.entries(mediaMap)) {
-    if (normalizePdfPath(path).toLowerCase().includes(n)) return url;
+
+  const needles = [
+    trimmed.toLowerCase(),
+    ...(TIMELINE_MEDIA_NEEDLES[trimmed] || []),
+  ];
+
+  for (const n of needles) {
+    for (const [path, url] of Object.entries(mediaMap)) {
+      if (normalizePdfPath(path).toLowerCase().includes(n)) return url;
+    }
   }
+
   return null;
 }
 
@@ -147,6 +165,8 @@ function findMediaFileName(mediaMap, needle) {
 }
 
 function attachPetitionGateToPdfLink(link) {
+  if (link.classList.contains("timeline-media-link")) return;
+
   link.addEventListener("click", (event) => {
     if (isPetitionBypassActive()) return;
     event.preventDefault();
@@ -535,7 +555,6 @@ function renderTimelineMediaLinks(mediaMap) {
     link.href = url;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
-    attachPetitionGateToPdfLink(link);
   });
 }
 
