@@ -1277,12 +1277,15 @@
   }
 
   /* MOBILE */
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .nav-case-court,
     .nav-case-number,
     .case-badge-court,
     .case-badge-number {
       white-space: normal;
+    }
+    .institutions-grid {
+      grid-template-columns: 1fr !important;
     }
     .gate-form .row { grid-template-columns: 1fr; }
     .hero-stats { grid-template-columns: 1fr 1fr; }
@@ -1720,7 +1723,7 @@
       <div class="section-label reveal">Institutional Failure</div>
       <h2 class="reveal">Every Safeguard Failed</h2>
       <p class="reveal" style="color:#ffffff; max-width:600px; margin-bottom:1rem;">The following institutions were each contacted and each failed to provide protection or accountability.</p>
-      <div class="institutions-grid">
+      <div class="institutions-grid" style="grid-template-columns:repeat(3, 1fr);">
         <div class="institution-card">
           <div class="inst-name">Curtiss-Wright</div>
           <div class="inst-role">Defense Contractor — Subject of Complaint</div>
@@ -1766,8 +1769,8 @@
 
       <div id="court-record" class="court-record reveal">
         <div class="court-record-header">
-          <div class="court-name">U.S. District Court of South Carolina <span style="font-family:'Playfair Display',serif; font-size:0.85rem; font-weight:400; color:#ffffff; letter-spacing:0.01em;">Charleston Division</span></div>
-          <div class="court-case-no" style="margin-top:0.75rem;">Case No. 2:25-cv-00405-RMG-MGB</div>
+          <div class="court-name">U.S. District Court of South Carolina</div>
+          <div class="court-division" style="font-size:1.1rem; font-weight:600;">Charleston Division</div>
         </div>
 
         <div class="filing-group">
@@ -1841,7 +1844,7 @@
           <div class="timeline-body">Magistrate Judge Mary Gordon Baker assumes the case. She withdraws the subpoenas previously signed by Judge Cherry. When Ms. Nelson objects, Judge Baker tells her she is mistaken — that the court never issued the subpoenas. The prior signed order from Judge Cherry remains on the docket contradicting this claim directly.</div>
           <span class="evidence-tag red">Documented Contradiction — Court Record</span>
           <div class="timeline-evidence-links">
-            <a href="https://nelson-v-curtiss-wright.netlify.app/assets/Text%20Order%20ECF%2080%20Dkt%20Pg.%2017-B8QZVKGo.pdf" target="_blank" rel="noopener noreferrer" class="evidence-tag red">ECF 80 — Judge Cherry Text Order, Dkt. Pg. 17</a>
+            <a href="https://nelson-v-curtiss-wright.netlify.app/assets/Text%20Order%20ECF%2080%20Dkt%20Pg.%2017-B8QZVKGo.pdf" target="_blank" rel="noopener noreferrer" class="evidence-tag red">ECF 80 — Text Order, Dkt. Pg. 17 — Filing on the public docket in Case No. 2:25-cv-00405-RMG-MGB</a>
             <a href="https://nelson-v-curtiss-wright.netlify.app/src/documents/evidence/Hunt%20Subpoena.pdf" target="_blank" rel="noopener noreferrer" class="evidence-tag red">Hunt Subpoena — Full Document</a>
           </div>
         </div>
