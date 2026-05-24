@@ -1,3 +1,10 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+[[headers]]
+  for = "/intro-media"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Content-Disposition = "inline"
+    Accept-Ranges = "bytes"

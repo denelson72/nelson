@@ -156,14 +156,18 @@ function attachPetitionGateToPdfLink(link) {
 }
 
 function renderDocList(slot, docs) {
+  const card = slot?.closest(".evidence-card");
   slot.innerHTML = "";
   slot.className = "";
 
   if (!docs.length) {
     slot.textContent = "No documents yet";
     slot.className = "doc-slot-empty";
+    if (card) card.style.display = "none";
     return;
   }
+
+  if (card) card.style.display = "";
 
   const list = document.createElement("ul");
   list.className = "doc-list";
@@ -538,22 +542,8 @@ function renderTimelineMediaLinks(mediaMap) {
 function renderDocuments() {
   const slots = {
     evidence: document.getElementById("doc-slot-evidence"),
-    "congressman-clyburn": document.getElementById("doc-slot-congressman-clyburn"),
-    misc: document.getElementById("doc-slot-misc"),
   };
   const filteredSlots = {
-    "senator-graham": {
-      el: document.getElementById("doc-slot-senator-graham"),
-      folder: "sc-legislators",
-      match: (name) =>
-        (name.includes("graham") || name.includes("follow-up")) &&
-        !name.includes("tim scott"),
-    },
-    "senator-scott": {
-      el: document.getElementById("doc-slot-senator-scott"),
-      folder: "sc-legislators",
-      match: (name) => name.includes("tim scott"),
-    },
     "dept-of-war": {
       el: document.getElementById("doc-slot-dept-of-war"),
       folder: "evidence",

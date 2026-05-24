@@ -458,11 +458,15 @@
     margin-bottom: 1rem;
   }
 
-  #judicial h2,
-  #evidence h2,
+ #evidence h2,
   #tech h2,
   #docket h2 {
     font-size: clamp(1.1rem, 2vw, 1.45rem);
+    margin-bottom: 1rem;
+  }
+
+  #judicial h2 {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
     margin-bottom: 1rem;
   }
 
@@ -472,10 +476,10 @@
   }
 
   #amentum h2 {
-    font-size: clamp(0.95rem, 1.55vw, 1.2rem);
-    margin-bottom: 1rem;
-    letter-spacing: -0.01em;
-  }
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
 
   @media (min-width: 900px) {
     #amentum h2 {
@@ -495,7 +499,7 @@
 
   .active-case-line {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
+    font-size: 1rem;
     color: #ffffff;
     line-height: 1.55;
     margin-bottom: 0.35rem;
@@ -610,11 +614,10 @@
     font-size: 0.72rem;
   }
 
-  #tech .tech-intro,
-  #tech .tech-table-note {
-    font-size: 0.85rem;
-    line-height: 1.65;
-  }
+  #tech .timeline-body {
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
 
   #tech .key-question--emphasis p {
     font-size: clamp(0.95rem, 1.6vw, 1.15rem);
@@ -645,7 +648,15 @@
     margin-bottom: 0.35rem;
   }
 
-  .court-record-header .court-division,
+  .court-record-header .court-division {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    color: #ffffff;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
+    margin-top: 0;
+  }
+
   .court-record-header .court-case-no {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.78rem;
@@ -660,7 +671,7 @@
 
   .filing-group-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--gold);
     margin-bottom: 0.75rem;
@@ -697,9 +708,9 @@
     border-bottom: none;
   }
 
-  .filing-entry-title {
+ .filing-entry-title {
     font-family: 'Source Serif 4', serif;
-    font-size: 0.88rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: #ffffff;
     margin-bottom: 0.35rem;
@@ -789,9 +800,9 @@
 
   .timeline-item.red .timeline-date { color: var(--red); }
 
-  .timeline-title {
+.timeline-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.35rem;
+    font-size: 1.05rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: #ffffff;
@@ -1020,21 +1031,19 @@
   }
 
   .docket-table td {
-    padding: 0.9rem 1.2rem;
-    border-bottom: 1px solid var(--border);
-    color: #ffffff;
-    vertical-align: top;
-  }
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+  color: #ffffff;
+  vertical-align: top;
+  font-size: 0.82rem;
+}
 
-  .docket-table tr:hover td { background: var(--bg-card-hover); }
-
-  .docket-table td:first-child {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    white-space: nowrap;
-  }
-
+.docket-table td:first-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
   .docket-link {
     color: var(--gold);
     text-decoration: none;
@@ -1232,6 +1241,7 @@
 
   .footer-active-cases .nav-case-label {
     margin-bottom: 0.35rem;
+    font-size: 1rem;
   }
 
   #site code {
@@ -1304,10 +1314,201 @@
     margin-top: 0.5rem;
     display: none;
   }
+
+  body.intro-open {
+    overflow: hidden;
+  }
+
+  .intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background: rgba(0, 0, 0, 0.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: max(0.75rem, env(safe-area-inset-top))
+      max(0.75rem, env(safe-area-inset-right))
+      max(0.75rem, env(safe-area-inset-bottom))
+      max(0.75rem, env(safe-area-inset-left));
+  }
+
+  .intro-overlay.hidden {
+    display: none;
+  }
+
+  .intro-overlay__inner {
+    position: relative;
+    width: min(100%, 56rem);
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-overlay__video {
+    display: block;
+    width: 100%;
+    max-height: calc(100vh - 3rem);
+    max-height: calc(100dvh - 3rem);
+    height: auto;
+    object-fit: contain;
+    background: #000;
+    border: 1px solid var(--border);
+    pointer-events: auto;
+  }
+
+  .intro-overlay__media {
+    position: relative;
+    width: 100%;
+    max-height: calc(100dvh - 5rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-overlay__media .intro-overlay__video {
+    max-height: calc(100dvh - 5rem);
+  }
+
+  .intro-overlay__play-btn,
+  .intro-overlay__unmute-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 10rem;
+    min-height: 3.25rem;
+    padding: 0.85rem 1.75rem;
+    border: 1px solid var(--gold);
+    background: rgba(20, 20, 20, 0.88);
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .intro-overlay__play-btn:hover,
+  .intro-overlay__unmute-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+  }
+
+  .intro-overlay__play-btn.hidden,
+  .intro-overlay__unmute-btn.hidden {
+    display: none;
+  }
+
+  .intro-overlay__unmute-btn {
+    top: auto;
+    bottom: 4.5rem;
+    transform: translateX(-50%);
+    font-size: 0.95rem;
+  }
+
+  .intro-overlay__loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    pointer-events: none;
+  }
+
+  .intro-overlay__loading.hidden {
+    display: none;
+  }
+
+  .intro-overlay__play-hint {
+    margin-top: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    display: none;
+  }
+
+  .intro-overlay__play-hint.is-visible {
+    display: block;
+  }
+
+  .intro-overlay__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: rgba(20, 20, 20, 0.92);
+    color: #ffffff;
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+
+  .intro-overlay__close:hover {
+    background: var(--red);
+    border-color: var(--red);
+    color: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    .intro-overlay__inner {
+      width: 100%;
+    }
+
+    .intro-overlay__video {
+      max-height: calc(100vh - 4.5rem);
+      max-height: calc(100dvh - 4.5rem);
+    }
+
+    .intro-overlay__close {
+      top: -0.15rem;
+      right: 0;
+      min-width: 3rem;
+      min-height: 3rem;
+      font-size: 1.5rem;
+    }
+  }
 </style>
-  <script type="module" crossorigin src="/assets/index-CDKd018V.js"></script>
+  <script type="module" crossorigin src="/assets/index-Ch6500mL.js"></script>
 </head>
 <body>
+
+<div id="intro-overlay" class="intro-overlay hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Introduction video">
+  <div class="intro-overlay__inner">
+    <button type="button" id="intro-close-btn" class="intro-overlay__close" aria-label="Close introduction video">✕</button>
+    <div class="intro-overlay__media">
+      <video id="intro-video" class="intro-overlay__video" autoplay muted playsinline webkit-playsinline preload="auto" controls controlsList="nodownload noremoteplayback" disablePictureInPicture></video>
+      <p id="intro-loading" class="intro-overlay__loading">Loading video…</p>
+      <button type="button" id="intro-play-btn" class="intro-overlay__play-btn hidden" aria-label="Play introduction video">▶ Play video</button>
+      <button type="button" id="intro-unmute-btn" class="intro-overlay__unmute-btn hidden" aria-label="Enable sound">🔊 Enable sound</button>
+    </div>
+    <p id="intro-play-hint" class="intro-overlay__play-hint">Video plays automatically (muted). Tap Enable sound for audio, or use the timeline to pause and scrub.</p>
+  </div>
+</div>
 
 <!-- PETITION GATE -->
 <div id="gate" style="display:none;">
@@ -1435,7 +1636,7 @@
           <div class="timeline-date">March 2, 2025</div>
           <div class="timeline-title">Cell Phone Found Outside Bedroom Window</div>
           <div class="timeline-body">A cell phone — believed to be a surveillance device — is discovered outside Ms. Nelson's bedroom window. Police are called and take the phone into custody. Ms. Nelson states on video to the responding officer that the phone is evidence in a federal lawsuit.</div>
-          <div class="timeline-evidence-links">
+          
             <a class="evidence-tag red timeline-media-link" data-media="NCPD_911_call_cell_phone.mp3" href="#">Video Evidence and 911 Call — On Record: NCPD_911_call_cell_phone.mp3</a>
           </div>
         </div>
@@ -1494,7 +1695,7 @@
     <div class="section-inner">
       <div class="section-label reveal">Documentation</div>
       <h2 class="reveal">Evidence Archive</h2>
-      <p class="reveal" style="color:#ffffff; max-width:700px; margin-bottom:1.5rem; font-size:0.9rem; line-height:1.65;">Court filings with summaries are in <a href="#judicial" style="color:var(--gold);">What Happened Inside the Courtroom</a> — <a href="#court-record" style="color:var(--gold);">Curtiss-Wright</a> first, then <a href="#amentum-court-record" style="color:var(--gold);">Amentum</a>. Supporting records, congressional correspondence, and senator responses are organized below.</p>
+      <p class="reveal" style="color:#ffffff; max-width:700px; margin-bottom:1.5rem; font-size:0.9rem; line-height:1.65;">Court filings with summaries are in <a href="#judicial" style="color:var(--gold);">What Happened Inside the Courtroom</a> — <a href="#court-record" style="color:var(--gold);">Curtiss-Wright</a> first, then <a href="#amentum-court-record" style="color:var(--gold);">Amentum</a> (including <a href="#filing-list-sc-legislators" style="color:var(--gold);">SC Legislators</a> correspondence). Supporting records are below.</p>
 
       <div class="section-label reveal">Nelson v. Curtiss-Wright</div>
       <div class="evidence-grid">
@@ -1509,30 +1710,6 @@
           <h3>Department of War</h3>
           <p>Privacy Release form referenced in the Department of War email — transmitted via Congressman Clyburn's office before Ms. Nelson had provided it.</p>
           <div id="doc-slot-dept-of-war" class="doc-slot-empty">No documents yet</div>
-        </div>
-        <div class="evidence-card">
-          <span class="evidence-icon">🏛️</span>
-          <h3>Congressman Clyburn</h3>
-          <p>Congressional office correspondence and related records.</p>
-          <div id="doc-slot-congressman-clyburn" class="doc-slot-empty">No documents yet</div>
-        </div>
-        <div class="evidence-card">
-          <span class="evidence-icon">🏛️</span>
-          <h3>Senator Lindsey Graham</h3>
-          <p>Responses and follow-up regarding federal oversight.</p>
-          <div id="doc-slot-senator-graham" class="doc-slot-empty">No documents yet</div>
-        </div>
-        <div class="evidence-card">
-          <span class="evidence-icon">🏛️</span>
-          <h3>Senator Tim Scott</h3>
-          <p>Written response from Senator Scott's office.</p>
-          <div id="doc-slot-senator-scott" class="doc-slot-empty">No documents yet</div>
-        </div>
-        <div class="evidence-card">
-          <span class="evidence-icon">📦</span>
-          <h3>Motive</h3>
-          <p>Additional supporting documents (excluding docket sheet).</p>
-          <div id="doc-slot-misc" class="doc-slot-empty">No documents yet</div>
         </div>
       </div>
     </div>
@@ -1571,11 +1748,6 @@
           <div class="inst-action">✗ Destroyed federal evidence — officer silent</div>
         </div>
         <div class="institution-card">
-          <div class="inst-name">Congressman Clyburn</div>
-          <div class="inst-role">Congressional constituent representation</div>
-          <div class="inst-action">✗ Deflected — attempted cover-up on record</div>
-        </div>
-        <div class="institution-card">
           <div class="inst-name">Federal Judiciary</div>
           <div class="inst-role">Judicial oversight of active lawsuit</div>
           <div class="inst-action">✗ Subpoenas issued then erased — discovery blocked</div>
@@ -1595,9 +1767,8 @@
 
       <div id="court-record" class="court-record reveal">
         <div class="court-record-header">
-          <div class="court-name">U.S. District Court of South Carolina</div>
-          <div class="court-division">Charleston Division</div>
-          <div class="court-case-no">Case No. 2:25-cv-00405-RMG-MGB</div>
+          <div class="court-name">U.S. District Court of South Carolina <span style="font-family:'Playfair Display',serif; font-size:0.85rem; font-weight:400; color:#ffffff; letter-spacing:0.01em;">Charleston Division</span></div>
+          <div class="court-case-no" style="margin-top:0.75rem;">Case No. 2:25-cv-00405-RMG-MGB</div>
         </div>
 
         <div class="filing-group">
@@ -1613,7 +1784,12 @@
         <div class="filing-group" id="judges-orders-filings">
           <h3 class="filing-group-title">Judge's Orders</h3>
           <div id="filing-list-judges-order" class="filing-list-empty">Loading filings…</div>
-        </div>
+
+<div class="filing-entry">
+  <div class="filing-entry-title">ECF 304 — Orders Denying Fifth Amended Complaint and Motion for Leave</div>
+  <p class="filing-entry-summary">Magistrate Judge Mary Gordon Baker denied Plaintiff's Motion for Leave to File a Fifth Amended Complaint, finding the proposed amendments unnecessary, prejudicial, and without good cause after the amendment deadline. The Court also denied Plaintiff's Motion to Stay pending Fourth Circuit review.</p>
+  <a href="https://nelson-v-curtiss-wright.netlify.app/assets/ECF%20303-304%20Jiudge%20Baker%20Denial%20of%20Motion%20to%20Stay-B97PgLj9.pdf" target="_blank" rel="noopener noreferrer" class="filing-entry-link">ECF 303-304 — Judge Baker Denial of Motion to Stay →</a>
+</div>
 
         <div class="sanctions-block reveal" id="sanctions-claims">
           <h3 class="filing-group-title">Claims Dismissed With Prejudice as Sanctions</h3>
@@ -1624,10 +1800,9 @@
             <div class="sanctions-claim-item"><strong>Illegal Interception of Communications</strong>18 U.S.C. § 2511</div>
             <div class="sanctions-claim-item"><strong>Intentional Infliction of Emotional Distress</strong>State law claim</div>
           </div>
-          <p class="sanctions-block-summary">Also ordered: emotional distress damages struck; compensatory damages struck; Plaintiff prohibited from using withheld evidence to support remaining claims. This order contradicts Judge Baker's own ECF 250 Report and Recommendation that these claims should survive.</p>
-          <div id="sanctions-order-link-slot"></div>
-          <p class="sanctions-block-summary" style="margin-top:1rem;">
-            <span class="plaintiff-position-label">Plaintiff's Position: Why This Order Will Be Reversed on Appeal</span>
+          <p class="sanctions-block-summary" style="font-size:1rem; line-height:1.75;">Also ordered: emotional distress damages struck; compensatory damages struck; Plaintiff prohibited from using withheld evidence to support remaining claims. This order contradicts Judge Baker's own ECF 250 Report and Recommendation that these claims should survive.</p>
+          <p class="sanctions-block-summary" style="margin-top:1rem; font-size:1rem; line-height:1.75;">
+            <span class="plaintiff-position-label" style="font-size:0.95rem;">Plaintiff's Position: Why This Order Will Be Reversed on Appeal</span>
             The dismissed claims are the same claims Judge Baker's ECF 250 Report and Recommendation stated should survive. The dismissal rests on a defective Jackson Lewis subpoena with three documented procedural violations. The controlling Supreme Court precedent — Jaffee v. Redmond, 518 U.S. 1 (1996) — protects psychotherapist-patient communications from compelled disclosure. These are the primary grounds for Ms. Nelson's pending Fourth Circuit appeal.
           </p>
         </div>
@@ -1643,7 +1818,7 @@
 
       <div class="key-question reveal">
         <span class="kq-label">The Central Judicial Misconduct Question</span>
-        <p style="font-size:0.5rem;">"Magistrate Judge Cherry reviewed the evidence and issued the subpoenas. Magistrate Judge Baker — her replacement — then withdrew the Bonnie Hunt subpoena and told Ms. Nelson the court had never issued them. The prior signed order ECF 80 remains on the docket."</p>
+        <p>"Magistrate Judge Cherry reviewed the evidence and issued the subpoenas. Magistrate Judge Baker — her replacement — then withdrew the Bonnie Hunt subpoena and told Ms. Nelson the court had never issued them. The prior signed order ECF 80 remains on the docket."</p>
       </div>
 
       <div class="timeline" style="margin-top:1.75rem;">
@@ -1651,7 +1826,7 @@
           <div class="timeline-date">January 21, 2025</div>
           <div class="timeline-title">Case Removed to Federal Court — Counsel Immediately Withdraws</div>
           <div class="timeline-body">Defendants remove the case from state court to US District Court. Shortly thereafter, Plaintiff's counsel Bonnie Hunt of Hunt Law LLC withdraws. Ms. Nelson has alleged that defense counsel and/or Curtiss-Wright compensated her former attorney to withdraw, leaving her to proceed pro se against a major defense contractor with full corporate legal resources.</div>
-          <span class="evidence-tag red">Dkt. Nos. 10, 11, 12, 13, 19</span>
+          <span class="evidence-tag red">Docket Nos. 10, 11, 12, 13, 19</span>
         </div>
 
         <div class="timeline-item reveal">
@@ -1666,6 +1841,10 @@
           <div class="timeline-title">Judge Baker Replaces Judge Cherry — Withdraws Court-Issued Subpoenas</div>
           <div class="timeline-body">Magistrate Judge Mary Gordon Baker assumes the case. She withdraws the subpoenas previously signed by Judge Cherry. When Ms. Nelson objects, Judge Baker tells her she is mistaken — that the court never issued the subpoenas. The prior signed order from Judge Cherry remains on the docket contradicting this claim directly.</div>
           <span class="evidence-tag red">Documented Contradiction — Court Record</span>
+          <div class="timeline-evidence-links">
+            <a href="https://nelson-v-curtiss-wright.netlify.app/assets/Text%20Order%20ECF%2080%20Dkt%20Pg.%2017-B8QZVKGo.pdf" target="_blank" rel="noopener noreferrer" class="evidence-tag red">ECF 80 — Judge Cherry Text Order, Dkt. Pg. 17</a>
+            <a href="https://nelson-v-curtiss-wright.netlify.app/src/documents/evidence/Hunt%20Subpoena.pdf" target="_blank" rel="noopener noreferrer" class="evidence-tag red">Hunt Subpoena — Full Document</a>
+          </div>
         </div>
 
         <div class="timeline-item red reveal">
@@ -1690,7 +1869,7 @@
         </div>
       </div>
 
-      <div class="section-label reveal" style="margin-top:2.5rem;">Amentum Lawsuit</div>
+     <div class="section-label reveal" style="margin-top:2.5rem; color:var(--red);">⚠ Second Defense Contractor — Amentum Lawsuit</div>
 
       <div id="amentum-court-record" class="court-record reveal">
         <div class="court-record-header">
@@ -1699,11 +1878,7 @@
           <div class="court-case-no">Debra Nelson v. Amentum Government Services Parent Holdings LLC — Case No. 3:25-cv-01447-MCR-ZCB</div>
         </div>
 
-        <p class="amentum-case-summary"><strong style="color:var(--gold); font-weight:600;">Amentum Lawsuit Summary.</strong> Amentum is a federal defense contractor at Naval Air Station Whiting Field in Milton, Florida, performing aviation maintenance on T-6 training aircraft. Plaintiff Debra Nelson, an NDI Technician, alleges she reported safety, quality control, and compliance concerns related to aircraft maintenance and inspection procedures — and was subsequently retaliated against, subjected to hostile treatment, fabricated disciplinary actions, and termination.</p>
-        <p class="amentum-case-summary">Plaintiff also alleges cross-case interference with her separate federal lawsuit against Curtiss-Wright Electro-Mechanical Corporation. Both companies share legal representation through Jackson Lewis P.C., and Plaintiff's termination occurred less than 24 hours after she provided deposition testimony in the Curtiss-Wright matter.</p>
-        <p class="amentum-case-summary">Claims include retaliation, hostile work environment, whistleblower activity, and workplace safety reporting in connection with federal defense contract operations.</p>
-
-        <div class="filing-group">
+        
           <h3 class="filing-group-title">Plaintiff Filings</h3>
           <div id="filing-list-amentum-plaintiff" class="filing-list-empty">Loading filings…</div>
         </div>
@@ -1729,10 +1904,21 @@
         <span class="active-case-line" style="display:block; margin-bottom:0.35rem;">Debra Nelson v. Curtiss-Wright — Case No. 2:25-CV-00405-RMG-MGB</span>
       </p>
       <p class="reveal tech-intro" style="color:#ffffff; max-width:700px; margin-bottom:1.25rem;">Individual filings with summaries are listed under <a href="#court-record" style="color:var(--gold);">Judge's Orders</a>, <a href="#court-record" style="color:var(--gold);">Plaintiff Filings</a>, and <a href="#court-record" style="color:var(--gold);">Defense Filings</a> in the Judicial section, and on the <a href="#timeline" style="color:var(--gold);">Timeline</a>.</p>
-      <div id="docket-sheet-slot" class="doc-slot-empty reveal">Loading docket sheet…</div>
-      <p class="tech-table-note" style="color:#ffffff; margin-top:1rem; font-family:'JetBrains Mono',monospace;">Full docket also available on PACER — Case 2:25-cv-00405</p>
-    </div>
-  </div>
+     <div class="reveal" style="margin-top:1.25rem; display:flex; flex-direction:column; gap:0.85rem;">
+        <div style="border-bottom:1px solid var(--border); padding-bottom:0.85rem;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Nelson v. Curtiss-Wright — D.S.C.</div>
+          <a href="https://nelson-v-curtiss-wright.netlify.app/assets/Docket%20Sheet-BaaM3Wuz.pdf" target="_blank" rel="noopener noreferrer" class="docket-link">
+            📄 Docket Sheet — Case No. 2:25-CV-00405-RMG-MGB →
+          </a>
+        </div>
+        <div style="padding-top:0.25rem;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Nelson v. Amentum — N.D. Fla.</div>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="docket-link">
+            📄 Docket Sheet — Case No. 3:25-cv-01447-MCR-ZCB →
+          </a>
+        </div>
+      </div>
+      <p class="tech-table-note" style="color:#ffffff; margin-top:1.25rem; font-family:'JetBrains Mono',monospace;">Full dockets also available on PACER</p>
 
   <!-- TECH COMPANIES -->
   <div class="section-full" id="tech">
@@ -1819,17 +2005,17 @@
       </div>
 
       <div style="margin-top:2.5rem;" class="reveal">
-        <div class="section-label">Ninth Circuit Subpoena Record</div>
+        <d<div class="section-label" style="font-size:1rem;">Ninth Circuit Subpoena Record</div>
         <p class="tech-intro" style="color:#ffffff; margin-bottom:1.25rem; margin-top:0.75rem;">Subpoena and issuance status for the three companies in active Ninth Circuit proceedings:</p>
         <div style="overflow-x:auto;">
           <table class="docket-table">
             <thead>
-              <tr>
-                <th>Company</th>
-                <th>Evidence Sought</th>
-                <th>Subpoena / Issuance Status</th>
-              </tr>
-            </thead>
+  <tr>
+    <th style="font-size:0.85rem;">Company</th>
+    <th style="font-size:0.85rem;">Evidence Sought</th>
+    <th style="font-size:0.85rem;">Subpoena / Issuance Status</th>
+  </tr>
+</thead>
             <tbody>
               <tr>
                 <td>Google</td>
@@ -1856,10 +2042,7 @@
         </div>
 
         <div style="border-top:1px solid var(--border); padding-top:1.25rem; margin-top:1.5rem;">
-          <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.75rem; text-transform:uppercase;">FBI — Three Reports Filed Since November 2025 — No Investigation</div>
-          <p class="tech-intro" style="color:#ffffff; line-height:1.65; margin:0;">Ms. Nelson has visited the FBI three times since November 2025 to report cyber intrusion, physical surveillance, evidence destruction, and coordinated retaliation in connection with her active federal lawsuit against a major defense contractor. No investigation has been opened.</p>
-        </div>
-      </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:1rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.75rem; text-transform:uppercase;">FBI — Three Reports Filed Since November 2025 — No Investigation</div>
 
       <div style="margin-top:2rem;" class="reveal">
         <div class="key-question key-question--emphasis">
@@ -1912,20 +2095,17 @@
       </div>
 
       <div style="margin-top:1.75rem;" class="reveal">
-        <div class="section-label">Curtiss-Wright — Primary Case</div>
+        <div class="section-label" style="font-size:1rem;">Curtiss-Wright — Primary Case</div>
         <div style="background:var(--bg-card); border:1px solid var(--border); padding:2rem; margin-top:1rem;">
           <div style="font-family:'JetBrains Mono',monospace; font-size:0.9rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:1rem; text-transform:uppercase;">Nelson v. Curtiss-Wright — Case No. 2:25-CV-00405-RMG-MGB</div>
-          <p style="color:#ffffff; font-size:0.9rem; line-height:1.8; margin-bottom:1rem;">Curtiss-Wright Electro Mechanical Corporation — a major U.S. defense contractor involved in shipbuilding — discriminated against Ms. Nelson, retaliated against her whistleblower complaint, and has since engaged in a two-year coordinated campaign of obstruction documented throughout this site.</p>
+          <p style="color:#ffffff; font-size:1.05rem; line-height:1.8; margin-bottom:1rem;">Curtiss-Wright Electro Mechanical Corporation — a major U.S. defense contractor involved in shipbuilding — discriminated against Ms. Nelson, retaliated against her whistleblower complaint, and has since engaged in a two-year coordinated campaign of obstruction documented throughout this site.</p>
           <p style="color:#ffffff; font-size:1.05rem; line-height:1.8;">Deposition testimony obtained during discovery confirms that discrimination at Curtiss-Wright is not historical — it is ongoing. Other employees have experienced the same conduct. Ms. Nelson is the one who fought back.</p>
-          <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--border);">
-            <div style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:var(--red); letter-spacing:0.1em; margin-bottom:0.8rem; text-transform:uppercase;">Pending — Awaiting Ruling</div>
-            <p style="color:#ffffff; font-size:1.05rem; line-height:1.8;">Multiple motions remain pending before the court. The public record documented on this site raises serious questions about whether those rulings will be made impartially. Congressional oversight of both the defense contractor conduct and the judicial proceedings is warranted and urgently needed.</p>
           </div>
         </div>
       </div>
 
       <div style="margin-top:2rem;" class="reveal">
-        <div class="section-label">Amentum — A Second Defense Contractor</div>
+        <div class="section-label" style="font-size:1rem; font-weight:700;">Second Defense Contractor — Amentum</div>
         <div style="background:var(--bg-card); border:1px solid var(--border); padding:2rem; margin-top:1rem;">
           <div style="font-family:'JetBrains Mono',monospace; font-size:0.9rem; color:var(--gold); letter-spacing:0.1em; margin-bottom:1rem; text-transform:uppercase;">Florida Federal District Court — Gender-Based Discrimination & Retaliation</div>
 
@@ -1934,17 +2114,61 @@
             <p style="color:#ffffff; font-size:0.9rem; line-height:1.8;">October 28, 2025 — Ms. Nelson gives deposition testimony in Nelson v. Curtiss-Wright.<br><br>October 29, 2025 — Ms. Nelson is terminated from Amentum.<br><br>The only thing that changed between October 27 and October 29 was her deposition testimony against Curtiss-Wright. Both companies are defended by the same law firm — Jackson Lewis P.C.</p>
           </div>
 
-          <p style="color:#ffffff; font-size:0.9rem; line-height:1.8; margin-bottom:1rem;">Amentum is a second major defense contractor against whom Ms. Nelson has filed a federal lawsuit alleging gender-based discrimination and retaliation. Unlike the Curtiss-Wright case — where judicial misconduct has systematically blocked Ms. Nelson's claims — the Florida case has proceeded more fairly, with Ms. Nelson's 7th Amended Complaint surviving without dismissal.</p>
-
+          <p style="color:#ffffff; font-size:0.9rem; line-height:1.8; margin-bottom:1rem;">Amentum is a second major defense contractor against whom Ms. Nelson has filed a federal lawsuit alleging gender-based discrimination and retaliation. Ms. Nelson's Motion for Leave to File and her Seventh Amended Complaint have been on the docket since March 13, 2026 — with no ruling in over two months. Her Reply to Defendant's Opposition was filed March 28, 2026, but was not entered on the docket until May 19, 2026. Prior motions in this case have not experienced delays of this nature. The motion is fully briefed. Once this case proceeds to discovery, the evidence Ms. Nelson has compiled is expected to be decisive.</p>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem;">
             <div style="background:var(--bg-card); padding:1rem; border:1px solid rgba(255,255,255,0.05);">
-              <div style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Defense Counsel — Both Cases</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Defense Counsel — Amentum</div>
               <div style="color:var(--white); font-family:'Playfair Display',serif; font-size:1rem; font-weight:700;">Jackson Lewis P.C.</div>
-              <div style="color:#ffffff; font-size:0.8rem; margin-top:0.3rem;">15 South Main Street, Suite 700<br>Greenville, SC 29601</div>
+              <div style="color:#ffffff; font-size:0.8rem; margin-top:0.75rem; line-height:1.8;">
+                Lindsay D. Swiger &amp; Zackary A. Blanton<br>
+                501 Riverside Avenue, Suite 902<br>
+                Jacksonville, FL 32202<br>
+                <a href="mailto:Lindsay.Swiger@jacksonlewis.com" style="color:var(--gold); text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">Lindsay.Swiger@jacksonlewis.com</a><br>
+                <a href="mailto:Zackary.Blanton@jacksonlewis.com" style="color:var(--gold); text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">Zackary.Blanton@jacksonlewis.com</a>
+              </div>
             </div>
             <div style="background:var(--bg-card); padding:1rem; border:1px solid rgba(255,255,255,0.05);">
               <div style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Significance</div>
               <div style="color:#e05555; font-size:0.85rem; line-height:1.6;">One law firm defending two separate defense contractors against the same whistleblower — with full knowledge of her legal strategy in both cases simultaneously</div>
+            </div>
+          </div>
+
+          <div style="background:var(--bg-card); border:1px solid var(--border); padding:2rem; margin-top:1.5rem;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:var(--red); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.75rem;">The Connection</div>
+            <div style="font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:700; color:#ffffff; margin-bottom:1.25rem; line-height:1.3;">Federal Government — U.S. Navy — Law Firm Jackson Lewis P.C.</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin-top:0.5rem;">
+                <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.5rem;">Federal Government</div>
+                <div style="color:#ffffff; font-size:0.88rem; line-height:1.7;">Curtiss-Wright holds defense contracts critical to U.S. shipbuilding operations. Amentum holds defense contracts with the U.S. Navy at Naval Air Station Whiting Field in Milton, FL — a critical installation that hosts pilot training on T-6 aircraft. The integrity of maintenance and inspection work performed there directly affects the safety of U.S. Navy flight training operations.</div>
+              <div style="background:var(--bg-page); padding:1.25rem;">
+                <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.5rem;">U.S. Navy</div>
+                <div style="color:#ffffff; font-size:0.88rem; line-height:1.7;">Both contractors operate on Navy installations or under Navy contracts. The U.S. Navy is the end client whose procurement dollars fund the operations at the center of both lawsuits.</div>
+              </div>
+              <div style="background:var(--bg-page); padding:1.25rem;">
+                <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.5rem;">Jackson Lewis P.C.</div>
+                <div style="color:#ffffff; font-size:0.88rem; line-height:1.7;">One law firm defending both defense contractors against the same whistleblower — with simultaneous, complete visibility into Ms. Nelson's legal strategy across both federal cases.</div>
+              </div>
+            </div>
+          </div>
+            <div style="background:var(--bg-card); padding:1rem; border:1px solid rgba(255,255,255,0.05);">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Significance</div>
+              <div style="color:#e05555; font-size:0.85rem; line-height:1.6;">One law firm defending two separate defense contractors against the same whistleblower — with full knowledge of her legal strategy in both cases simultaneously</div>
+            </div>
+          </div>
+            <div style="background:var(--bg-card); padding:1rem; border:1px solid rgba(255,255,255,0.05);">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:#ffffff; margin-bottom:0.5rem; text-transform:uppercase;">Defense Counsel — Both Cases</div>
+              <div style="color:var(--white); font-family:'Playfair Display',serif; font-size:1rem; font-weight:700;">Jackson Lewis P.C.</div>
+              <div style="color:#ffffff; font-size:0.8rem; margin-top:0.5rem; line-height:1.8;">
+                <span style="color:var(--gold); font-family:'JetBrains Mono',monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em;">Curtiss-Wright</span><br>
+                15 South Main Street, Suite 700<br>Greenville, SC 29601
+              </div>
+              <div style="color:#ffffff; font-size:0.8rem; margin-top:0.75rem; line-height:1.8;">
+                <span style="color:var(--gold); font-family:'JetBrains Mono',monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em;">Amentum</span><br>
+                Lindsay D. Swiger &amp; Zackary A. Blanton<br>
+                501 Riverside Avenue, Suite 902<br>
+                Jacksonville, FL 32202<br>
+                <a href="mailto:Lindsay.Swiger@jacksonlewis.com" style="color:var(--gold); text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">Lindsay.Swiger@jacksonlewis.com</a><br>
+                <a href="mailto:Zackary.Blanton@jacksonlewis.com" style="color:var(--gold); text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">Zackary.Blanton@jacksonlewis.com</a>
+              </div>
             </div>
           </div>
         </div>
@@ -1966,8 +2190,8 @@
   <div class="section-full" id="act">
     <div class="section-inner">
       <div class="section-label reveal">Take Action</div>
-      <h2 class="reveal">Make This Impossible to Ignore</h2>
-      <p class="reveal" style="color:#ffffff; max-width:600px; margin-bottom:2rem;">Contact these organizations directly. Send them this URL. The more eyes on this case, the harder it becomes to ignore.</p>
+      <h2 class="reveal" style="font-size:clamp(1.8rem, 3vw, 2.5rem);">Make This Impossible to Ignore</h2>
+      <p class="reveal" style="color:#ffffff; max-width:600px; margin-bottom:2rem; font-size:1.15rem;">Contact these organizations directly. Send them this URL. The more eyes on this case, the harder it becomes to ignore.</p>
 
       <ul class="org-list reveal">
         <li><a href="https://www.propublica.org/tips" target="_blank" rel="noopener noreferrer">ProPublica — propublica.org/tips</a></li>
@@ -1985,12 +2209,12 @@
   <footer>
     <div class="footer-active-cases">
       <div class="nav-case-label">Active Federal Cases</div>
-      <div class="active-case-line">Debra Nelson v. Curtiss-Wright — Case No. 2:25-CV-00405-RMG-MGB</div>
-      <div class="active-case-line">Debra Nelson v. Amentum Government Services Parent Holdings LLC — Case No. 3:25-cv-01447-MCR-ZCB</div>
+      <div class="active-case-line" style="font-size:1.15rem;">Debra Nelson v. Curtiss-Wright — Case No. 2:25-CV-00405-RMG-MGB</div>
+      <div class="active-case-line" style="font-size:1.15rem;">Debra Nelson v. Amentum Government Services Parent Holdings LLC<br>Case No. 3:25-cv-01447-MCR-ZCB</div>
     </div>
-    <p>This site is a public accountability archive maintained by Debra Nelson.<br>
+    <p style="margin-top:1.5rem;">This site is a public accountability archive maintained by Debra Nelson.<br>
     All documents presented are either public court records, official government correspondence, or personal documentation of witnessed events.<br><br>
-    <em>"When those entrusted with justice become the source of injustice, the public record becomes the only recourse."</em></p>
+    <em style="font-size:1.1rem; line-height:1.9;">"When those entrusted with justice become the source of injustice, the public record becomes the only recourse."</em></p>
   </footer>
 
 </div>
@@ -2067,6 +2291,6 @@
       <p style="color:#ffffff; font-size:0.8rem; margin-top:0.75rem; opacity:0.75;">Choosing “I Have Already Signed” will not ask again for 30 minutes in this browser session.</p>
     </div>
   </div>
-
+
 </body>
 </html>

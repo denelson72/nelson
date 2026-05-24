@@ -239,7 +239,7 @@ export const SUMMARY_BY_ECF = {
   "297": {
     title: "Reply in Support of Sanctions",
     summary:
-      "Defendants renewed sanctions arguments, sought dismissal of claims, and accused Plaintiff of withholding discovery and relying on misleading FOIA evidence regarding federal funding.",
+      "Defense counsel sought irrelevant family and personal information from my therapy sessions. Defendants renewed sanctions arguments, sought dismissal of claims, and accused Plaintiff of withholding discovery and relying on misleading FOIA evidence regarding federal funding.",
   },
   "302": {
     title: "Motion for Leave to File Fifth Amended Complaint",

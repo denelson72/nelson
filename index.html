@@ -1314,9 +1314,200 @@
     margin-top: 0.5rem;
     display: none;
   }
+
+  body.intro-open {
+    overflow: hidden;
+  }
+
+  .intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background: rgba(0, 0, 0, 0.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: max(0.75rem, env(safe-area-inset-top))
+      max(0.75rem, env(safe-area-inset-right))
+      max(0.75rem, env(safe-area-inset-bottom))
+      max(0.75rem, env(safe-area-inset-left));
+  }
+
+  .intro-overlay.hidden {
+    display: none;
+  }
+
+  .intro-overlay__inner {
+    position: relative;
+    width: min(100%, 56rem);
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-overlay__video {
+    display: block;
+    width: 100%;
+    max-height: calc(100vh - 3rem);
+    max-height: calc(100dvh - 3rem);
+    height: auto;
+    object-fit: contain;
+    background: #000;
+    border: 1px solid var(--border);
+    pointer-events: auto;
+  }
+
+  .intro-overlay__media {
+    position: relative;
+    width: 100%;
+    max-height: calc(100dvh - 5rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-overlay__media .intro-overlay__video {
+    max-height: calc(100dvh - 5rem);
+  }
+
+  .intro-overlay__play-btn,
+  .intro-overlay__unmute-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 10rem;
+    min-height: 3.25rem;
+    padding: 0.85rem 1.75rem;
+    border: 1px solid var(--gold);
+    background: rgba(20, 20, 20, 0.88);
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .intro-overlay__play-btn:hover,
+  .intro-overlay__unmute-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+  }
+
+  .intro-overlay__play-btn.hidden,
+  .intro-overlay__unmute-btn.hidden {
+    display: none;
+  }
+
+  .intro-overlay__unmute-btn {
+    top: auto;
+    bottom: 4.5rem;
+    transform: translateX(-50%);
+    font-size: 0.95rem;
+  }
+
+  .intro-overlay__loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    pointer-events: none;
+  }
+
+  .intro-overlay__loading.hidden {
+    display: none;
+  }
+
+  .intro-overlay__play-hint {
+    margin-top: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    display: none;
+  }
+
+  .intro-overlay__play-hint.is-visible {
+    display: block;
+  }
+
+  .intro-overlay__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: rgba(20, 20, 20, 0.92);
+    color: #ffffff;
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+
+  .intro-overlay__close:hover {
+    background: var(--red);
+    border-color: var(--red);
+    color: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    .intro-overlay__inner {
+      width: 100%;
+    }
+
+    .intro-overlay__video {
+      max-height: calc(100vh - 4.5rem);
+      max-height: calc(100dvh - 4.5rem);
+    }
+
+    .intro-overlay__close {
+      top: -0.15rem;
+      right: 0;
+      min-width: 3rem;
+      min-height: 3rem;
+      font-size: 1.5rem;
+    }
+  }
 </style>
 </head>
 <body>
+
+<div id="intro-overlay" class="intro-overlay hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Introduction video">
+  <div class="intro-overlay__inner">
+    <button type="button" id="intro-close-btn" class="intro-overlay__close" aria-label="Close introduction video">✕</button>
+    <div class="intro-overlay__media">
+      <video id="intro-video" class="intro-overlay__video" autoplay muted playsinline webkit-playsinline preload="auto" controls controlsList="nodownload noremoteplayback" disablePictureInPicture></video>
+      <p id="intro-loading" class="intro-overlay__loading">Loading video…</p>
+      <button type="button" id="intro-play-btn" class="intro-overlay__play-btn hidden" aria-label="Play introduction video">▶ Play video</button>
+      <button type="button" id="intro-unmute-btn" class="intro-overlay__unmute-btn hidden" aria-label="Enable sound">🔊 Enable sound</button>
+    </div>
+    <p id="intro-play-hint" class="intro-overlay__play-hint">Video plays automatically (muted). Tap Enable sound for audio, or use the timeline to pause and scrub.</p>
+  </div>
+</div>
 
 <!-- PETITION GATE -->
 <div id="gate" style="display:none;">
@@ -1503,7 +1694,7 @@
     <div class="section-inner">
       <div class="section-label reveal">Documentation</div>
       <h2 class="reveal">Evidence Archive</h2>
-      <p class="reveal" style="color:#ffffff; max-width:700px; margin-bottom:1.5rem; font-size:0.9rem; line-height:1.65;">Court filings with summaries are in <a href="#judicial" style="color:var(--gold);">What Happened Inside the Courtroom</a> — <a href="#court-record" style="color:var(--gold);">Curtiss-Wright</a> first, then <a href="#amentum-court-record" style="color:var(--gold);">Amentum</a>. Supporting records, congressional correspondence, and senator responses are organized below.</p>
+      <p class="reveal" style="color:#ffffff; max-width:700px; margin-bottom:1.5rem; font-size:0.9rem; line-height:1.65;">Court filings with summaries are in <a href="#judicial" style="color:var(--gold);">What Happened Inside the Courtroom</a> — <a href="#court-record" style="color:var(--gold);">Curtiss-Wright</a> first, then <a href="#amentum-court-record" style="color:var(--gold);">Amentum</a> (including <a href="#filing-list-sc-legislators" style="color:var(--gold);">SC Legislators</a> correspondence). Supporting records are below.</p>
 
       <div class="section-label reveal">Nelson v. Curtiss-Wright</div>
       <div class="evidence-grid">
@@ -1518,30 +1709,6 @@
           <h3>Department of War</h3>
           <p>Privacy Release form referenced in the Department of War email — transmitted via Congressman Clyburn's office before Ms. Nelson had provided it.</p>
           <div id="doc-slot-dept-of-war" class="doc-slot-empty">No documents yet</div>
-        </div>
-        <div class="evidence-card">
-          <span class="evidence-icon">🏛️</span>
-          <h3>Congressman Clyburn</h3>
-          <p>Congressional office correspondence and related records.</p>
-          <div id="doc-slot-congressman-clyburn" class="doc-slot-empty">No documents yet</div>
-        </div>
-        <div class="evidence-card">
-          <span class="evidence-icon">🏛️</span>
-          <h3>Senator Lindsey Graham</h3>
-          <p>Responses and follow-up regarding federal oversight.</p>
-          <div id="doc-slot-senator-graham" class="doc-slot-empty">No documents yet</div>
-        </div>
-        <div class="evidence-card">
-          <span class="evidence-icon">🏛️</span>
-          <h3>Senator Tim Scott</h3>
-          <p>Written response from Senator Scott's office.</p>
-          <div id="doc-slot-senator-scott" class="doc-slot-empty">No documents yet</div>
-        </div>
-        <div class="evidence-card">
-          <span class="evidence-icon">📦</span>
-          <h3>Motive</h3>
-          <p>Additional supporting documents (excluding docket sheet).</p>
-          <div id="doc-slot-misc" class="doc-slot-empty">No documents yet</div>
         </div>
       </div>
     </div>
@@ -1578,11 +1745,6 @@
           <div class="inst-name">Local Police</div>
           <div class="inst-role">Evidence custodian</div>
           <div class="inst-action">✗ Destroyed federal evidence — officer silent</div>
-        </div>
-        <div class="institution-card">
-          <div class="inst-name">Congressman Clyburn</div>
-          <div class="inst-role">Congressional constituent representation</div>
-          <div class="inst-action">✗ Deflected — attempted cover-up on record</div>
         </div>
         <div class="institution-card">
           <div class="inst-name">Federal Judiciary</div>
@@ -2129,6 +2291,7 @@
     </div>
   </div>
 
+  <script type="module" src="/src/intro-video.js"></script>
   <script type="module" src="/src/document-listing.js"></script>
 </body>
 </html>
