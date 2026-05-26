@@ -349,7 +349,7 @@ export const SC_LEGISLATOR_SUMMARIES = {
 };
 
 /** Amentum case (N.D. Fla. 3:25-cv-01447) — key March 2026 filings. */
-export const AMENTUM_KEY_ECF = ["53", "54", "55", "56", "57"];
+export const AMENTUM_KEY_ECF = ["53", "54", "55", "57"];
 
 export const AMENTUM_SUMMARY_BY_ECF = {
   "53": {
