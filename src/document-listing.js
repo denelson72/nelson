@@ -428,6 +428,8 @@ function createFilingEntry(ecfLabel, title, summary, url, options = {}) {
   }
 
   if (String(ecfLabel) === "80") {
+    const br = document.createElement("br");
+    card.appendChild(br);
     const huntLink = document.createElement("a");
     huntLink.href = "https://raw.githubusercontent.com/denelson72/nelson/main/src/documents/evidence/Hunt%20Subpoena.pdf";
     huntLink.className = "filing-entry-link";
