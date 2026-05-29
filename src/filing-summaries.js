@@ -1,6 +1,11 @@
 /** Court filing summaries keyed by ECF number (from docket / Word document). */
 
 export const SUMMARY_BY_ECF = {
+  "80": {
+    title: "Text Order — ECF 80, Dkt. Pg. 17",
+    summary:
+      "Text Order on the public docket authorizing subpoenas in Case No. 2:25-cv-00405-RMG-MGB. This order — signed by Magistrate Judge Cherry — remains on the docket and directly contradicts Magistrate Judge Baker's later claim that the court never issued subpoenas.",
+  },
   "16": {
     title: "Motion for an Extension of Time",
     summary:
@@ -305,6 +310,11 @@ export const SUMMARY_BY_ECF = {
 
 /** Summaries for filings without a reliable ECF in the filename. */
 export const SUMMARY_BY_FILENAME = {
+  "text order ecf 80": {
+    title: "Text Order — ECF 80, Dkt. Pg. 17",
+    summary:
+      "Text Order on the public docket authorizing subpoenas in Case No. 2:25-cv-00405-RMG-MGB. This order — signed by Magistrate Judge Cherry — remains on the docket and directly contradicts Magistrate Judge Baker's later claim that the court never issued subpoenas.",
+  },
   "letter to debra nelson re discovery": {
     title: "Defense Letter Regarding Discovery Obligations (January 16, 2026)",
     summary:
