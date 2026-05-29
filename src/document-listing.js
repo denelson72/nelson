@@ -427,6 +427,17 @@ function createFilingEntry(ecfLabel, title, summary, url, options = {}) {
     card.appendChild(pending);
   }
 
+  if (String(ecfLabel) === "80") {
+    const huntLink = document.createElement("a");
+    huntLink.href = "https://raw.githubusercontent.com/denelson72/nelson/main/src/documents/evidence/Hunt%20Subpoena.pdf";
+    huntLink.className = "filing-entry-link";
+    huntLink.textContent = "Hunt Subpoena — Full Document →";
+    huntLink.target = "_blank";
+    huntLink.rel = "noopener noreferrer";
+    attachPetitionGateToPdfLink(huntLink);
+    card.appendChild(huntLink);
+  }
+
   return card;
 }
 
